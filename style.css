@@ -23,37 +23,7 @@
      transform: scale(1.02);
  }
 
- /* Custom Range Slider for Pricing */
- input[type=range] {
-     -webkit-appearance: none;
-     width: 100%;
-     background: transparent;
- }
 
- input[type=range]::-webkit-slider-thumb {
-     -webkit-appearance: none;
-     height: 28px;
-     width: 28px;
-     border-radius: 50%;
-     background: #0284c7;
-     border: 4px solid #fff;
-     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-     cursor: pointer;
-     margin-top: -12px;
-     transition: transform 0.1s;
- }
-
- input[type=range]::-webkit-slider-thumb:hover {
-     transform: scale(1.1);
- }
-
- input[type=range]::-webkit-slider-runnable-track {
-     width: 100%;
-     height: 6px;
-     cursor: pointer;
-     background: #e2e8f0;
-     border-radius: 999px;
- }
 
  /* Scroll Animations */
  .reveal {

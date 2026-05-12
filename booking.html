@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started | MicroCampus BD</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@0.407.0/dist/umd/lucide.min.js" defer></script>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                fontFamily: {
+                    sans: ['Inter', 'sans-serif'],
+                    display: ['Outfit', 'sans-serif'],
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-sans antialiased text-slate-800 bg-slate-50 min-h-screen flex flex-col">
+
+    <!-- Simple Nav -->
+    <nav class="py-6 px-6 max-w-4xl mx-auto w-full flex justify-between items-center">
+        <a href="index.html" class="flex items-center gap-2 font-display font-bold text-xl text-slate-900">
+            <div class="w-8 h-8 bg-sky-600 rounded-lg flex items-center justify-center text-white">
+                <i data-lucide="cloud" class="w-5 h-5"></i>
+            </div>
+            MicroCampus
+        </a>
+        <a href="index.html" class="text-sm font-medium text-slate-500 hover:text-sky-600 transition-colors">
+            Back to Home
+        </a>
+    </nav>
+
+    <main class="flex-1 flex items-center justify-center p-6">
+        <div class="max-w-xl w-full">
+            <div class="text-center mb-10">
+                <h1 class="font-display text-4xl font-bold text-slate-900 mb-3">Get Started</h1>
+                <p class="text-slate-500">Fill in the details below and we'll get back to you shortly.</p>
+            </div>
+
+            <div class="bg-white rounded-3xl p-8 md:p-10 shadow-xl shadow-slate-200/50 border border-slate-100">
+                <form action="process.php" method="POST" class="space-y-5">
+                    <div class="space-y-1.5">
+                        <label class="text-sm font-bold text-slate-700 ml-1">Full Name</label>
+                        <input type="text" name="name" required placeholder="Your Name"
+                            class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all">
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <label class="text-sm font-bold text-slate-700 ml-1">Email Address</label>
+                        <input type="email" name="email" required placeholder="your@email.com"
+                            class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all">
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <label class="text-sm font-bold text-slate-700 ml-1">School Name</label>
+                        <input type="text" name="institution" required placeholder="Name of your institution"
+                            class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="space-y-1.5">
+                            <label class="text-sm font-bold text-slate-700 ml-1">Phone</label>
+                            <input type="tel" name="phone" required placeholder="01XXX..."
+                                class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all">
+                        </div>
+                        <div class="space-y-1.5">
+                            <label class="text-sm font-bold text-slate-700 ml-1">Interest</label>
+                            <select name="type" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all appearance-none cursor-pointer">
+                                <option value="Demo">Book Demo</option>
+                                <option value="Trial">Free Trial</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full py-4 bg-slate-900 text-white rounded-xl font-bold hover:bg-sky-600 transition-all mt-4 shadow-lg shadow-sky-100">
+                        Submit Request
+                    </button>
+                </form>
+            </div>
+            
+            <p class="text-center mt-8 text-xs text-slate-400">
+                &copy; 2026 MicroCampus BD. All rights reserved.
+            </p>
+        </div>
+    </main>
+
+    <script>
+        window.onload = () => { lucide.createIcons(); }
+    </script>
+</body>
+
+</html>

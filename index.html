@@ -10,7 +10,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/lucide@0.407.0/dist/umd/lucide.min.js" defer></script>
 
     <!-- Google Fonts -->
     <link
@@ -80,11 +80,11 @@
             <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
                 <a href="#features" class="hover:text-sky-600 transition-colors">Platform</a>
                 <a href="#modules" class="hover:text-sky-600 transition-colors">Modules</a>
-                <a href="#pricing" class="hover:text-sky-600 transition-colors">Pricing</a>
-                <button
-                    class="px-6 py-2.5 bg-slate-900 text-white rounded-full hover:bg-sky-600 transition-all hover:shadow-lg hover:shadow-sky-200 transform hover:-translate-y-0.5 font-semibold">
+
+                <a href="booking.html"
+                    class="px-6 py-2.5 bg-slate-900 text-white rounded-full hover:bg-sky-600 transition-all hover:shadow-lg hover:shadow-sky-200 transform hover:-translate-y-0.5 font-semibold inline-block">
                     Book Demo
-                </button>
+                </a>
             </div>
 
             <button id="mobile-menu-btn" class="md:hidden text-slate-800 p-2">
@@ -97,8 +97,8 @@
             class="hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-xl border-t border-slate-100 p-6 shadow-xl flex flex-col gap-4">
             <a href="#features" class="text-slate-600 font-medium py-2">Platform</a>
             <a href="#modules" class="text-slate-600 font-medium py-2">Modules</a>
-            <a href="#pricing" class="text-slate-600 font-medium py-2">Pricing</a>
-            <button class="w-full py-3 bg-sky-600 text-white rounded-lg font-bold">Book Demo</button>
+
+            <a href="booking.html" class="w-full py-3 bg-sky-600 text-white rounded-lg font-bold text-center">Book Demo</a>
         </div>
     </nav>
 
@@ -119,7 +119,7 @@
 
             <!-- Grid Pattern -->
             <div
-                class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-soft-light">
+                class="absolute inset-0 bg-slate-50/50">
             </div>
             <div
                 class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]">
@@ -157,10 +157,10 @@
 
                 <div class="flex flex-col sm:flex-row items-center lg:justify-start justify-center gap-4 animate-fade-in-up opacity-0"
                     style="animation-delay: 0.4s;">
-                    <button
-                        class="w-full sm:w-auto px-8 py-4 bg-slate-900 text-white rounded-full font-bold hover:bg-sky-600 hover:scale-105 transition-all shadow-xl shadow-slate-900/20 ring-1 ring-slate-900/50">
+                    <a href="booking.html"
+                        class="w-full sm:w-auto px-8 py-4 bg-slate-900 text-white rounded-full font-bold hover:bg-sky-600 hover:scale-105 transition-all shadow-xl shadow-slate-900/20 ring-1 ring-slate-900/50 text-center">
                         Start Free Trial
-                    </button>
+                    </a>
                     <button
                         class="w-full sm:w-auto px-8 py-4 bg-white/80 backdrop-blur-sm text-slate-700 border border-slate-200 rounded-full font-bold hover:bg-white hover:border-sky-200 transition-all flex items-center justify-center gap-2 group shadow-sm">
                         Watch Video <i data-lucide="play-circle"
@@ -673,362 +673,7 @@
         </div>
     </section>
 
-    <!-- Interactive Pricing Section -->
-    <section id="pricing" class="py-24 bg-slate-50 relative overflow-hidden">
-        <!-- Decor -->
-        <div
-            class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-sky-100/40 via-transparent to-transparent">
-        </div>
 
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="text-center max-w-2xl mx-auto mb-12 reveal">
-                <h2 class="font-display text-4xl font-bold text-slate-900 mb-4">Fair Pricing for Every Campus</h2>
-                <p class="text-slate-500 text-lg">Drag the slider to estimate your monthly cost based on student
-                    capacity.</p>
-            </div>
-
-            <!-- Pricing Controls -->
-            <div class="max-w-3xl mx-auto bg-white rounded-3xl p-8 shadow-sm border border-slate-200 mb-16 reveal">
-                <div class="flex flex-col gap-6">
-                    <div class="flex justify-between items-end">
-                        <label class="font-bold text-slate-700">Total Students</label>
-                        <div class="text-3xl font-display font-bold text-sky-600" id="student-count-display">500</div>
-                    </div>
-                    <div class="relative w-full h-12 flex items-center">
-                        <input type="range" min="100" max="3000" step="100" value="500" id="student-slider"
-                            class="z-20">
-                    </div>
-                    <div class="flex justify-between text-xs font-bold text-slate-400 uppercase tracking-wide">
-                        <span>Small Campus</span>
-                        <span>Growing School</span>
-                        <span>Enterprise</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Pricing Cards -->
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Basic Plan -->
-                <div
-                    class="bg-white rounded-3xl p-8 border border-slate-200 hover:border-sky-300 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 flex flex-col relative reveal">
-                    <div class="mb-6">
-                        <h3 class="font-display font-bold text-2xl text-slate-900">Basic</h3>
-                        <p class="text-sm text-slate-500 mt-2">Essential management for small schools.</p>
-                    </div>
-                    <div class="mb-8">
-                        <span class="text-4xl font-bold text-slate-900" id="price-basic">৳2,500</span>
-                        <span class="text-slate-400">/mo</span>
-                    </div>
-                    <ul class="space-y-4 mb-8 flex-1">
-                        <li class="flex items-center gap-3 text-sm text-slate-600"><i data-lucide="check"
-                                class="w-4 h-4 text-sky-500"></i> Student Info System</li>
-                        <li class="flex items-center gap-3 text-sm text-slate-600"><i data-lucide="check"
-                                class="w-4 h-4 text-sky-500"></i> Attendance Management</li>
-                        <li class="flex items-center gap-3 text-sm text-slate-600"><i data-lucide="check"
-                                class="w-4 h-4 text-sky-500"></i> Exam & Marksheets</li>
-                        <li class="flex items-center gap-3 text-sm text-slate-400"><i data-lucide="x"
-                                class="w-4 h-4"></i> No Accounts Module</li>
-                    </ul>
-                    <button
-                        class="w-full py-3 rounded-xl border-2 border-slate-100 font-bold text-slate-600 hover:border-sky-500 hover:text-sky-600 transition-colors">Choose
-                        Basic</button>
-                </div>
-
-                <!-- Standard Plan (Highlighted) -->
-                <div class="bg-slate-900 rounded-3xl p-8 border border-slate-800 shadow-2xl relative transform md:-translate-y-4 flex flex-col reveal"
-                    style="transition-delay: 0.1s">
-                    <div
-                        class="absolute top-0 right-0 bg-gradient-to-r from-sky-500 to-blue-600 text-white text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-2xl">
-                        POPULAR</div>
-                    <div class="mb-6">
-                        <h3 class="font-display font-bold text-2xl text-white">Standard</h3>
-                        <p class="text-sm text-slate-400 mt-2">Perfect for established institutions.</p>
-                    </div>
-                    <div class="mb-8">
-                        <span class="text-4xl font-bold text-white" id="price-standard">৳4,500</span>
-                        <span class="text-slate-500">/mo</span>
-                    </div>
-                    <ul class="space-y-4 mb-8 flex-1">
-                        <li class="flex items-center gap-3 text-sm text-slate-300"><i data-lucide="check"
-                                class="w-4 h-4 text-sky-400"></i> <span class="font-bold text-white">Everything in
-                                Basic</span></li>
-                        <li class="flex items-center gap-3 text-sm text-slate-300"><i data-lucide="check"
-                                class="w-4 h-4 text-sky-400"></i> Accounts & Fee Collection</li>
-                        <li class="flex items-center gap-3 text-sm text-slate-300"><i data-lucide="check"
-                                class="w-4 h-4 text-sky-400"></i> SMS Gateway Integration</li>
-                        <li class="flex items-center gap-3 text-sm text-slate-300"><i data-lucide="check"
-                                class="w-4 h-4 text-sky-400"></i> Parent Mobile App</li>
-                    </ul>
-                    <button
-                        class="w-full py-3 rounded-xl bg-sky-600 text-white font-bold hover:bg-sky-500 transition-colors shadow-lg shadow-sky-900/50">Get
-                        Started</button>
-                </div>
-
-                <!-- Premium Plan -->
-                <div class="bg-white rounded-3xl p-8 border border-slate-200 hover:border-sky-300 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 flex flex-col relative reveal"
-                    style="transition-delay: 0.2s">
-                    <div class="mb-6">
-                        <h3 class="font-display font-bold text-2xl text-slate-900">Premium</h3>
-                        <p class="text-sm text-slate-500 mt-2">Full automation & branding.</p>
-                    </div>
-                    <div class="mb-8">
-                        <span class="text-4xl font-bold text-slate-900" id="price-premium">৳8,000</span>
-                        <span class="text-slate-400">/mo</span>
-                    </div>
-                    <ul class="space-y-4 mb-8 flex-1">
-                        <li class="flex items-center gap-3 text-sm text-slate-600"><i data-lucide="check"
-                                class="w-4 h-4 text-sky-500"></i> <span class="font-bold text-slate-900">Everything in
-                                Standard</span></li>
-                        <li class="flex items-center gap-3 text-sm text-slate-600"><i data-lucide="check"
-                                class="w-4 h-4 text-sky-500"></i> HR & Payroll System</li>
-                        <li class="flex items-center gap-3 text-sm text-slate-600"><i data-lucide="check"
-                                class="w-4 h-4 text-sky-500"></i> Custom Domain & Branding</li>
-                        <li class="flex items-center gap-3 text-sm text-slate-600"><i data-lucide="check"
-                                class="w-4 h-4 text-sky-500"></i> Priority 24/7 Support</li>
-                    </ul>
-                    <button
-                        class="w-full py-3 rounded-xl border-2 border-slate-100 font-bold text-slate-600 hover:border-sky-500 hover:text-sky-600 transition-colors">Contact
-                        Sales</button>
-                </div>
-            </div>
-
-            <!-- Comparison Table -->
-            <div class="mt-24 reveal">
-                <div class="text-center mb-12">
-                    <h3 class="font-display text-3xl font-bold text-slate-900">Compare Features</h3>
-                    <p class="text-slate-500 mt-2">Detailed breakdown of what's included in each plan</p>
-                </div>
-
-                <!-- Mobile Swipe Hint -->
-                <div
-                    class="md:hidden text-center text-xs font-semibold text-sky-600 mb-4 animate-pulse flex items-center justify-center gap-2">
-                    <i data-lucide="move-horizontal" class="w-4 h-4"></i> Swipe to see all plans
-                </div>
-
-                <div class="overflow-x-auto rounded-3xl border border-slate-200 shadow-sm bg-white relative">
-                    <table class="w-full text-left border-collapse min-w-[500px] md:min-w-full">
-                        <thead>
-                            <tr class="bg-slate-50/80">
-                                <th
-                                    class="p-3 md:p-6 border-b border-slate-200 min-w-[140px] md:min-w-[200px] text-slate-500 font-medium sticky left-0 z-20 bg-slate-50 border-r border-slate-200 shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]">
-                                    Features</th>
-                                <th
-                                    class="p-3 md:p-6 border-b border-slate-200 font-bold text-slate-900 text-center min-w-[100px] md:min-w-[150px]">
-                                    Basic</th>
-                                <th
-                                    class="p-3 md:p-6 border-b border-slate-200 font-bold text-sky-600 text-center bg-sky-50/30 min-w-[100px] md:min-w-[150px]">
-                                    Standard</th>
-                                <th
-                                    class="p-3 md:p-6 border-b border-slate-200 font-bold text-slate-900 text-center min-w-[100px] md:min-w-[150px]">
-                                    Premium</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-sm text-slate-600">
-                            <!-- Core Administration & Academic -->
-                            <tr>
-                                <td class="p-3 md:p-4 bg-slate-100 font-bold text-slate-800 text-[10px] md:text-xs uppercase tracking-wider pl-4 md:pl-6 sticky left-0 z-10 border-r border-slate-200 shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]"
-                                    colspan="1">Core Admin</td>
-                                <td class="p-3 md:p-4 bg-slate-50" colspan="3"></td>
-                            </tr>
-                            <tr class="group hover:bg-slate-50 transition-colors border-b border-slate-100">
-                                <td
-                                    class="p-3 md:p-4 pl-4 md:pl-6 text-xs md:text-sm font-medium sticky left-0 z-10 bg-white group-hover:bg-slate-50 border-r border-slate-100 transition-colors shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]">
-                                    Admin Dashboard & Analytics</td>
-                                <td class="p-3 md:p-4 text-center"><i data-lucide="minus"
-                                        class="w-5 h-5 text-slate-300 mx-auto"></i></td>
-                                <td class="p-3 md:p-4 text-center bg-sky-50/10"><i data-lucide="check"
-                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
-                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
-                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
-                            </tr>
-                            <tr class="group hover:bg-slate-50 transition-colors border-b border-slate-100">
-                                <td
-                                    class="p-3 md:p-4 pl-4 md:pl-6 text-xs md:text-sm font-medium sticky left-0 z-10 bg-white group-hover:bg-slate-50 border-r border-slate-100 transition-colors shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]">
-                                    Student Info System (Admission/TC)</td>
-                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
-                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
-                                <td class="p-3 md:p-4 text-center bg-sky-50/10"><i data-lucide="check"
-                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
-                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
-                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
-                            </tr>
-                            <tr class="group hover:bg-slate-50 transition-colors border-b border-slate-100">
-                                <td
-                                    class="p-3 md:p-4 pl-4 md:pl-6 text-xs md:text-sm font-medium sticky left-0 z-10 bg-white group-hover:bg-slate-50 border-r border-slate-100 transition-colors shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]">
-                                    Academic Mgmt (Class/Routine)</td>
-                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
-                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
-                                <td class="p-3 md:p-4 text-center bg-sky-50/10"><i data-lucide="check"
-                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
-                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
-                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
-                            </tr>
-                            <tr class="group hover:bg-slate-50 transition-colors border-b border-slate-100">
-                                <td
-                                    class="p-3 md:p-4 pl-4 md:pl-6 text-xs md:text-sm font-medium sticky left-0 z-10 bg-white group-hover:bg-slate-50 border-r border-slate-100 transition-colors shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]">
-                                    Exam & Result Publishing</td>
-                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
-                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
-                                <td class="p-3 md:p-4 text-center bg-sky-50/10"><i data-lucide="check"
-                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
-                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
-                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
-                            </tr>
-                            <tr class="group hover:bg-slate-50 transition-colors border-b border-slate-100">
-                                <td
-                                    class="p-3 md:p-4 pl-4 md:pl-6 text-xs md:text-sm font-medium sticky left-0 z-10 bg-white group-hover:bg-slate-50 border-r border-slate-100 transition-colors shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]">
-                                    Smart Attendance <span
-                                        class="text-[10px] md:text-xs text-slate-400 block font-normal text-left mt-1">*Hardware
-                                        costs extra</span>
-                                </td>
-                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
-                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
-                                <td class="p-3 md:p-4 text-center bg-sky-50/10"><i data-lucide="check"
-                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
-                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
-                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
-                            </tr>
-
-                            <!-- Finance & Operations -->
-                            <tr>
-                                <td class="p-3 md:p-4 bg-slate-100 font-bold text-slate-800 text-[10px] md:text-xs uppercase tracking-wider pl-4 md:pl-6 sticky left-0 z-10 border-r border-slate-200 shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]"
-                                    colspan="1">Finance</td>
-                                <td class="p-3 md:p-4 bg-slate-50" colspan="3"></td>
-                            </tr>
-                            <tr class="group hover:bg-slate-50 transition-colors border-b border-slate-100">
-                                <td
-                                    class="p-3 md:p-4 pl-4 md:pl-6 text-xs md:text-sm font-medium sticky left-0 z-10 bg-white group-hover:bg-slate-50 border-r border-slate-100 transition-colors shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]">
-                                    Fee Collection & Receipts</td>
-                                <td class="p-3 md:p-4 text-center text-[10px] md:text-xs font-bold text-slate-500">
-                                    Offline Only</td>
-                                <td class="p-3 md:p-4 text-center bg-sky-50/10"><i data-lucide="check"
-                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
-                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
-                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
-                            </tr>
-                            <tr class="group hover:bg-slate-50 transition-colors border-b border-slate-100">
-                                <td
-                                    class="p-3 md:p-4 pl-4 md:pl-6 text-xs md:text-sm font-medium sticky left-0 z-10 bg-white group-hover:bg-slate-50 border-r border-slate-100 transition-colors shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]">
-                                    Payment Gateway (bKash)</td>
-                                <td class="p-3 md:p-4 text-center"><i data-lucide="minus"
-                                        class="w-5 h-5 text-slate-300 mx-auto"></i></td>
-                                <td class="p-3 md:p-4 text-center bg-sky-50/10"><i data-lucide="check"
-                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
-                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
-                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
-                            </tr>
-                            <tr class="group hover:bg-slate-50 transition-colors border-b border-slate-100">
-                                <td
-                                    class="p-3 md:p-4 pl-4 md:pl-6 text-xs md:text-sm font-medium sticky left-0 z-10 bg-white group-hover:bg-slate-50 border-r border-slate-100 transition-colors shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]">
-                                    SMS & Notification Hub</td>
-                                <td class="p-3 md:p-4 text-center"><i data-lucide="minus"
-                                        class="w-5 h-5 text-slate-300 mx-auto"></i></td>
-                                <td class="p-3 md:p-4 text-center bg-sky-50/10"><i data-lucide="check"
-                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
-                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
-                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
-                            </tr>
-                            <tr class="group hover:bg-slate-50 transition-colors border-b border-slate-100">
-                                <td
-                                    class="p-3 md:p-4 pl-4 md:pl-6 text-xs md:text-sm font-medium sticky left-0 z-10 bg-white group-hover:bg-slate-50 border-r border-slate-100 transition-colors shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]">
-                                    Parent & Student Portal</td>
-                                <td class="p-3 md:p-4 text-center"><i data-lucide="minus"
-                                        class="w-5 h-5 text-slate-300 mx-auto"></i></td>
-                                <td class="p-3 md:p-4 text-center bg-sky-50/10"><i data-lucide="check"
-                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
-                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
-                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
-                            </tr>
-                            <tr class="group hover:bg-slate-50 transition-colors border-b border-slate-100">
-                                <td
-                                    class="p-3 md:p-4 pl-4 md:pl-6 text-xs md:text-sm font-medium sticky left-0 z-10 bg-white group-hover:bg-slate-50 border-r border-slate-100 transition-colors shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]">
-                                    Transport Management</td>
-                                <td class="p-3 md:p-4 text-center"><i data-lucide="minus"
-                                        class="w-5 h-5 text-slate-300 mx-auto"></i></td>
-                                <td class="p-3 md:p-4 text-center bg-sky-50/10"><i data-lucide="check"
-                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
-                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
-                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
-                            </tr>
-
-                            <!-- Advanced Modules -->
-                            <tr>
-                                <td class="p-3 md:p-4 bg-slate-100 font-bold text-slate-800 text-[10px] md:text-xs uppercase tracking-wider pl-4 md:pl-6 sticky left-0 z-10 border-r border-slate-200 shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]"
-                                    colspan="1">Advanced</td>
-                                <td class="p-3 md:p-4 bg-slate-50" colspan="3"></td>
-                            </tr>
-                            <tr class="group hover:bg-slate-50 transition-colors border-b border-slate-100">
-                                <td
-                                    class="p-3 md:p-4 pl-4 md:pl-6 text-xs md:text-sm font-medium sticky left-0 z-10 bg-white group-hover:bg-slate-50 border-r border-slate-100 transition-colors shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]">
-                                    HR & Payroll System</td>
-                                <td class="p-3 md:p-4 text-center"><i data-lucide="minus"
-                                        class="w-5 h-5 text-slate-300 mx-auto"></i></td>
-                                <td class="p-3 md:p-4 text-center bg-sky-50/10"><i data-lucide="minus"
-                                        class="w-5 h-5 text-slate-300 mx-auto"></i></td>
-                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
-                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
-                            </tr>
-                            <tr class="group hover:bg-slate-50 transition-colors border-b border-slate-100">
-                                <td
-                                    class="p-3 md:p-4 pl-4 md:pl-6 text-xs md:text-sm font-medium sticky left-0 z-10 bg-white group-hover:bg-slate-50 border-r border-slate-100 transition-colors shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]">
-                                    Digital Library</td>
-                                <td class="p-3 md:p-4 text-center"><i data-lucide="minus"
-                                        class="w-5 h-5 text-slate-300 mx-auto"></i></td>
-                                <td class="p-3 md:p-4 text-center bg-sky-50/10"><i data-lucide="minus"
-                                        class="w-5 h-5 text-slate-300 mx-auto"></i></td>
-                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
-                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
-                            </tr>
-                            <tr class="group hover:bg-slate-50 transition-colors border-b border-slate-100">
-                                <td
-                                    class="p-3 md:p-4 pl-4 md:pl-6 text-xs md:text-sm font-medium sticky left-0 z-10 bg-white group-hover:bg-slate-50 border-r border-slate-100 transition-colors shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]">
-                                    Inventory & Store</td>
-                                <td class="p-3 md:p-4 text-center"><i data-lucide="minus"
-                                        class="w-5 h-5 text-slate-300 mx-auto"></i></td>
-                                <td class="p-3 md:p-4 text-center bg-sky-50/10"><i data-lucide="minus"
-                                        class="w-5 h-5 text-slate-300 mx-auto"></i></td>
-                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
-                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
-                            </tr>
-                            <tr class="group hover:bg-slate-50 transition-colors border-b border-slate-100">
-                                <td
-                                    class="p-3 md:p-4 pl-4 md:pl-6 text-xs md:text-sm font-medium sticky left-0 z-10 bg-white group-hover:bg-slate-50 border-r border-slate-100 transition-colors shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]">
-                                    Dynamic Website Builder</td>
-                                <td class="p-3 md:p-4 text-center"><i data-lucide="minus"
-                                        class="w-5 h-5 text-slate-300 mx-auto"></i></td>
-                                <td class="p-3 md:p-4 text-center bg-sky-50/10"><i data-lucide="minus"
-                                        class="w-5 h-5 text-slate-300 mx-auto"></i></td>
-                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
-                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
-                            </tr>
-                            <tr class="group hover:bg-slate-50 transition-colors border-b border-slate-100">
-                                <td
-                                    class="p-3 md:p-4 pl-4 md:pl-6 text-xs md:text-sm font-medium sticky left-0 z-10 bg-white group-hover:bg-slate-50 border-r border-slate-100 transition-colors shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]">
-                                    Mobile App (Custom Branded)</td>
-                                <td class="p-3 md:p-4 text-center"><i data-lucide="minus"
-                                        class="w-5 h-5 text-slate-300 mx-auto"></i></td>
-                                <td class="p-3 md:p-4 text-center bg-sky-50/10"><i data-lucide="minus"
-                                        class="w-5 h-5 text-slate-300 mx-auto"></i></td>
-                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
-                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
-                            </tr>
-                            <tr class="group hover:bg-slate-50 transition-colors">
-                                <td
-                                    class="p-3 md:p-4 pl-4 md:pl-6 text-xs md:text-sm font-medium sticky left-0 z-10 bg-white group-hover:bg-slate-50 border-r border-slate-100 transition-colors shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]">
-                                    Support Priority</td>
-                                <td class="p-3 md:p-4 text-center text-[10px] md:text-xs font-bold text-slate-500">
-                                    Ticket</td>
-                                <td
-                                    class="p-3 md:p-4 text-center bg-sky-50/10 text-[10px] md:text-xs font-bold text-sky-600">
-                                    Priority</td>
-                                <td class="p-3 md:p-4 text-center text-[10px] md:text-xs font-bold text-indigo-600">24/7
-                                    Manager</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-    </section>
 
 
 
@@ -1077,7 +722,7 @@
                     <li><a href="#" class="hover:text-sky-400 transition-colors">Finance & Fees</a></li>
                     <li><a href="#" class="hover:text-sky-400 transition-colors">Student Portal</a></li>
                     <li><a href="#" class="hover:text-sky-400 transition-colors">Teacher App</a></li>
-                    <li><a href="#" class="hover:text-sky-400 transition-colors">Pricing</a></li>
+
                 </ul>
             </div>
 
