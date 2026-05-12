@@ -2,7 +2,7 @@
 /**
  * process.php
  * Zero-dependency SMTP handler for MicroCampus BD.
- * Sends emails directly via Gmail SMTP using PHP sockets.
+ * Optimized for multi-recipient delivery in a single session.
  */
 
 // --- LOAD ENVIRONMENT VARIABLES ---
@@ -43,19 +43,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    $email_sent = false;
-    $error_log = "";
-
     /**
-     * Internal function to send email via raw SMTP
+     * Sends a single email to multiple recipients in one SMTP transaction.
      */
-    function send_raw_smtp($to, $subject, $body, $from_email, $from_name, $pass) {
+    function send_multi_smtp($recipients, $sender_email, $subject, $body, $from_user, $from_name, $pass) {
         $timeout = 30;
         $smtp_host = "ssl://smtp.gmail.com";
         $smtp_port = 465;
 
         $fp = fsockopen($smtp_host, $smtp_port, $errno, $errstr, $timeout);
-        if (!$fp) return "Connection failed: $errstr ($errno)";
+        if (!$fp) return false;
 
         function get_resp($fp) {
             $resp = "";
@@ -66,20 +63,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             return $resp;
         }
 
-        get_resp($fp); // Greeting
+        get_resp($fp); 
         fwrite($fp, "EHLO localhost\r\n"); get_resp($fp);
         fwrite($fp, "AUTH LOGIN\r\n"); get_resp($fp);
-        fwrite($fp, base64_encode($from_email) . "\r\n"); get_resp($fp);
+        fwrite($fp, base64_encode($from_user) . "\r\n"); get_resp($fp);
         fwrite($fp, base64_encode($pass) . "\r\n"); get_resp($fp);
-        fwrite($fp, "MAIL FROM: <$from_email>\r\n"); get_resp($fp);
-        fwrite($fp, "RCPT TO: <$to>\r\n"); get_resp($fp);
+        
+        // Envelope From
+        fwrite($fp, "MAIL FROM: <$from_user>\r\n"); get_resp($fp);
+        
+        // Envelope To (Multiple)
+        foreach ($recipients as $to) {
+            fwrite($fp, "RCPT TO: <$to>\r\n"); get_resp($fp);
+        }
+
         fwrite($fp, "DATA\r\n"); get_resp($fp);
 
         $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
-        $headers .= "From: $from_name <$from_email>" . "\r\n";
-        $headers .= "To: $to" . "\r\n";
+        $headers .= "From: $from_name <$from_user>" . "\r\n";
+        $headers .= "To: $sender_email" . "\r\n"; // Visible To
         $headers .= "Subject: $subject" . "\r\n";
+        $headers .= "Reply-To: $sender_email" . "\r\n";
+        $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
 
         fwrite($fp, $headers . "\r\n" . $body . "\r\n.\r\n");
         $code = substr(get_resp($fp), 0, 3);
@@ -92,27 +98,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $subject = "New $type Request: $institution";
     $body = "
-        <div style='font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px;'>
-            <h2 style='color: #0284c7;'>New $type Request</h2>
-            <p><strong>Institution:</strong> $institution</p>
-            <p><strong>Request Type:</strong> $type</p>
-            <p><strong>Contact Person:</strong> $name</p>
-            <p><strong>Email:</strong> $sender_email</p>
-            <p><strong>Phone:</strong> $phone</p>
-            <hr style='border: 0; border-top: 1px solid #eee; margin: 20px 0;'>
-            <p style='color: #666; font-size: 12px;'>Automated notification from MicroCampus BD.</p>
+        <div style='font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 12px; max-width: 600px; margin: auto;'>
+            <h2 style='color: #0284c7; margin-bottom: 20px;'>New Request Details</h2>
+            <table style='width: 100%; border-collapse: collapse;'>
+                <tr><td style='padding: 8px 0; color: #666;'>Institution:</td><td style='padding: 8px 0; font-weight: bold;'>$institution</td></tr>
+                <tr><td style='padding: 8px 0; color: #666;'>Request Type:</td><td style='padding: 8px 0; font-weight: bold;'>$type</td></tr>
+                <tr><td style='padding: 8px 0; color: #666;'>Contact Name:</td><td style='padding: 8px 0; font-weight: bold;'>$name</td></tr>
+                <tr><td style='padding: 8px 0; color: #666;'>Email:</td><td style='padding: 8px 0; font-weight: bold;'><a href='mailto:$sender_email'>$sender_email</a></td></tr>
+                <tr><td style='padding: 8px 0; color: #666;'>Phone:</td><td style='padding: 8px 0; font-weight: bold;'>$phone</td></tr>
+            </table>
+            <hr style='border: 0; border-top: 1px solid #eee; margin: 25px 0;'>
+            <p style='color: #999; font-size: 11px; text-align: center;'>This is an automated notification from the MicroCampus BD Platform.</p>
         </div>
     ";
 
-    // Send to Admins
-    foreach ($admin_emails as $admin) {
-        $res = send_raw_smtp($admin, $subject, $body, $gmail_user, $app_name, $app_password);
-        if ($res === true) $email_sent = true;
-        else $error_log .= "Admin ($admin): $res; ";
-    }
+    // Prepare all recipients (Admins + Sender)
+    $all_recipients = array_unique(array_merge($admin_emails, [$sender_email]));
 
-    // Send copy to Sender
-    send_raw_smtp($sender_email, "We received your request - $app_name", $body, $gmail_user, $app_name, $app_password);
+    // Send in one single SMTP transaction
+    $email_sent = send_multi_smtp($all_recipients, $sender_email, $subject, $body, $gmail_user, $app_name, $app_password);
 
     ?>
     <!DOCTYPE html>
@@ -129,11 +133,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="w-16 h-16 <?php echo $email_sent ? 'bg-green-100 text-green-600' : 'bg-amber-100 text-amber-600'; ?> rounded-full flex items-center justify-center mx-auto mb-6">
                 <i data-lucide="<?php echo $email_sent ? 'check' : 'alert-triangle'; ?>" class="w-8 h-8"></i>
             </div>
-            <h1 class="text-2xl font-bold text-slate-900 mb-2"><?php echo $email_sent ? 'Request Sent!' : 'Request Received'; ?></h1>
+            <h1 class="text-2xl font-bold text-slate-900 mb-2"><?php echo $email_sent ? 'Request Sent!' : 'Processing...'; ?></h1>
             <p class="text-slate-500 mb-8 text-sm leading-relaxed">
                 Thank you, <strong><?php echo $name; ?></strong>. We've received your request for <strong><?php echo $institution; ?></strong>.<br><br>
                 <?php if ($email_sent): ?>
-                    A confirmation has been sent to <strong><?php echo $sender_email; ?></strong>.
+                    Confirmation emails have been sent to you and our support team.
                 <?php else: ?>
                     <span class="text-amber-600">Note: We've saved your request. Our team will contact you shortly.</span>
                 <?php endif; ?>
