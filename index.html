@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MicroCampus BD - Cloud School Management</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                fontFamily: {
+                    sans: ['Inter', 'sans-serif'],
+                    display: ['Outfit', 'sans-serif'],
+                },
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9', // Sky 500
+                            600: '#0284c7', // Sky 600
+                            900: '#0c4a6e', // Sky 900
+                        }
+                    },
+                    animation: {
+                        'float-slow': 'float-slow 8s ease-in-out infinite',
+                        'float-rev': 'float-rev 10s ease-in-out infinite',
+                        'fade-in-up': 'fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        'float-slow': {
+                            '0%, 100%': { transform: 'translateY(0) rotate(3deg)' },
+                            '50%': { transform: 'translateY(-20px) rotate(6deg)' },
+                        },
+                        'float-rev': {
+                            '0%, 100%': { transform: 'translateY(0) rotate(-3deg)' },
+                            '50%': { transform: 'translateY(-15px) rotate(-5deg)' },
+                        },
+                        'fade-in-up': {
+                            'from': { opacity: '0', transform: 'translateY(30px)' },
+                            'to': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body
+    class="font-sans antialiased text-slate-800 bg-slate-50 selection:bg-sky-200 selection:text-sky-900 overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-6">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-2 font-display font-bold text-2xl text-slate-900 cursor-pointer"
+                onclick="window.scrollTo(0,0)">
+                <div
+                    class="w-10 h-10 bg-gradient-to-br from-sky-500 to-blue-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-sky-200">
+                    <i data-lucide="cloud" class="w-6 h-6"></i>
+                </div>
+                MicroCampus
+            </div>
+
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+                <a href="#features" class="hover:text-sky-600 transition-colors">Platform</a>
+                <a href="#modules" class="hover:text-sky-600 transition-colors">Modules</a>
+                <a href="#pricing" class="hover:text-sky-600 transition-colors">Pricing</a>
+                <button
+                    class="px-6 py-2.5 bg-slate-900 text-white rounded-full hover:bg-sky-600 transition-all hover:shadow-lg hover:shadow-sky-200 transform hover:-translate-y-0.5 font-semibold">
+                    Book Demo
+                </button>
+            </div>
+
+            <button id="mobile-menu-btn" class="md:hidden text-slate-800 p-2">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-xl border-t border-slate-100 p-6 shadow-xl flex flex-col gap-4">
+            <a href="#features" class="text-slate-600 font-medium py-2">Platform</a>
+            <a href="#modules" class="text-slate-600 font-medium py-2">Modules</a>
+            <a href="#pricing" class="text-slate-600 font-medium py-2">Pricing</a>
+            <button class="w-full py-3 bg-sky-600 text-white rounded-lg font-bold">Book Demo</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero"
+        class="relative min-h-[110vh] flex items-center justify-center overflow-hidden bg-slate-50 pt-20">
+        <!-- Animated Background -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div
+                class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-100/40 via-slate-50 to-slate-50">
+            </div>
+            <!-- Blobs -->
+            <div
+                class="absolute top-0 right-0 w-[800px] h-[800px] bg-sky-400/10 rounded-full blur-[120px] mix-blend-multiply animate-pulse-slow">
+            </div>
+            <div class="absolute bottom-0 left-0 w-[800px] h-[800px] bg-indigo-400/10 rounded-full blur-[120px] mix-blend-multiply animate-pulse-slow"
+                style="animation-delay: 2s"></div>
+
+            <!-- Grid Pattern -->
+            <div
+                class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-soft-light">
+            </div>
+            <div
+                class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]">
+            </div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+
+            <!-- Hero Content -->
+            <div class="text-center lg:text-left pt-10 relative">
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/50 backdrop-blur-md border border-sky-100 rounded-full text-xs font-bold text-sky-600 mb-8 shadow-sm animate-fade-in-up opacity-0"
+                    style="animation-delay: 0.1s;">
+                    <span class="relative flex h-2 w-2">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
+                    </span>
+                    v2.0 is Live: Integrated Payment Gateway
+                </div>
+
+                <h1 class="font-display text-6xl md:text-7xl lg:text-8xl font-bold text-slate-900 tracking-tight leading-[1.05] mb-8 animate-fade-in-up opacity-0"
+                    style="animation-delay: 0.2s;">
+                    The OS for <br />
+                    <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 animate-gradient-x">
+                        Smart Schools
+                    </span>
+                </h1>
+
+                <p class="text-lg md:text-xl text-slate-600 max-w-xl mx-auto lg:mx-0 mb-10 animate-fade-in-up opacity-0 leading-relaxed"
+                    style="animation-delay: 0.3s;">
+                    Transform your institution with MicroCampus. Automate fees, attendance, results, and admissions in
+                    one beautiful cloud dashboard.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center lg:justify-start justify-center gap-4 animate-fade-in-up opacity-0"
+                    style="animation-delay: 0.4s;">
+                    <button
+                        class="w-full sm:w-auto px-8 py-4 bg-slate-900 text-white rounded-full font-bold hover:bg-sky-600 hover:scale-105 transition-all shadow-xl shadow-slate-900/20 ring-1 ring-slate-900/50">
+                        Start Free Trial
+                    </button>
+                    <button
+                        class="w-full sm:w-auto px-8 py-4 bg-white/80 backdrop-blur-sm text-slate-700 border border-slate-200 rounded-full font-bold hover:bg-white hover:border-sky-200 transition-all flex items-center justify-center gap-2 group shadow-sm">
+                        Watch Video <i data-lucide="play-circle"
+                            class="w-5 h-5 group-hover:text-sky-600 transition-colors"></i>
+                    </button>
+                </div>
+
+                <div class="mt-12 flex items-center justify-center lg:justify-start gap-8 animate-fade-in-up opacity-0"
+                    style="animation-delay: 0.5s;">
+                    <div class="flex -space-x-4">
+                        <img src="https://i.pravatar.cc/100?img=1" alt="User"
+                            class="w-12 h-12 rounded-full border-[3px] border-white shadow-sm" />
+                        <img src="https://i.pravatar.cc/100?img=5" alt="User"
+                            class="w-12 h-12 rounded-full border-[3px] border-white shadow-sm" />
+                        <img src="https://i.pravatar.cc/100?img=8" alt="User"
+                            class="w-12 h-12 rounded-full border-[3px] border-white shadow-sm" />
+                        <div
+                            class="w-12 h-12 rounded-full border-[3px] border-white bg-slate-100 flex items-center justify-center text-xs font-bold text-slate-600 shadow-sm">
+                            +2k</div>
+                    </div>
+                    <div class="text-sm font-medium text-slate-500">
+                        Trusted by <span class="text-slate-900 font-bold">150+ Schools</span> <br> across Bangladesh
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Visual / Mockup: Deconstructed Isometric Ecosystem -->
+            <div class="relative lg:h-[800px] flex items-center justify-center animate-fade-in-up opacity-0 perspective-[2500px]"
+                style="animation-delay: 0.4s;">
+
+                <!-- Center "Core" Dashboard (Tablet/Desktop View) -->
+                <div
+                    class="relative z-20 w-full max-w-[340px] md:max-w-none md:w-[600px] bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden transform md:rotate-x-12 md:rotate-y-[-10deg] md:rotate-z-2 transition-transform duration-1000 ease-out">
+                    <!-- Fake Browser Header -->
+                    <div class="bg-slate-50 border-b border-slate-100 px-4 py-3 flex gap-2">
+                        <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                        <div class="w-3 h-3 rounded-full bg-amber-400"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                        <div
+                            class="ml-4 bg-white rounded-md px-3 py-1 text-[10px] text-slate-400 font-mono w-full max-w-[200px]">
+                            microcampus.bd/admin</div>
+                    </div>
+                    <!-- Dashboard Body -->
+                    <div class="p-6 grid grid-cols-12 gap-6 bg-slate-50/50 h-[400px]">
+                        <!-- Sidebar -->
+                        <div class="col-span-2 space-y-4">
+                            <div class="h-10 w-10 bg-indigo-600 rounded-xl mb-8"></div>
+                            <div class="h-2 w-12 bg-slate-200 rounded-full"></div>
+                            <div class="h-2 w-16 bg-slate-200 rounded-full"></div>
+                            <div class="h-2 w-10 bg-slate-200 rounded-full"></div>
+                            <div class="h-2 w-14 bg-slate-200 rounded-full"></div>
+                        </div>
+                        <!-- Main Area -->
+                        <div class="col-span-10 space-y-4">
+                            <div class="flex justify-between">
+                                <div class="h-8 w-32 bg-slate-200 rounded-lg"></div>
+                                <div class="h-8 w-8 bg-slate-200 rounded-full"></div>
+                            </div>
+                            <!-- Charts Row -->
+                            <div class="grid grid-cols-3 gap-4">
+                                <div class="bg-white p-4 rounded-xl shadow-sm h-32 hidden md:block">
+                                    <div class="h-2 w-12 bg-slate-100 rounded-full mb-2"></div>
+                                    <div class="h-6 w-20 bg-slate-800 rounded-md mb-4"></div>
+                                    <div class="h-12 w-full bg-sky-50 rounded-lg border-b-2 border-sky-400"></div>
+                                </div>
+                                <div class="bg-white p-4 rounded-xl shadow-sm h-32 col-span-3 md:col-span-1">
+                                    <div class="h-2 w-12 bg-slate-100 rounded-full mb-2"></div>
+                                    <div class="h-6 w-20 bg-slate-800 rounded-md mb-4"></div>
+                                    <div class="flex items-end gap-1 h-12">
+                                        <div class="w-1/4 h-[40%] bg-indigo-200 rounded-t"></div>
+                                        <div class="w-1/4 h-[70%] bg-indigo-400 rounded-t"></div>
+                                        <div class="w-1/4 h-[50%] bg-indigo-300 rounded-t"></div>
+                                        <div class="w-1/4 h-[90%] bg-indigo-600 rounded-t"></div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="bg-white p-4 rounded-xl shadow-sm h-32 bg-gradient-to-br from-slate-900 to-slate-800 border-none hidden md:block">
+                                    <!-- Dark Card -->
+                                    <div class="h-2 w-12 bg-slate-600 rounded-full mb-2"></div>
+                                    <div
+                                        class="h-8 w-8 bg-green-500 rounded-full flex items-center justify-center text-white mt-4">
+                                        <i data-lucide="check" class="w-4 h-4"></i></div>
+                                </div>
+                            </div>
+                            <!-- Table Row -->
+                            <div class="bg-white rounded-xl shadow-sm p-4 h-full">
+                                <div class="space-y-3">
+                                    <div class="flex gap-4">
+                                        <div class="h-8 w-8 rounded-full bg-slate-100"></div>
+                                        <div class="flex-1 h-8 bg-slate-50 rounded-lg"></div>
+                                    </div>
+                                    <div class="flex gap-4">
+                                        <div class="h-8 w-8 rounded-full bg-slate-100"></div>
+                                        <div class="flex-1 h-8 bg-slate-50 rounded-lg"></div>
+                                    </div>
+                                    <div class="flex gap-4">
+                                        <div class="h-8 w-8 rounded-full bg-slate-100"></div>
+                                        <div class="flex-1 h-8 bg-slate-50 rounded-lg"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floating Mobile App (Left Front) -->
+                <div
+                    class="hidden lg:block absolute -left-12 bottom-20 z-30 w-[220px] bg-slate-900 rounded-[2rem] border-4 border-slate-800 shadow-2xl p-2 transform rotate-y-12 animate-float-slow">
+                    <div class="bg-slate-900 h-full w-full rounded-2xl overflow-hidden relative">
+                        <!-- Notch -->
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-5 bg-slate-800 rounded-b-xl z-20">
+                        </div>
+                        <!-- App Content -->
+                        <div class="pt-8 px-4 pb-4">
+                            <div class="flex justify-between items-center text-white mb-6">
+                                <i data-lucide="menu" class="w-5 h-5"></i>
+                                <div class="w-8 h-8 bg-sky-500 rounded-full border-2 border-slate-700"></div>
+                            </div>
+                            <div class="text-white text-2xl font-bold mb-1">Hello,</div>
+                            <div class="text-slate-400 text-sm mb-6">Rayaan (Class 8)</div>
+
+                            <div class="bg-slate-800/50 p-3 rounded-xl mb-3 border border-slate-700">
+                                <div class="text-xs text-slate-400 uppercase">Next Class</div>
+                                <div class="text-sky-400 font-bold">Mathematics</div>
+                                <div class="text-xs text-slate-500">10:00 AM • Room 302</div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-2">
+                                <div
+                                    class="bg-indigo-600 p-3 rounded-xl flex flex-col items-center justify-center text-white gap-1">
+                                    <i data-lucide="book-open" class="w-5 h-5"></i>
+                                    <span class="text-[10px]">Homework</span>
+                                </div>
+                                <div
+                                    class="bg-slate-800 p-3 rounded-xl flex flex-col items-center justify-center text-slate-300 gap-1 border border-slate-700">
+                                    <i data-lucide="calendar" class="w-5 h-5"></i>
+                                    <span class="text-[10px]">Routine</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floating Payment Receipt (Right Front) -->
+                <div
+                    class="hidden lg:block absolute -right-8 top-32 z-30 w-64 bg-white/95 backdrop-blur-md p-5 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-white/40 transform rotate-6 animate-float-rev">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div
+                            class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600">
+                            <i data-lucide="check-circle-2" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs font-bold text-slate-400 uppercase">Payment Success</div>
+                            <div class="text-slate-900 font-bold">bKash Transaction</div>
+                        </div>
+                    </div>
+                    <div class="space-y-2 border-t border-dashed border-slate-200 pt-3">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-slate-500">Amount</span>
+                            <span class="font-bold text-slate-900">৳ 2,500</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-slate-500">Student</span>
+                            <span class="font-bold text-slate-900">Rihan (ID: 402)</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-slate-500">Month</span>
+                            <span class="font-bold text-slate-900">January 2026</span>
+                        </div>
+                    </div>
+                    <div
+                        class="mt-4 w-full bg-slate-50 text-slate-400 text-xs py-2 rounded text-center border border-slate-100 font-mono">
+                        TRX: 8X922MNL21
+                    </div>
+                </div>
+
+                <!-- Decorative 3D Elements -->
+                <div
+                    class="absolute top-[10%] left-[10%] w-16 h-16 bg-gradient-to-br from-sky-400 to-indigo-500 rounded-2xl rotate-12 blur-sm opacity-60 animate-pulse-slow">
+                </div>
+                <div
+                    class="absolute bottom-[10%] right-[20%] w-24 h-24 bg-gradient-to-br from-fuchsia-400 to-rose-500 rounded-full blur-2xl opacity-40 animate-pulse-slow delay-700">
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Bento Grid Features (Highlights) -->
+    <section id="features" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <h2 class="font-display text-4xl font-bold text-slate-900 mb-4">Core Capabilities</h2>
+                <p class="text-slate-500 text-lg">Experience the power of a fully connected educational ecosystem.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 grid-rows-3 gap-6 h-auto md:h-[800px]">
+
+                <!-- Main Feature: Academic -->
+                <div
+                    class="md:col-span-2 md:row-span-2 bento-card bg-slate-50 rounded-3xl p-8 border border-slate-100 relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 w-64 h-64 bg-sky-100 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-sky-200 transition-colors">
+                    </div>
+                    <div class="relative z-10">
+                        <div
+                            class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm mb-6 text-sky-600">
+                            <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Academic Excellence</h3>
+                        <p class="text-slate-500 mb-6 max-w-md">Comprehensive management of classes, sections, subjects,
+                            and automated routine generation. Keep your academic calendar on track.</p>
+                        <div class="bg-white rounded-xl p-4 shadow-sm border border-slate-100 max-w-sm">
+                            <div class="flex justify-between text-sm mb-2">
+                                <span class="font-bold">Term 1 Results</span>
+                                <span class="text-green-500 font-bold">+12% vs Last Year</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                                <div class="bg-sky-500 h-full w-[75%]"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature: Finance -->
+                <div
+                    class="md:col-span-1 md:row-span-1 bento-card bg-slate-900 rounded-3xl p-8 border border-slate-800 text-white relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-900"></div>
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-4">
+                            <div
+                                class="w-10 h-10 bg-slate-800 rounded-xl flex items-center justify-center text-sky-400">
+                                <i data-lucide="credit-card"></i>
+                            </div>
+                            <span class="text-xs font-bold bg-sky-500 text-white px-2 py-1 rounded">HOT</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-1">Smart Finance</h3>
+                        <p class="text-slate-400 text-sm">Automated invoicing & bKash Integration.</p>
+                    </div>
+                </div>
+
+                <!-- Feature: HR -->
+                <div
+                    class="md:col-span-1 md:row-span-1 bento-card bg-white rounded-3xl p-8 border border-slate-100 shadow-sm group">
+                    <div
+                        class="w-10 h-10 bg-purple-50 rounded-xl flex items-center justify-center text-purple-600 mb-4">
+                        <i data-lucide="users"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-1">HR & Payroll</h3>
+                    <p class="text-slate-500 text-sm">Track staff attendance and generate salary slips instantly.</p>
+                </div>
+
+                <!-- Feature: Communication (Wide) -->
+                <div
+                    class="md:col-span-2 md:row-span-1 bento-card bg-gradient-to-r from-sky-500 to-blue-600 rounded-3xl p-8 text-white relative overflow-hidden flex items-center justify-between">
+                    <div class="relative z-10">
+                        <h3 class="text-2xl font-bold mb-2">Parent Communication</h3>
+                        <p class="text-sky-100 max-w-md">Instant SMS alerts for attendance and results. Keep parents in
+                            the loop effortlessly.</p>
+                    </div>
+                    <div
+                        class="hidden md:block relative z-10 bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-green-400 flex items-center justify-center"><i
+                                    data-lucide="check" class="w-4 h-4 text-white"></i></div>
+                            <div class="text-xs">
+                                <div class="font-bold">SMS Delivered</div>
+                                <div class="text-sky-100">To 1,240 Parents</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature: Mobile -->
+                <div
+                    class="md:col-span-1 md:row-span-1 bento-card bg-slate-50 rounded-3xl p-8 border border-slate-100 group">
+                    <div
+                        class="w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center text-orange-600 mb-4">
+                        <i data-lucide="smartphone"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-1">Mobile App</h3>
+                    <p class="text-slate-500 text-sm">Apps for Teachers, Parents, and Students included.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: All Modules Grid -->
+    <section id="modules" class="py-24 bg-white border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <span class="text-sky-600 font-bold tracking-wider text-sm uppercase">Comprehensive Solution</span>
+                <h2 class="font-display text-4xl font-bold text-slate-900 mt-2 mb-4">15+ Powerful Modules</h2>
+                <p class="text-slate-500 text-lg">No more disconnected spreadsheets. Every tool you need is built right
+                    in.</p>
+            </div>
+
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Module 1 -->
+                <div
+                    class="module-card bg-white p-6 rounded-2xl border border-slate-100 flex flex-col items-start gap-4 cursor-pointer">
+                    <div
+                        class="module-icon w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center transition-all duration-300">
+                        <i data-lucide="layout-dashboard" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-lg">Admin Dashboard</h3>
+                        <p class="text-sm text-slate-500 mt-1">Unified view of attendance, finance, and academics.</p>
+                    </div>
+                </div>
+
+                <!-- Module 2 -->
+                <div
+                    class="module-card bg-white p-6 rounded-2xl border border-slate-100 flex flex-col items-start gap-4 cursor-pointer">
+                    <div
+                        class="module-icon w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center transition-all duration-300">
+                        <i data-lucide="users-2" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-lg">Student Info System</h3>
+                        <p class="text-sm text-slate-500 mt-1">360° profile, admissions, TCs, and promotions.</p>
+                    </div>
+                </div>
+
+                <!-- Module 3 -->
+                <div
+                    class="module-card bg-white p-6 rounded-2xl border border-slate-100 flex flex-col items-start gap-4 cursor-pointer">
+                    <div
+                        class="module-icon w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center transition-all duration-300">
+                        <i data-lucide="calendar-check-2" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-lg">Smart Attendance</h3>
+                        <p class="text-sm text-slate-500 mt-1">Biometric/RFID integration with auto-SMS alerts.</p>
+                    </div>
+                </div>
+
+                <!-- Module 4 -->
+                <div
+                    class="module-card bg-white p-6 rounded-2xl border border-slate-100 flex flex-col items-start gap-4 cursor-pointer">
+                    <div
+                        class="module-icon w-12 h-12 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center transition-all duration-300">
+                        <i data-lucide="coins" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-lg">Fees & Accounts</h3>
+                        <p class="text-sm text-slate-500 mt-1">Online payment gateway, invoices & reports.</p>
+                    </div>
+                </div>
+
+                <!-- Module 5 -->
+                <div
+                    class="module-card bg-white p-6 rounded-2xl border border-slate-100 flex flex-col items-start gap-4 cursor-pointer">
+                    <div
+                        class="module-icon w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center transition-all duration-300">
+                        <i data-lucide="award" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-lg">Exam Management</h3>
+                        <p class="text-sm text-slate-500 mt-1">Auto-GPA calculation and result publishing.</p>
+                    </div>
+                </div>
+
+                <!-- Module 6 -->
+                <div
+                    class="module-card bg-white p-6 rounded-2xl border border-slate-100 flex flex-col items-start gap-4 cursor-pointer">
+                    <div
+                        class="module-icon w-12 h-12 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center transition-all duration-300">
+                        <i data-lucide="briefcase" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-lg">HR & Payroll</h3>
+                        <p class="text-sm text-slate-500 mt-1">Staff management, leave tracking & salaries.</p>
+                    </div>
+                </div>
+
+                <!-- Module 7 -->
+                <div
+                    class="module-card bg-white p-6 rounded-2xl border border-slate-100 flex flex-col items-start gap-4 cursor-pointer">
+                    <div
+                        class="module-icon w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center transition-all duration-300">
+                        <i data-lucide="book-marked" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-lg">Library</h3>
+                        <p class="text-sm text-slate-500 mt-1">Book cataloging, issue/return tracking & fines.</p>
+                    </div>
+                </div>
+
+                <!-- Module 8 -->
+                <div
+                    class="module-card bg-white p-6 rounded-2xl border border-slate-100 flex flex-col items-start gap-4 cursor-pointer">
+                    <div
+                        class="module-icon w-12 h-12 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center transition-all duration-300">
+                        <i data-lucide="bus" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-lg">Transport</h3>
+                        <p class="text-sm text-slate-500 mt-1">Route management and transport fee collection.</p>
+                    </div>
+                </div>
+
+                <!-- Module 9 -->
+                <div
+                    class="module-card bg-white p-6 rounded-2xl border border-slate-100 flex flex-col items-start gap-4 cursor-pointer">
+                    <div
+                        class="module-icon w-12 h-12 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center transition-all duration-300">
+                        <i data-lucide="package" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-lg">Inventory</h3>
+                        <p class="text-sm text-slate-500 mt-1">Manage school store, stock, and supplier items.</p>
+                    </div>
+                </div>
+
+                <!-- Module 10 -->
+                <div
+                    class="module-card bg-white p-6 rounded-2xl border border-slate-100 flex flex-col items-start gap-4 cursor-pointer">
+                    <div
+                        class="module-icon w-12 h-12 rounded-xl bg-pink-50 text-pink-600 flex items-center justify-center transition-all duration-300">
+                        <i data-lucide="bell-ring" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-lg">Communication</h3>
+                        <p class="text-sm text-slate-500 mt-1">SMS blasts, noticeboard, and push notifications.</p>
+                    </div>
+                </div>
+
+                <!-- Module 11 -->
+                <div
+                    class="module-card bg-white p-6 rounded-2xl border border-slate-100 flex flex-col items-start gap-4 cursor-pointer">
+                    <div
+                        class="module-icon w-12 h-12 rounded-xl bg-cyan-50 text-cyan-600 flex items-center justify-center transition-all duration-300">
+                        <i data-lucide="file-bar-chart" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-lg">Reports & Analytics</h3>
+                        <p class="text-sm text-slate-500 mt-1">Exportable reports for every module.</p>
+                    </div>
+                </div>
+
+                <!-- Module 12 -->
+                <div
+                    class="module-card bg-white p-6 rounded-2xl border border-slate-100 flex flex-col items-start gap-4 cursor-pointer">
+                    <div
+                        class="module-icon w-12 h-12 rounded-xl bg-slate-100 text-slate-600 flex items-center justify-center transition-all duration-300">
+                        <i data-lucide="settings" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-lg">System Settings</h3>
+                        <p class="text-sm text-slate-500 mt-1">Custom roles, permissions, and school branding.</p>
+                    </div>
+                </div>
+
+                <!-- Module 13 -->
+                <div
+                    class="module-card bg-white p-6 rounded-2xl border border-slate-100 flex flex-col items-start gap-4 cursor-pointer">
+                    <div
+                        class="module-icon w-12 h-12 rounded-xl bg-lime-50 text-lime-600 flex items-center justify-center transition-all duration-300">
+                        <i data-lucide="printer" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-lg">Certificate Gen</h3>
+                        <p class="text-sm text-slate-500 mt-1">Auto-print TCs, Testimonials & Admit Cards.</p>
+                    </div>
+                </div>
+
+                <!-- Module 14 -->
+                <div
+                    class="module-card bg-white p-6 rounded-2xl border border-slate-100 flex flex-col items-start gap-4 cursor-pointer">
+                    <div
+                        class="module-icon w-12 h-12 rounded-xl bg-violet-50 text-violet-600 flex items-center justify-center transition-all duration-300">
+                        <i data-lucide="globe" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-lg">Website Builder</h3>
+                        <p class="text-sm text-slate-500 mt-1">Dynamic frontend website for your institution.</p>
+                    </div>
+                </div>
+
+                <!-- Module 15 -->
+                <div
+                    class="module-card bg-white p-6 rounded-2xl border border-slate-100 flex flex-col items-start gap-4 cursor-pointer">
+                    <div
+                        class="module-icon w-12 h-12 rounded-xl bg-red-50 text-red-600 flex items-center justify-center transition-all duration-300">
+                        <i data-lucide="shield-alert" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-lg">Audit Log</h3>
+                        <p class="text-sm text-slate-500 mt-1">Track every action taken within the system.</p>
+                    </div>
+                </div>
+
+                <!-- Module 16 -->
+                <div
+                    class="module-card bg-white p-6 rounded-2xl border border-slate-100 flex flex-col items-start gap-4 cursor-pointer">
+                    <div
+                        class="module-icon w-12 h-12 rounded-xl bg-fuchsia-50 text-fuchsia-600 flex items-center justify-center transition-all duration-300">
+                        <i data-lucide="home" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-lg">Hostel (Upcoming)</h3>
+                        <p class="text-sm text-slate-500 mt-1">Manage dormitories, rooms, and allocations.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Pricing Section -->
+    <section id="pricing" class="py-24 bg-slate-50 relative overflow-hidden">
+        <!-- Decor -->
+        <div
+            class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-sky-100/40 via-transparent to-transparent">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+                <h2 class="font-display text-4xl font-bold text-slate-900 mb-4">Fair Pricing for Every Campus</h2>
+                <p class="text-slate-500 text-lg">Drag the slider to estimate your monthly cost based on student
+                    capacity.</p>
+            </div>
+
+            <!-- Pricing Controls -->
+            <div class="max-w-3xl mx-auto bg-white rounded-3xl p-8 shadow-sm border border-slate-200 mb-16 reveal">
+                <div class="flex flex-col gap-6">
+                    <div class="flex justify-between items-end">
+                        <label class="font-bold text-slate-700">Total Students</label>
+                        <div class="text-3xl font-display font-bold text-sky-600" id="student-count-display">500</div>
+                    </div>
+                    <div class="relative w-full h-12 flex items-center">
+                        <input type="range" min="100" max="3000" step="100" value="500" id="student-slider"
+                            class="z-20">
+                    </div>
+                    <div class="flex justify-between text-xs font-bold text-slate-400 uppercase tracking-wide">
+                        <span>Small Campus</span>
+                        <span>Growing School</span>
+                        <span>Enterprise</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pricing Cards -->
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Basic Plan -->
+                <div
+                    class="bg-white rounded-3xl p-8 border border-slate-200 hover:border-sky-300 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 flex flex-col relative reveal">
+                    <div class="mb-6">
+                        <h3 class="font-display font-bold text-2xl text-slate-900">Basic</h3>
+                        <p class="text-sm text-slate-500 mt-2">Essential management for small schools.</p>
+                    </div>
+                    <div class="mb-8">
+                        <span class="text-4xl font-bold text-slate-900" id="price-basic">৳2,500</span>
+                        <span class="text-slate-400">/mo</span>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-1">
+                        <li class="flex items-center gap-3 text-sm text-slate-600"><i data-lucide="check"
+                                class="w-4 h-4 text-sky-500"></i> Student Info System</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-600"><i data-lucide="check"
+                                class="w-4 h-4 text-sky-500"></i> Attendance Management</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-600"><i data-lucide="check"
+                                class="w-4 h-4 text-sky-500"></i> Exam & Marksheets</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-400"><i data-lucide="x"
+                                class="w-4 h-4"></i> No Accounts Module</li>
+                    </ul>
+                    <button
+                        class="w-full py-3 rounded-xl border-2 border-slate-100 font-bold text-slate-600 hover:border-sky-500 hover:text-sky-600 transition-colors">Choose
+                        Basic</button>
+                </div>
+
+                <!-- Standard Plan (Highlighted) -->
+                <div class="bg-slate-900 rounded-3xl p-8 border border-slate-800 shadow-2xl relative transform md:-translate-y-4 flex flex-col reveal"
+                    style="transition-delay: 0.1s">
+                    <div
+                        class="absolute top-0 right-0 bg-gradient-to-r from-sky-500 to-blue-600 text-white text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-2xl">
+                        POPULAR</div>
+                    <div class="mb-6">
+                        <h3 class="font-display font-bold text-2xl text-white">Standard</h3>
+                        <p class="text-sm text-slate-400 mt-2">Perfect for established institutions.</p>
+                    </div>
+                    <div class="mb-8">
+                        <span class="text-4xl font-bold text-white" id="price-standard">৳4,500</span>
+                        <span class="text-slate-500">/mo</span>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-1">
+                        <li class="flex items-center gap-3 text-sm text-slate-300"><i data-lucide="check"
+                                class="w-4 h-4 text-sky-400"></i> <span class="font-bold text-white">Everything in
+                                Basic</span></li>
+                        <li class="flex items-center gap-3 text-sm text-slate-300"><i data-lucide="check"
+                                class="w-4 h-4 text-sky-400"></i> Accounts & Fee Collection</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-300"><i data-lucide="check"
+                                class="w-4 h-4 text-sky-400"></i> SMS Gateway Integration</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-300"><i data-lucide="check"
+                                class="w-4 h-4 text-sky-400"></i> Parent Mobile App</li>
+                    </ul>
+                    <button
+                        class="w-full py-3 rounded-xl bg-sky-600 text-white font-bold hover:bg-sky-500 transition-colors shadow-lg shadow-sky-900/50">Get
+                        Started</button>
+                </div>
+
+                <!-- Premium Plan -->
+                <div class="bg-white rounded-3xl p-8 border border-slate-200 hover:border-sky-300 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 flex flex-col relative reveal"
+                    style="transition-delay: 0.2s">
+                    <div class="mb-6">
+                        <h3 class="font-display font-bold text-2xl text-slate-900">Premium</h3>
+                        <p class="text-sm text-slate-500 mt-2">Full automation & branding.</p>
+                    </div>
+                    <div class="mb-8">
+                        <span class="text-4xl font-bold text-slate-900" id="price-premium">৳8,000</span>
+                        <span class="text-slate-400">/mo</span>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-1">
+                        <li class="flex items-center gap-3 text-sm text-slate-600"><i data-lucide="check"
+                                class="w-4 h-4 text-sky-500"></i> <span class="font-bold text-slate-900">Everything in
+                                Standard</span></li>
+                        <li class="flex items-center gap-3 text-sm text-slate-600"><i data-lucide="check"
+                                class="w-4 h-4 text-sky-500"></i> HR & Payroll System</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-600"><i data-lucide="check"
+                                class="w-4 h-4 text-sky-500"></i> Custom Domain & Branding</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-600"><i data-lucide="check"
+                                class="w-4 h-4 text-sky-500"></i> Priority 24/7 Support</li>
+                    </ul>
+                    <button
+                        class="w-full py-3 rounded-xl border-2 border-slate-100 font-bold text-slate-600 hover:border-sky-500 hover:text-sky-600 transition-colors">Contact
+                        Sales</button>
+                </div>
+            </div>
+
+            <!-- Comparison Table -->
+            <div class="mt-24 reveal">
+                <div class="text-center mb-12">
+                    <h3 class="font-display text-3xl font-bold text-slate-900">Compare Features</h3>
+                    <p class="text-slate-500 mt-2">Detailed breakdown of what's included in each plan</p>
+                </div>
+
+                <!-- Mobile Swipe Hint -->
+                <div
+                    class="md:hidden text-center text-xs font-semibold text-sky-600 mb-4 animate-pulse flex items-center justify-center gap-2">
+                    <i data-lucide="move-horizontal" class="w-4 h-4"></i> Swipe to see all plans
+                </div>
+
+                <div class="overflow-x-auto rounded-3xl border border-slate-200 shadow-sm bg-white relative">
+                    <table class="w-full text-left border-collapse min-w-[500px] md:min-w-full">
+                        <thead>
+                            <tr class="bg-slate-50/80">
+                                <th
+                                    class="p-3 md:p-6 border-b border-slate-200 min-w-[140px] md:min-w-[200px] text-slate-500 font-medium sticky left-0 z-20 bg-slate-50 border-r border-slate-200 shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]">
+                                    Features</th>
+                                <th
+                                    class="p-3 md:p-6 border-b border-slate-200 font-bold text-slate-900 text-center min-w-[100px] md:min-w-[150px]">
+                                    Basic</th>
+                                <th
+                                    class="p-3 md:p-6 border-b border-slate-200 font-bold text-sky-600 text-center bg-sky-50/30 min-w-[100px] md:min-w-[150px]">
+                                    Standard</th>
+                                <th
+                                    class="p-3 md:p-6 border-b border-slate-200 font-bold text-slate-900 text-center min-w-[100px] md:min-w-[150px]">
+                                    Premium</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm text-slate-600">
+                            <!-- Core Administration & Academic -->
+                            <tr>
+                                <td class="p-3 md:p-4 bg-slate-100 font-bold text-slate-800 text-[10px] md:text-xs uppercase tracking-wider pl-4 md:pl-6 sticky left-0 z-10 border-r border-slate-200 shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]"
+                                    colspan="1">Core Admin</td>
+                                <td class="p-3 md:p-4 bg-slate-50" colspan="3"></td>
+                            </tr>
+                            <tr class="group hover:bg-slate-50 transition-colors border-b border-slate-100">
+                                <td
+                                    class="p-3 md:p-4 pl-4 md:pl-6 text-xs md:text-sm font-medium sticky left-0 z-10 bg-white group-hover:bg-slate-50 border-r border-slate-100 transition-colors shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]">
+                                    Admin Dashboard & Analytics</td>
+                                <td class="p-3 md:p-4 text-center"><i data-lucide="minus"
+                                        class="w-5 h-5 text-slate-300 mx-auto"></i></td>
+                                <td class="p-3 md:p-4 text-center bg-sky-50/10"><i data-lucide="check"
+                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
+                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
+                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
+                            </tr>
+                            <tr class="group hover:bg-slate-50 transition-colors border-b border-slate-100">
+                                <td
+                                    class="p-3 md:p-4 pl-4 md:pl-6 text-xs md:text-sm font-medium sticky left-0 z-10 bg-white group-hover:bg-slate-50 border-r border-slate-100 transition-colors shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]">
+                                    Student Info System (Admission/TC)</td>
+                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
+                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
+                                <td class="p-3 md:p-4 text-center bg-sky-50/10"><i data-lucide="check"
+                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
+                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
+                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
+                            </tr>
+                            <tr class="group hover:bg-slate-50 transition-colors border-b border-slate-100">
+                                <td
+                                    class="p-3 md:p-4 pl-4 md:pl-6 text-xs md:text-sm font-medium sticky left-0 z-10 bg-white group-hover:bg-slate-50 border-r border-slate-100 transition-colors shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]">
+                                    Academic Mgmt (Class/Routine)</td>
+                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
+                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
+                                <td class="p-3 md:p-4 text-center bg-sky-50/10"><i data-lucide="check"
+                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
+                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
+                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
+                            </tr>
+                            <tr class="group hover:bg-slate-50 transition-colors border-b border-slate-100">
+                                <td
+                                    class="p-3 md:p-4 pl-4 md:pl-6 text-xs md:text-sm font-medium sticky left-0 z-10 bg-white group-hover:bg-slate-50 border-r border-slate-100 transition-colors shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]">
+                                    Exam & Result Publishing</td>
+                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
+                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
+                                <td class="p-3 md:p-4 text-center bg-sky-50/10"><i data-lucide="check"
+                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
+                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
+                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
+                            </tr>
+                            <tr class="group hover:bg-slate-50 transition-colors border-b border-slate-100">
+                                <td
+                                    class="p-3 md:p-4 pl-4 md:pl-6 text-xs md:text-sm font-medium sticky left-0 z-10 bg-white group-hover:bg-slate-50 border-r border-slate-100 transition-colors shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]">
+                                    Smart Attendance <span
+                                        class="text-[10px] md:text-xs text-slate-400 block font-normal text-left mt-1">*Hardware
+                                        costs extra</span>
+                                </td>
+                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
+                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
+                                <td class="p-3 md:p-4 text-center bg-sky-50/10"><i data-lucide="check"
+                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
+                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
+                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
+                            </tr>
+
+                            <!-- Finance & Operations -->
+                            <tr>
+                                <td class="p-3 md:p-4 bg-slate-100 font-bold text-slate-800 text-[10px] md:text-xs uppercase tracking-wider pl-4 md:pl-6 sticky left-0 z-10 border-r border-slate-200 shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]"
+                                    colspan="1">Finance</td>
+                                <td class="p-3 md:p-4 bg-slate-50" colspan="3"></td>
+                            </tr>
+                            <tr class="group hover:bg-slate-50 transition-colors border-b border-slate-100">
+                                <td
+                                    class="p-3 md:p-4 pl-4 md:pl-6 text-xs md:text-sm font-medium sticky left-0 z-10 bg-white group-hover:bg-slate-50 border-r border-slate-100 transition-colors shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]">
+                                    Fee Collection & Receipts</td>
+                                <td class="p-3 md:p-4 text-center text-[10px] md:text-xs font-bold text-slate-500">
+                                    Offline Only</td>
+                                <td class="p-3 md:p-4 text-center bg-sky-50/10"><i data-lucide="check"
+                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
+                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
+                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
+                            </tr>
+                            <tr class="group hover:bg-slate-50 transition-colors border-b border-slate-100">
+                                <td
+                                    class="p-3 md:p-4 pl-4 md:pl-6 text-xs md:text-sm font-medium sticky left-0 z-10 bg-white group-hover:bg-slate-50 border-r border-slate-100 transition-colors shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]">
+                                    Payment Gateway (bKash)</td>
+                                <td class="p-3 md:p-4 text-center"><i data-lucide="minus"
+                                        class="w-5 h-5 text-slate-300 mx-auto"></i></td>
+                                <td class="p-3 md:p-4 text-center bg-sky-50/10"><i data-lucide="check"
+                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
+                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
+                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
+                            </tr>
+                            <tr class="group hover:bg-slate-50 transition-colors border-b border-slate-100">
+                                <td
+                                    class="p-3 md:p-4 pl-4 md:pl-6 text-xs md:text-sm font-medium sticky left-0 z-10 bg-white group-hover:bg-slate-50 border-r border-slate-100 transition-colors shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]">
+                                    SMS & Notification Hub</td>
+                                <td class="p-3 md:p-4 text-center"><i data-lucide="minus"
+                                        class="w-5 h-5 text-slate-300 mx-auto"></i></td>
+                                <td class="p-3 md:p-4 text-center bg-sky-50/10"><i data-lucide="check"
+                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
+                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
+                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
+                            </tr>
+                            <tr class="group hover:bg-slate-50 transition-colors border-b border-slate-100">
+                                <td
+                                    class="p-3 md:p-4 pl-4 md:pl-6 text-xs md:text-sm font-medium sticky left-0 z-10 bg-white group-hover:bg-slate-50 border-r border-slate-100 transition-colors shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]">
+                                    Parent & Student Portal</td>
+                                <td class="p-3 md:p-4 text-center"><i data-lucide="minus"
+                                        class="w-5 h-5 text-slate-300 mx-auto"></i></td>
+                                <td class="p-3 md:p-4 text-center bg-sky-50/10"><i data-lucide="check"
+                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
+                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
+                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
+                            </tr>
+                            <tr class="group hover:bg-slate-50 transition-colors border-b border-slate-100">
+                                <td
+                                    class="p-3 md:p-4 pl-4 md:pl-6 text-xs md:text-sm font-medium sticky left-0 z-10 bg-white group-hover:bg-slate-50 border-r border-slate-100 transition-colors shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]">
+                                    Transport Management</td>
+                                <td class="p-3 md:p-4 text-center"><i data-lucide="minus"
+                                        class="w-5 h-5 text-slate-300 mx-auto"></i></td>
+                                <td class="p-3 md:p-4 text-center bg-sky-50/10"><i data-lucide="check"
+                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
+                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
+                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
+                            </tr>
+
+                            <!-- Advanced Modules -->
+                            <tr>
+                                <td class="p-3 md:p-4 bg-slate-100 font-bold text-slate-800 text-[10px] md:text-xs uppercase tracking-wider pl-4 md:pl-6 sticky left-0 z-10 border-r border-slate-200 shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]"
+                                    colspan="1">Advanced</td>
+                                <td class="p-3 md:p-4 bg-slate-50" colspan="3"></td>
+                            </tr>
+                            <tr class="group hover:bg-slate-50 transition-colors border-b border-slate-100">
+                                <td
+                                    class="p-3 md:p-4 pl-4 md:pl-6 text-xs md:text-sm font-medium sticky left-0 z-10 bg-white group-hover:bg-slate-50 border-r border-slate-100 transition-colors shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]">
+                                    HR & Payroll System</td>
+                                <td class="p-3 md:p-4 text-center"><i data-lucide="minus"
+                                        class="w-5 h-5 text-slate-300 mx-auto"></i></td>
+                                <td class="p-3 md:p-4 text-center bg-sky-50/10"><i data-lucide="minus"
+                                        class="w-5 h-5 text-slate-300 mx-auto"></i></td>
+                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
+                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
+                            </tr>
+                            <tr class="group hover:bg-slate-50 transition-colors border-b border-slate-100">
+                                <td
+                                    class="p-3 md:p-4 pl-4 md:pl-6 text-xs md:text-sm font-medium sticky left-0 z-10 bg-white group-hover:bg-slate-50 border-r border-slate-100 transition-colors shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]">
+                                    Digital Library</td>
+                                <td class="p-3 md:p-4 text-center"><i data-lucide="minus"
+                                        class="w-5 h-5 text-slate-300 mx-auto"></i></td>
+                                <td class="p-3 md:p-4 text-center bg-sky-50/10"><i data-lucide="minus"
+                                        class="w-5 h-5 text-slate-300 mx-auto"></i></td>
+                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
+                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
+                            </tr>
+                            <tr class="group hover:bg-slate-50 transition-colors border-b border-slate-100">
+                                <td
+                                    class="p-3 md:p-4 pl-4 md:pl-6 text-xs md:text-sm font-medium sticky left-0 z-10 bg-white group-hover:bg-slate-50 border-r border-slate-100 transition-colors shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]">
+                                    Inventory & Store</td>
+                                <td class="p-3 md:p-4 text-center"><i data-lucide="minus"
+                                        class="w-5 h-5 text-slate-300 mx-auto"></i></td>
+                                <td class="p-3 md:p-4 text-center bg-sky-50/10"><i data-lucide="minus"
+                                        class="w-5 h-5 text-slate-300 mx-auto"></i></td>
+                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
+                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
+                            </tr>
+                            <tr class="group hover:bg-slate-50 transition-colors border-b border-slate-100">
+                                <td
+                                    class="p-3 md:p-4 pl-4 md:pl-6 text-xs md:text-sm font-medium sticky left-0 z-10 bg-white group-hover:bg-slate-50 border-r border-slate-100 transition-colors shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]">
+                                    Dynamic Website Builder</td>
+                                <td class="p-3 md:p-4 text-center"><i data-lucide="minus"
+                                        class="w-5 h-5 text-slate-300 mx-auto"></i></td>
+                                <td class="p-3 md:p-4 text-center bg-sky-50/10"><i data-lucide="minus"
+                                        class="w-5 h-5 text-slate-300 mx-auto"></i></td>
+                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
+                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
+                            </tr>
+                            <tr class="group hover:bg-slate-50 transition-colors border-b border-slate-100">
+                                <td
+                                    class="p-3 md:p-4 pl-4 md:pl-6 text-xs md:text-sm font-medium sticky left-0 z-10 bg-white group-hover:bg-slate-50 border-r border-slate-100 transition-colors shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]">
+                                    Mobile App (Custom Branded)</td>
+                                <td class="p-3 md:p-4 text-center"><i data-lucide="minus"
+                                        class="w-5 h-5 text-slate-300 mx-auto"></i></td>
+                                <td class="p-3 md:p-4 text-center bg-sky-50/10"><i data-lucide="minus"
+                                        class="w-5 h-5 text-slate-300 mx-auto"></i></td>
+                                <td class="p-3 md:p-4 text-center"><i data-lucide="check"
+                                        class="w-5 h-5 text-green-500 mx-auto check-animate"></i></td>
+                            </tr>
+                            <tr class="group hover:bg-slate-50 transition-colors">
+                                <td
+                                    class="p-3 md:p-4 pl-4 md:pl-6 text-xs md:text-sm font-medium sticky left-0 z-10 bg-white group-hover:bg-slate-50 border-r border-slate-100 transition-colors shadow-[4px_0_24px_-2px_rgba(0,0,0,0.05)]">
+                                    Support Priority</td>
+                                <td class="p-3 md:p-4 text-center text-[10px] md:text-xs font-bold text-slate-500">
+                                    Ticket</td>
+                                <td
+                                    class="p-3 md:p-4 text-center bg-sky-50/10 text-[10px] md:text-xs font-bold text-sky-600">
+                                    Priority</td>
+                                <td class="p-3 md:p-4 text-center text-[10px] md:text-xs font-bold text-indigo-600">24/7
+                                    Manager</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300 py-20 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12">
+            <div class="col-span-1 md:col-span-2">
+                <div class="flex items-center gap-2 font-display font-bold text-2xl text-white mb-6">
+                    <div class="w-8 h-8 bg-sky-600 rounded-lg flex items-center justify-center text-white">
+                        <i data-lucide="cloud" class="w-5 h-5" fill="currentColor"></i>
+                    </div>
+                    MicroCampus
+                </div>
+                <p class="text-slate-400 max-w-sm leading-relaxed mb-6">
+                    Empowering Bangladeshi educational institutions with cutting-edge cloud technology. Secure,
+                    scalable, and simple.
+                </p>
+                <div class="mb-8 pt-6 border-t border-slate-800">
+                    <p class="text-sm text-slate-500 leading-relaxed">
+                        <span class="font-bold text-slate-300">MicroCampus BD</span> is a SaaS product of <a
+                            href="https://vivagodigital.com" target="_blank"
+                            class="text-sky-500 hover:text-sky-400 font-bold transition-colors">Vivago Digital</a>.
+                        <br>
+                        Marketing Partner: <a href="https://ideago.xyz" target="_blank"
+                            class="text-indigo-400 hover:text-indigo-300 font-bold transition-colors">IDEAGO ADVANCED
+                            TECHNOLOGIES</a>.
+                    </p>
+                </div>
+                <div class="flex gap-4">
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-sky-600 transition-colors"><i
+                            data-lucide="facebook" class="w-5 h-5"></i></a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-sky-600 transition-colors"><i
+                            data-lucide="linkedin" class="w-5 h-5"></i></a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-sky-600 transition-colors"><i
+                            data-lucide="twitter" class="w-5 h-5"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-white mb-6 text-lg">Platform</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#" class="hover:text-sky-400 transition-colors">Academic Module</a></li>
+                    <li><a href="#" class="hover:text-sky-400 transition-colors">Finance & Fees</a></li>
+                    <li><a href="#" class="hover:text-sky-400 transition-colors">Student Portal</a></li>
+                    <li><a href="#" class="hover:text-sky-400 transition-colors">Teacher App</a></li>
+                    <li><a href="#" class="hover:text-sky-400 transition-colors">Pricing</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-white mb-6 text-lg">Contact</h4>
+                <ul class="space-y-3 text-sm">
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="map-pin" class="w-5 h-5 text-slate-500 mt-0.5"></i>
+                        <span>Mirpur 11, Dhaka (HQ) &<br>North Baharchara, Cox's Bazar</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="mail" class="w-5 h-5 text-slate-500 mt-0.5"></i>
+                        <div class="flex flex-col">
+                            <a href="mailto:hello@vivagodigital.com"
+                                class="hover:text-sky-400 transition-colors">hello@vivagodigital.com</a>
+                            <a href="mailto:info@ideago.xyz"
+                                class="hover:text-sky-400 transition-colors">info@ideago.xyz</a>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="phone" class="w-5 h-5 text-slate-500 mt-0.5"></i>
+                        <div class="flex flex-col">
+                            <a href="tel:+8801618129800" class="hover:text-sky-400 transition-colors">01618129800</a>
+                            <a href="tel:+8801710834140" class="hover:text-sky-400 transition-colors">01710834140</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-slate-800 text-center text-sm text-slate-500">
+            &copy; <span id="year"></span> MicroCampus BD. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+
+</html>
