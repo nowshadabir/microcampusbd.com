@@ -1,7 +1,8 @@
 <?php
 /**
  * process.php
- * Handles form submission and sends emails to multiple recipients.
+ * Zero-dependency SMTP handler for MicroCampus BD.
+ * Sends emails directly via Gmail SMTP using PHP sockets.
  */
 
 // --- LOAD ENVIRONMENT VARIABLES ---
@@ -9,7 +10,7 @@ function loadEnv($path) {
     if (!file_exists($path)) return;
     $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     foreach ($lines as $line) {
-        if (strpos(trim($line), '#') === 0) continue;
+        if (strpos(trim($line), '#') === 0 || strpos($line, '=') === false) continue;
         list($name, $value) = explode('=', $line, 2);
         $name = trim($name);
         $value = trim($value, " \t\n\r\0\x0B\"'");
@@ -24,7 +25,6 @@ $gmail_user = getenv('GMAIL_USER') ?: "knabirofficial@gmail.com";
 $app_password = getenv('GMAIL_APP_PASS');
 $app_name = "MicroCampus BD";
 
-// Recipient List
 $admin_emails = [
     "knabirofficial@gmail.com",
     "vivagodigital@gmail.com",
@@ -32,68 +32,88 @@ $admin_emails = [
 ];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Collect form data
     $name = strip_tags(trim($_POST["name"]));
     $sender_email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
     $institution = strip_tags(trim($_POST["institution"]));
     $phone = strip_tags(trim($_POST["phone"]));
     $type = strip_tags(trim($_POST["type"]));
 
-    // Simple validation
     if (empty($name) || empty($sender_email) || empty($institution)) {
         header("Location: booking.html?status=error");
         exit;
     }
 
-    // --- EMAIL LOGIC ---
-    // Note: To actually send these emails from XAMPP, you must use a library like PHPMailer.
-    // Below is the logic you would use with PHPMailer:
+    $email_sent = false;
+    $error_log = "";
 
-    /*
-    require 'vendor/autoload.php';
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\Exception;
+    /**
+     * Internal function to send email via raw SMTP
+     */
+    function send_raw_smtp($to, $subject, $body, $from_email, $from_name, $pass) {
+        $timeout = 30;
+        $smtp_host = "ssl://smtp.gmail.com";
+        $smtp_port = 465;
 
-    $mail = new PHPMailer(true);
-    try {
-        $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com';
-        $mail->SMTPAuth   = true;
-        $mail->Username   = $gmail_user;
-        $mail->Password   = $app_password;
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port       = 587;
+        $fp = fsockopen($smtp_host, $smtp_port, $errno, $errstr, $timeout);
+        if (!$fp) return "Connection failed: $errstr ($errno)";
 
-        $mail->setFrom($gmail_user, $app_name);
-        
-        // Add Admin Recipients
-        foreach ($admin_emails as $admin) {
-            $mail->addAddress($admin);
+        function get_resp($fp) {
+            $resp = "";
+            while ($str = fgets($fp, 512)) {
+                $resp .= $str;
+                if (substr($str, 3, 1) == " ") break;
+            }
+            return $resp;
         }
-        
-        // Add Sender as recipient (Copy to Sender)
-        $mail->addAddress($sender_email, $name);
 
-        $mail->isHTML(true);
-        $mail->Subject = "New $type Request: $institution";
-        $mail->Body    = "
-            <h3>New Request Details</h3>
+        get_resp($fp); // Greeting
+        fwrite($fp, "EHLO localhost\r\n"); get_resp($fp);
+        fwrite($fp, "AUTH LOGIN\r\n"); get_resp($fp);
+        fwrite($fp, base64_encode($from_email) . "\r\n"); get_resp($fp);
+        fwrite($fp, base64_encode($pass) . "\r\n"); get_resp($fp);
+        fwrite($fp, "MAIL FROM: <$from_email>\r\n"); get_resp($fp);
+        fwrite($fp, "RCPT TO: <$to>\r\n"); get_resp($fp);
+        fwrite($fp, "DATA\r\n"); get_resp($fp);
+
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
+        $headers .= "From: $from_name <$from_email>" . "\r\n";
+        $headers .= "To: $to" . "\r\n";
+        $headers .= "Subject: $subject" . "\r\n";
+
+        fwrite($fp, $headers . "\r\n" . $body . "\r\n.\r\n");
+        $code = substr(get_resp($fp), 0, 3);
+        
+        fwrite($fp, "QUIT\r\n");
+        fclose($fp);
+
+        return $code == "250";
+    }
+
+    $subject = "New $type Request: $institution";
+    $body = "
+        <div style='font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px;'>
+            <h2 style='color: #0284c7;'>New $type Request</h2>
             <p><strong>Institution:</strong> $institution</p>
             <p><strong>Request Type:</strong> $type</p>
             <p><strong>Contact Person:</strong> $name</p>
             <p><strong>Email:</strong> $sender_email</p>
             <p><strong>Phone:</strong> $phone</p>
-            <hr>
-            <p>This is an automated notification from $app_name.</p>
-        ";
+            <hr style='border: 0; border-top: 1px solid #eee; margin: 20px 0;'>
+            <p style='color: #666; font-size: 12px;'>Automated notification from MicroCampus BD.</p>
+        </div>
+    ";
 
-        $mail->send();
-    } catch (Exception $e) {
-        // Log error if needed: $e->getMessage();
+    // Send to Admins
+    foreach ($admin_emails as $admin) {
+        $res = send_raw_smtp($admin, $subject, $body, $gmail_user, $app_name, $app_password);
+        if ($res === true) $email_sent = true;
+        else $error_log .= "Admin ($admin): $res; ";
     }
-    */
 
-    // --- SUCCESS RESPONSE ---
+    // Send copy to Sender
+    send_raw_smtp($sender_email, "We received your request - $app_name", $body, $gmail_user, $app_name, $app_password);
+
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -106,13 +126,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </head>
     <body class="bg-slate-50 flex items-center justify-center min-h-screen p-6">
         <div class="max-w-md w-full bg-white rounded-3xl p-10 text-center shadow-xl border border-slate-100">
-            <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                <i data-lucide="check" class="w-8 h-8"></i>
+            <div class="w-16 h-16 <?php echo $email_sent ? 'bg-green-100 text-green-600' : 'bg-amber-100 text-amber-600'; ?> rounded-full flex items-center justify-center mx-auto mb-6">
+                <i data-lucide="<?php echo $email_sent ? 'check' : 'alert-triangle'; ?>" class="w-8 h-8"></i>
             </div>
-            <h1 class="text-2xl font-bold text-slate-900 mb-2">Request Sent!</h1>
+            <h1 class="text-2xl font-bold text-slate-900 mb-2"><?php echo $email_sent ? 'Request Sent!' : 'Request Received'; ?></h1>
             <p class="text-slate-500 mb-8 text-sm leading-relaxed">
                 Thank you, <strong><?php echo $name; ?></strong>. We've received your request for <strong><?php echo $institution; ?></strong>.<br><br>
-                A confirmation has been sent to <strong><?php echo $sender_email; ?></strong>, and our team will be in touch shortly.
+                <?php if ($email_sent): ?>
+                    A confirmation has been sent to <strong><?php echo $sender_email; ?></strong>.
+                <?php else: ?>
+                    <span class="text-amber-600">Note: We've saved your request. Our team will contact you shortly.</span>
+                <?php endif; ?>
             </p>
             <a href="index.html" class="inline-block w-full py-3.5 bg-slate-900 text-white rounded-xl font-bold hover:bg-sky-600 transition-all">
                 Return Home
