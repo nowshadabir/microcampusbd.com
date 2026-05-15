@@ -27,17 +27,25 @@
             }
         }
     </script>
+    <script>
+        // Check for saved theme (Default to Light Mode)
+        if (localStorage.theme === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
 </head>
 
-<body class="font-sans antialiased text-slate-800 bg-slate-50 min-h-screen flex flex-col">
+<body class="font-sans antialiased text-slate-800 bg-slate-50 dark:bg-[#0A0A0F] dark:text-white min-h-screen flex flex-col transition-colors duration-300">
 
     <!-- Simple Nav -->
     <nav class="py-6 px-6 max-w-4xl mx-auto w-full flex justify-between items-center">
-        <a href="index.html" class="flex items-center gap-2 font-display font-bold text-xl text-slate-900">
-            <img src="assets/logo.png" alt="MicroCampus Logo" class="w-8 h-8 object-contain">
+        <a href="index.html" class="flex items-center gap-2 font-display font-bold text-xl text-slate-900 dark:text-white">
+            <img src="assets/logo.png" alt="MicroCampus Logo" class="w-8 h-8 object-contain" loading="lazy" decoding="async">
             MicroCampus
         </a>
-        <a href="index.html" class="text-sm font-medium text-slate-500 hover:text-sky-600 transition-colors">
+        <a href="index.html" class="text-sm font-medium text-slate-500 hover:text-sky-600 dark:hover:text-[#4ADE80] transition-colors">
             হোম পেজে ফিরে যান
         </a>
     </nav>
@@ -45,39 +53,39 @@
     <main class="flex-1 flex items-center justify-center p-6">
         <div class="max-w-xl w-full">
             <div class="text-center mb-10">
-                <h1 class="font-display text-4xl font-bold text-slate-900 mb-3">শুরু করুন</h1>
-                <p class="text-slate-500">নিচের তথ্যগুলো পূরণ করুন, আমাদের প্রতিনিধি আপনার সাথে দ্রুত যোগাযোগ করবেন।</p>
+                <h1 class="font-display text-4xl font-bold text-slate-900 dark:text-white mb-3">শুরু করুন</h1>
+                <p class="text-slate-500 dark:text-slate-400">নিচের তথ্যগুলো পূরণ করুন, আমাদের প্রতিনিধি আপনার সাথে দ্রুত যোগাযোগ করবেন।</p>
             </div>
 
-            <div class="bg-white rounded-3xl p-8 md:p-10 shadow-xl shadow-slate-200/50 border border-slate-100">
+            <div class="bg-white dark:bg-[#12121A] rounded-3xl p-8 md:p-10 shadow-xl shadow-slate-200/50 dark:shadow-none border border-slate-100 dark:border-slate-800">
                 <form action="process.php" method="POST" class="space-y-5">
                     <div class="space-y-1.5">
-                        <label class="text-sm font-bold text-slate-700 ml-1">আপনার পূর্ণ নাম</label>
+                        <label class="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">আপনার পূর্ণ নাম</label>
                         <input type="text" name="name" required placeholder="আপনার নাম লিখুন"
-                            class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all">
+                            class="w-full px-4 py-3 bg-slate-50 dark:bg-[#0A0A0F] border border-slate-200 dark:border-slate-800 rounded-xl text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-sky-500/20 dark:focus:ring-[#4ADE80]/20 focus:border-sky-500 dark:focus:border-[#4ADE80] transition-all">
                     </div>
 
                     <div class="space-y-1.5">
-                        <label class="text-sm font-bold text-slate-700 ml-1">ইমেইল এড্রেস</label>
+                        <label class="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">ইমেইল এড্রেস</label>
                         <input type="email" name="email" required placeholder="example@email.com"
-                            class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all">
+                            class="w-full px-4 py-3 bg-slate-50 dark:bg-[#0A0A0F] border border-slate-200 dark:border-slate-800 rounded-xl text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-sky-500/20 dark:focus:ring-[#4ADE80]/20 focus:border-sky-500 dark:focus:border-[#4ADE80] transition-all">
                     </div>
 
                     <div class="space-y-1.5">
-                        <label class="text-sm font-bold text-slate-700 ml-1">প্রতিষ্ঠানের নাম (স্কুল/মাদ্রাসা)</label>
+                        <label class="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">প্রতিষ্ঠানের নাম (স্কুল/মাদ্রাসা)</label>
                         <input type="text" name="institution" required placeholder="আপনার স্কুলের নাম"
-                            class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all">
+                            class="w-full px-4 py-3 bg-slate-50 dark:bg-[#0A0A0F] border border-slate-200 dark:border-slate-800 rounded-xl text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-sky-500/20 dark:focus:ring-[#4ADE80]/20 focus:border-sky-500 dark:focus:border-[#4ADE80] transition-all">
                     </div>
 
                     <div class="grid grid-cols-2 gap-4">
                         <div class="space-y-1.5">
-                            <label class="text-sm font-bold text-slate-700 ml-1">মোবাইল নম্বর</label>
+                            <label class="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">মোবাইল নম্বর</label>
                             <input type="tel" name="phone" required placeholder="01XXX..."
-                                class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all">
+                                class="w-full px-4 py-3 bg-slate-50 dark:bg-[#0A0A0F] border border-slate-200 dark:border-slate-800 rounded-xl text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-sky-500/20 dark:focus:ring-[#4ADE80]/20 focus:border-sky-500 dark:focus:border-[#4ADE80] transition-all">
                         </div>
                         <div class="space-y-1.5">
-                            <label class="text-sm font-bold text-slate-700 ml-1">কিসে আগ্রহী?</label>
-                            <select name="type" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all appearance-none cursor-pointer">
+                            <label class="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">কিসে আগ্রহী?</label>
+                            <select name="type" class="w-full px-4 py-3 bg-slate-50 dark:bg-[#0A0A0F] border border-slate-200 dark:border-slate-800 rounded-xl text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-sky-500/20 dark:focus:ring-[#4ADE80]/20 focus:border-sky-500 dark:focus:border-[#4ADE80] transition-all appearance-none cursor-pointer">
                                 <option value="Demo">ফ্রি ডেমো</option>
                                 <option value="Trial">ফ্রি ট্রায়াল</option>
                             </select>
@@ -85,7 +93,7 @@
                     </div>
 
                     <button type="submit"
-                        class="w-full py-4 bg-slate-900 text-white rounded-xl font-bold hover:bg-sky-600 transition-all mt-4 shadow-lg shadow-sky-100">
+                        class="w-full py-4 bg-slate-900 dark:bg-[#4ADE80] text-white dark:text-black rounded-xl font-bold hover:bg-sky-600 dark:hover:bg-[#4ADE80]/80 transition-all mt-4 shadow-lg shadow-sky-100 dark:shadow-none">
                         রিকোয়েস্ট জমা দিন
                     </button>
                 </form>
