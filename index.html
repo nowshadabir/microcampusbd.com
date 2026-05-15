@@ -1,763 +1,1194 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="bn" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MicroCampus BD - Cloud School Management</title>
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Primary Meta Tags -->
+    <title>MicroCampus BD | আধুনিক স্কুল ম্যানেজমেন্ট সফটওয়্যার</title>
+    <meta name="title" content="MicroCampus BD | আধুনিক স্কুল ম্যানেজমেন্ট সফটওয়্যার">
+    <meta name="description"
+        content="মাইক্রোক্যাম্পাস বিডি: আপনার শিক্ষাপ্রতিষ্ঠানকে সম্পূর্ণ ডিজিটালাইজ করার একটি আধুনিক প্ল্যাটফর্ম। ডিজিটাল হাজিরা, অনলাইন ফি কালেকশন, এবং অটোমেটেড রেজাল্ট কার্ড — সবকিছু এখন এক ক্লিকে।">
+    <meta name="keywords"
+        content="School Management System, Digital School, Education Software Bangladesh, MicroCampus, স্কুল ম্যানেজমেন্ট সফটওয়্যার, ডিজিটাল হাজিরা, রেজাল্ট কার্ড সফটওয়্যার">
+    <meta name="author" content="MicroCampus BD">
+    <link rel="canonical" href="https://microcampusbd.com/">
 
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@0.407.0/dist/umd/lucide.min.js" defer></script>
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://microcampusbd.com/">
+    <meta property="og:title" content="MicroCampus BD | আধুনিক স্কুল ম্যানেজমেন্ট সফটওয়্যার">
+    <meta property="og:description"
+        content="শিক্ষাপ্রতিষ্ঠান পরিচালনার নতুন দিগন্ত। ডিজিটাল হাজিরা থেকে অটোমেটেড রেজাল্ট — স্মার্ট স্কুলের পূর্ণাঙ্গ সমাধান।">
+    <meta property="og:image" content="https://microcampusbd.com/assets/og-image.png">
 
-    <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700;800&display=swap"
-        rel="stylesheet">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://microcampusbd.com/">
+    <meta property="twitter:title" content="MicroCampus BD | আধুনিক স্কুল ম্যানেজমেন্ট সফটওয়্যার">
+    <meta property="twitter:description"
+        content="শিক্ষাপ্রতিষ্ঠান পরিচালনার নতুন দিগন্ত। ডিজিটাল হাজিরা থেকে অটোমেটেড রেজাল্ট — স্মার্ট স্কুলের পূর্ণাঙ্গ সমাধান।">
+    <meta property="twitter:image" content="https://microcampusbd.com/assets/og-image.png">
 
-    <link rel="stylesheet" href="style.css">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                fontFamily: {
-                    sans: ['Inter', 'sans-serif'],
-                    display: ['Outfit', 'sans-serif'],
-                },
-                extend: {
-                    colors: {
-                        brand: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            500: '#0ea5e9', // Sky 500
-                            600: '#0284c7', // Sky 600
-                            900: '#0c4a6e', // Sky 900
-                        }
-                    },
-                    animation: {
-                        'float-slow': 'float-slow 8s ease-in-out infinite',
-                        'float-rev': 'float-rev 10s ease-in-out infinite',
-                        'fade-in-up': 'fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    },
-                    keyframes: {
-                        'float-slow': {
-                            '0%, 100%': { transform: 'translateY(0) rotate(3deg)' },
-                            '50%': { transform: 'translateY(-20px) rotate(6deg)' },
-                        },
-                        'float-rev': {
-                            '0%, 100%': { transform: 'translateY(0) rotate(-3deg)' },
-                            '50%': { transform: 'translateY(-15px) rotate(-5deg)' },
-                        },
-                        'fade-in-up': {
-                            'from': { opacity: '0', transform: 'translateY(30px)' },
-                            'to': { opacity: '1', transform: 'translateY(0)' },
-                        }
-                    }
-                }
-            }
-        }
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "MicroCampus BD",
+      "operatingSystem": "Web, Android, iOS",
+      "applicationCategory": "EducationalApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "BDT"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "120"
+      },
+      "description": "An all-in-one school management system featuring automated attendance, result processing, fee collection, and parent communication."
+    }
     </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Vivago Technologies",
+      "url": "https://vivagotechnologies.com",
+      "logo": "https://microcampusbd.com/assets/logo.png",
+      "brand": {
+        "@type": "Brand",
+        "name": "MicroCampus BD"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+8801234567890",
+        "contactType": "customer service",
+        "areaServed": "BD",
+        "availableLanguage": ["Bengali", "English"]
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "মাইক্রোক্যাম্পাস কি ছোট স্কুলের জন্য উপযুক্ত?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "হ্যাঁ, মাইক্রোক্যাম্পাস যেকোনো সাইজের স্কুলের জন্য উপযোগী। আমরা আপনার প্রয়োজন অনুযায়ী ফিচারগুলো কাস্টমাইজ করে দিই।"
+        }
+      }, {
+        "@type": "Question",
+        "name": "আমাদের কি আলাদা কোনো হার্ডওয়্যার কিনতে হবে?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "না, এটি একটি ক্লাউড-বেসড সফটওয়্যার। আপনার শুধু একটি স্মার্টফোন বা কম্পিউটার এবং ইন্টারনেট কানেকশন থাকলেই চলবে।"
+        }
+      }, {
+        "@type": "Question",
+        "name": "শিক্ষকদের ট্রেনিং কি আপনারা দেবেন?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "অবশ্যই। আমরা আপনাদের পুরো টিমের জন্য ফ্রি ট্রেনিং সেশন পরিচালনা করি এবং ২৪/৭ টেকনিক্যাল সাপোর্ট প্রদান করি।"
+        }
+      }, {
+        "@type": "Question",
+        "name": "ডেটা কি নিরাপদ থাকবে?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "আপনার স্কুলের সব ডেটা আমাদের হাইলি সিকিউরড এনক্রিপ্টেড সার্ভারে সংরক্ষিত থাকে। আপনার অনুমতি ছাড়া কেউ এই ডেটা এক্সেস করতে পারবে না।"
+        }
+      }]
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@0.407.0/dist/umd/lucide.min.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@400;500;600;700;800&family=Tiro+Bangla:ital@0;1&family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="tailwind.config.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 
 <body
-    class="font-sans antialiased text-slate-800 bg-slate-50 selection:bg-sky-200 selection:text-sky-900 overflow-x-hidden">
+    class="bg-white text-slate-900 dark:bg-[#0A0A0F] dark:text-white antialiased font-sans overflow-x-hidden selection:bg-[#4ADE80] selection:text-black transition-colors duration-300">
 
-    <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-6">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <div class="flex items-center gap-2 font-display font-bold text-2xl text-slate-900 cursor-pointer"
-                onclick="window.scrollTo(0,0)">
-                <div
-                    class="w-10 h-10 bg-gradient-to-br from-sky-500 to-blue-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-sky-200">
-                    <i data-lucide="cloud" class="w-6 h-6"></i>
-                </div>
-                MicroCampus
+    <div id="scene-indicator"
+        class="fixed top-20 left-6 z-50 text-slate-500 font-medium tracking-widest uppercase text-[10px] opacity-0 transition-opacity duration-300 md:top-24 md:text-xs">
+        সূচনা
+    </div>
+
+    <!-- Right Side Dot Navigation -->
+    <div id="side-nav"
+        class="fixed right-6 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-4 items-center hidden md:flex">
+        <!-- Dots injected via JavaScript -->
+    </div>
+
+    <div
+        class="fixed top-0 left-0 right-0 h-32 bg-gradient-to-b from-white to-transparent dark:from-[#0A0A0F] z-30 pointer-events-none transition-colors duration-300">
+    </div>
+    <nav id="navbar" class="fixed top-6 left-1/2 -translate-x-1/2 z-40 transition-all duration-300 w-[95%] max-w-5xl">
+        <div
+            class="bg-white/80 dark:bg-[#12121A]/60 backdrop-blur-xl border border-slate-200 dark:border-white/5 rounded-full py-3 px-6 md:px-10 flex justify-between items-center shadow-[0_10px_30px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-colors duration-300">
+            <a href="index.html"
+                class="flex items-center gap-2 font-display font-bold text-lg md:text-xl text-slate-900 dark:text-white">
+                <img src="assets/logo.png" alt="MicroCampus Logo" class="w-8 h-8 object-contain">
+                <span class="hidden sm:inline">MicroCampus</span>
+            </a>
+
+            <div class="hidden md:flex items-center gap-2">
+                <a href="index.html"
+                    class="px-4 py-2 rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-[#16A34A] dark:hover:text-[#4ADE80] hover:bg-[#16A34A]/5 dark:hover:bg-[#4ADE80]/10 transition-all duration-300">হোম</a>
+                <a href="#features-grid"
+                    class="px-4 py-2 rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-[#16A34A] dark:hover:text-[#4ADE80] hover:bg-[#16A34A]/5 dark:hover:bg-[#4ADE80]/10 transition-all duration-300">ফিচারসমূহ</a>
+                <a href="#cost-section"
+                    class="px-4 py-2 rounded-full text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-[#16A34A] dark:hover:text-[#4ADE80] hover:bg-[#16A34A]/5 dark:hover:bg-[#4ADE80]/10 transition-all duration-300">খরচ</a>
             </div>
 
-            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
-                <a href="#features" class="hover:text-sky-600 transition-colors">Platform</a>
-                <a href="#modules" class="hover:text-sky-600 transition-colors">Modules</a>
+            <div class="flex items-center gap-2 md:gap-4">
+                <!-- Theme Toggle -->
+                <button id="theme-toggle"
+                    class="p-2.5 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-600 dark:text-white hover:bg-slate-200 dark:hover:bg-white/10 transition-all"
+                    title="Toggle Theme">
+                    <i data-lucide="sun" class="w-4 h-4 dark:hidden"></i>
+                    <i data-lucide="moon" class="w-4 h-4 hidden dark:block"></i>
+                </button>
 
                 <a href="booking.html"
-                    class="px-6 py-2.5 bg-slate-900 text-white rounded-full hover:bg-sky-600 transition-all hover:shadow-lg hover:shadow-sky-200 transform hover:-translate-y-0.5 font-semibold inline-block">
-                    Book Demo
-                </a>
+                    class="hidden sm:inline-flex px-6 py-2 bg-slate-900 dark:bg-white text-white dark:text-black rounded-full hover:bg-[#4ADE80] dark:hover:bg-[#4ADE80] transition-all text-xs md:text-sm font-bold">ফ্রি
+                    ডেমো</a>
+
+                <!-- Mobile Menu Toggle -->
+                <button id="menu-toggle"
+                    class="md:hidden w-10 h-10 flex items-center justify-center text-slate-900 dark:text-white bg-slate-100 dark:bg-white/5 rounded-full border border-slate-200 dark:border-white/10 hover:bg-slate-200 dark:hover:bg-white/10 transition-colors">
+                    <i data-lucide="menu" class="w-5 h-5"></i>
+                </button>
             </div>
-
-            <button id="mobile-menu-btn" class="md:hidden text-slate-800 p-2">
-                <i data-lucide="menu"></i>
-            </button>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu"
-            class="hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-xl border-t border-slate-100 p-6 shadow-xl flex flex-col gap-4">
-            <a href="#features" class="text-slate-600 font-medium py-2">Platform</a>
-            <a href="#modules" class="text-slate-600 font-medium py-2">Modules</a>
-
-            <a href="booking.html" class="w-full py-3 bg-sky-600 text-white rounded-lg font-bold text-center">Book Demo</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="hero"
-        class="relative min-h-[110vh] flex items-center justify-center overflow-hidden bg-slate-50 pt-20">
-        <!-- Animated Background -->
-        <div class="absolute inset-0 overflow-hidden pointer-events-none">
-            <div
-                class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-100/40 via-slate-50 to-slate-50">
-            </div>
-            <!-- Blobs -->
-            <div
-                class="absolute top-0 right-0 w-[800px] h-[800px] bg-sky-400/10 rounded-full blur-[120px] mix-blend-multiply animate-pulse-slow">
-            </div>
-            <div class="absolute bottom-0 left-0 w-[800px] h-[800px] bg-indigo-400/10 rounded-full blur-[120px] mix-blend-multiply animate-pulse-slow"
-                style="animation-delay: 2s"></div>
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 bg-white/95 dark:bg-[#0A0A0F]/95 backdrop-blur-xl z-[60] flex flex-col items-center justify-center gap-8 opacity-0 pointer-events-none transition-all duration-300">
+        <button id="menu-close"
+            class="absolute top-6 right-6 w-12 h-12 flex items-center justify-center text-slate-900 dark:text-white bg-slate-100 dark:bg-slate-800/50 rounded-full border border-slate-200 dark:border-slate-700/50">
+            <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
 
-            <!-- Grid Pattern -->
-            <div
-                class="absolute inset-0 bg-slate-50/50">
-            </div>
-            <div
-                class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]">
-            </div>
+        <div class="flex flex-col items-center gap-6">
+            <a href="index.html"
+                class="text-2xl font-display font-bold text-slate-900 dark:text-white hover:text-[#16A34A] dark:hover:text-[#4ADE80] transition-colors mobile-link">হোম</a>
+            <a href="#features-grid"
+                class="text-2xl font-display font-bold text-slate-900 dark:text-white hover:text-[#16A34A] dark:hover:text-[#4ADE80] transition-colors mobile-link">ফিচারসমূহ</a>
+            <a href="#cost-section"
+                class="text-2xl font-display font-bold text-slate-900 dark:text-white hover:text-[#16A34A] dark:hover:text-[#4ADE80] transition-colors mobile-link">খরচ
+                ও সাশ্রয়</a>
+            <a href="booking.html"
+                class="mt-4 px-8 py-3 bg-slate-900 dark:bg-[#4ADE80] text-white dark:text-black rounded-full text-lg font-bold shadow-lg mobile-link">ফ্রি
+                ডেমো বুক করুন</a>
         </div>
 
-        <div class="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+        <div class="absolute bottom-10 flex flex-col items-center gap-2">
+            <div class="flex items-center gap-2 font-display font-bold text-lg text-slate-500">
+                <img src="assets/logo.png" alt="MicroCampus Logo" class="w-6 h-6 object-contain">
+                MicroCampus
+            </div>
+            <p class="text-slate-600 text-xs">© <span id="mobile-year"></span> MicroCampus BD</p>
+        </div>
+    </div>
 
-            <!-- Hero Content -->
-            <div class="text-center lg:text-left pt-10 relative">
-                <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/50 backdrop-blur-md border border-sky-100 rounded-full text-xs font-bold text-sky-600 mb-8 shadow-sm animate-fade-in-up opacity-0"
-                    style="animation-delay: 0.1s;">
-                    <span class="relative flex h-2 w-2">
+    <header
+        class="min-h-screen flex flex-col items-center justify-center text-center px-6 relative scene-container bg-slate-50 dark:bg-[#0A0A0F] transition-colors duration-300"
+        data-scene="Introduction">
+        <div class="max-w-4xl mx-auto flex flex-col items-start text-left">
+            <p
+                class="text-lg md:text-2xl font-display text-slate-500 dark:text-slate-400 font-light italic mb-4 border-l-4 border-slate-300 dark:border-slate-700 pl-6 intro-text">
+                "ঠিক এই মুহূর্তে, বাংলাদেশের কোথাও একজন স্কুল অ্যাকাউন্ট্যান্ট ৪শ শিক্ষার্থীর নাম রেজিস্টার খাতায় হাতে
+                লিখছেন। একজন শিক্ষক কাগজ থেকে মার্কসগুলো এক্সেলে কপি করছেন। একজন অভিভাবক জানতেই পারছেন না যে তার সন্তান
+                আজ ক্লাসে নেই। আর স্কুলের এডমিন শুক্রবারের রাত পার করছেন রেজাল্ট কার্ড বানাতে, যা আসলে মাত্র ৫ মিনিটের
+                কাজ।"
+            </p>
+            <p
+                class="text-xl md:text-3xl font-display text-slate-900 dark:text-white font-semibold mt-6 mb-3 intro-text self-center">
+                এটা তাঁদের দোষ নয়।
+            </p>
+            <p
+                class="text-xl md:text-3xl font-display text-slate-500 dark:text-slate-400 font-medium mb-4 intro-text self-center">
+                বছর পর বছর এভাবেই কাজ চলে আসছে।
+            </p>
+            <p
+                class="text-4xl md:text-6xl font-display font-bold text-slate-900 dark:text-white tracking-tight intro-text self-center">
+                কিন্তু এখন <span class="text-[#4ADE80]">সময় বদলাবে।</span>
+            </p>
+        </div>
+        <div class="absolute bottom-10 animate-bounce intro-text">
+            <i data-lucide="arrow-down" class="w-8 h-8 text-slate-400 dark:text-slate-500"></i>
+        </div>
+    </header>
+
+    <main id="story-container">
+
+        <!-- SCENE 1: Daily Attendance -->
+        <section class="scene-container" data-scene="দৃশ্য ১: প্রতিদিনের হাজিরা">
+            <div class="h-[60vh] flex items-center justify-center panel-problem bg-white dark:bg-[#0A0A0F]">
+                <h2
+                    class="text-3xl md:text-5xl font-display font-medium text-slate-900 dark:text-white text-center max-w-4xl leading-tight px-6 problem-text">
+                    "৩৮ জন শিক্ষার্থীর নাম ধরে ডাকা। রোজ সকালে একই কাজ।"
+                </h2>
+            </div>
+
+            <div
+                class="min-h-[50vh] flex flex-col md:flex-row items-center py-12 panel-traditional px-6 md:px-20 gap-16 max-w-7xl mx-auto bg-white dark:bg-[#0A0A0F]">
+                <div class="w-full md:w-3/5">
+                    <div
+                        class="tag-traditional inline-block text-red-600 dark:text-red-500 border border-red-200 dark:border-red-500/30 bg-red-50 dark:bg-red-500/10 px-5 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-4">
+                        সনাতন পদ্ধতি
+                    </div>
+                    <div
+                        class="text-content text-slate-600 dark:text-[#FFFFFF] text-lg md:text-2xl leading-relaxed space-y-6 font-medium">
+                        <p class="anim-line">প্রতিদিন সকালে একজন শিক্ষক ৩৮ জন শিক্ষার্থীর নাম ধরে ডাকেন।</p>
+                        <p class="anim-line">একে একে সব ছাত্রছাত্রী হাজিরা দেয়।</p>
+                        <p class="anim-line">শিক্ষক কলম দিয়ে একটি কাগজের রেজিস্টারে টিক দেন।</p>
+                        <p class="anim-line">মাসের শেষে, কেউ একজন বসে বসে প্রত্যেক ছাত্রের উপস্থিতির দিনগুলো গণনা করেন।
+                            ৫০০ শিক্ষার্থীর স্কুলের জন্য এতে কয়েক দিন লেগে যায়।</p>
+                        <p class="anim-line"><span class="text-red-400">আর যদি কোনো শিক্ষার্থী অনুপস্থিত থাকে? অভিভাবককে
+                                জানানোর কেউ নেই। সন্তান বাড়ি না আসা পর্যন্ত তারা কিছুই জানতে পারেন না।</span></p>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/5 flex justify-center mockup-ui">
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-1 bg-red-500/20 blur-xl rounded-2xl group-hover:bg-red-500/30 transition-all duration-300">
+                        </div>
+                        <img src="assets/traditional_attendance.png" alt="সনাতন হাজিরা পদ্ধতি"
+                            class="relative rounded-2xl shadow-2xl border border-red-500/20 max-w-full h-auto grayscale-[0.2] group-hover:grayscale-0 transition-all duration-300">
+                    </div>
+                </div>
+            </div>
+
+            <div class="h-[40vh] flex items-center justify-center panel-shift bg-slate-50 dark:bg-[#0A0A0F]">
+                <h2
+                    class="text-3xl md:text-5xl font-display font-bold text-slate-900 dark:text-white italic shift-text">
+                    কিন্তু মাইক্রোক্যাম্পাসে —
+                </h2>
+            </div>
+
+            <div
+                class="min-h-[50vh] flex flex-col md:flex-row items-center justify-between py-12 panel-microcampus px-6 md:px-20 gap-12 max-w-7xl mx-auto bg-white dark:bg-[#0A0A0F]">
+                <div class="w-full md:w-3/5">
+                    <div
+                        class="tag-microcampus inline-block text-[#16A34A] dark:text-[#4ADE80] border border-green-200 dark:border-[#4ADE80]/30 bg-green-50 dark:bg-[#4ADE80]/10 px-5 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-4">
+                        মাইক্রোক্যাম্পাস প্রযুক্তি
+                    </div>
+                    <div
+                        class="text-content text-slate-800 dark:text-white text-lg md:text-2xl leading-relaxed space-y-6 font-medium">
+                        <p class="anim-line">শিক্ষক তার ফোনটি বের করেন।</p>
+                        <p class="anim-line">৩৮ জন ছাত্রের তালিকা সেখানে আগে থেকেই আছে। তিনি শুধু নামের পাশে 'Present'
+                            বা 'Absent' ট্যাপ করেন। <span class="text-[#16A34A] dark:text-[#4ADE80]">কাজ শেষ মাত্র ৬০
+                                সেকেন্ডে।</span></p>
+                        <p class="anim-line">যেই মুহূর্তে তিনি কাউকে 'Absent' মার্ক করেন, সাথে সাথে তার অভিভাবকের ফোনে
+                            একটি অটোমেটেড এসএমএস চলে যায়।</p>
+                        <p class="anim-line"><span
+                                class="text-slate-500 dark:text-slate-400 text-lg border-l-4 border-[#16A34A] dark:border-[#4ADE80] pl-6 py-2 block">"সম্মানিত
+                                অভিভাবক, আপনার সন্তান রহিম আজ বিদ্যালয়ে অনুপস্থিত। – সানরাইজ স্কুল"</span></p>
+                        <p class="anim-line">শিক্ষককে সেই মেসেজ লিখতে হয়নি, পাঠাতেও হয়নি। সিস্টেম সব নিজে নিজেই করেছে।
+                        </p>
+                        <p class="anim-line">মাসের শেষে হাজিরা রিপোর্ট অটোমেটিক তৈরি হয়ে যায়। আর কোনো কাটাকাটি বা হাতে
+                            গোনার ঝামেলা নেই।</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/5 flex justify-center mockup-ui">
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-1 bg-green-500/10 dark:bg-[#4ADE80]/20 blur-xl rounded-2xl group-hover:bg-green-500/20 dark:group-hover:bg-[#4ADE80]/30 transition-all duration-300">
+                        </div>
+                        <img src="assets/modern_attendance.png" alt="মাইক্রোক্যাম্পাস ডিজিটাল হাজিরা"
+                            class="relative rounded-2xl shadow-2xl border border-green-100 dark:border-[#4ADE80]/20 max-w-full h-auto group-hover:scale-[1.02] transition-all duration-300">
+                    </div>
+                </div>
+            </div>
+            <div class="w-full h-[1px] bg-slate-800/50 divider-line"></div>
+        </section>
+
+        <!-- SCENE 2: Exam Marks -->
+        <section class="scene-container" data-scene="দৃশ্য ২: পরীক্ষার ফলাফল">
+            <div class="h-[60vh] flex items-center justify-center panel-problem bg-white dark:bg-[#0A0A0F]">
+                <h2
+                    class="text-3xl md:text-5xl font-display font-medium text-slate-900 dark:text-white text-center max-w-4xl leading-tight px-6 problem-text">
+                    "মার্কশিট বানাতে ৩ সপ্তাহ সময় লাগে। অথচ পরীক্ষা দিতে সময় লেগেছিল মাত্র ২ ঘণ্টা।"
+                </h2>
+            </div>
+
+            <div
+                class="min-h-[50vh] flex flex-col md:flex-row items-center py-12 panel-traditional px-6 md:px-20 gap-16 max-w-7xl mx-auto bg-white dark:bg-[#0A0A0F]">
+                <div class="w-full md:w-3/5">
+                    <div
+                        class="tag-traditional inline-block text-red-600 dark:text-red-500 border border-red-200 dark:border-red-500/30 bg-red-50 dark:bg-red-500/10 px-5 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-4">
+                        সনাতন পদ্ধতি
+                    </div>
+                    <div
+                        class="text-content text-slate-600 dark:text-[#FFFFFF] text-lg md:text-2xl leading-relaxed space-y-6 font-medium">
+                        <p class="anim-line">প্রত্যেক বিষয়ের শিক্ষক হাতে লিখে মার্কস তৈরি করেন — ৪৫ জন শিক্ষার্থীর জন্য
+                            আলাদা আলাদা মার্কশিট।</p>
+                        <p class="anim-line">শ্রেণি শিক্ষক ৮ জন ভিন্ন শিক্ষকের কাছ থেকে মার্কস সংগ্রহ করেন। কেউ দেরিতে
+                            জমা দেন, কারো হিসেবে ভুল থাকে।</p>
+                        <p class="anim-line">এরপর এডমিন এক্সেলে বসে একে একে সব মার্কস ইনপুট দেন। তারপর টোটাল
+                            ক্যালকুলেশন, জিপিএ এবং মার্কশিট ফরম্যাট করে প্রিন্ট করতে হয়।</p>
+                        <p class="anim-line"><span class="text-red-600 dark:text-red-400">অর্থাৎ প্রতি পরীক্ষায় ২২,৪০০টি
+                                এন্ট্রি দিতে হয়
+                                হাতে।</span></p>
+                        <p class="anim-line">পুরো প্রক্রিয়া শেষ হতে ২ থেকে ৩ সপ্তাহ লেগে যায়। অভিভাবক এবং শিক্ষার্থীরা
+                            দীর্ঘ সময় অপেক্ষায় থাকেন।</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/5 flex justify-center mockup-ui">
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-1 bg-red-500/10 dark:bg-red-500/20 blur-xl rounded-2xl group-hover:bg-red-500/20 dark:group-hover:bg-red-500/30 transition-all duration-300">
+                        </div>
+                        <img src="assets/traditional_results.png" alt="সনাতন রেজাল্ট প্রসেসিং"
+                            class="relative rounded-2xl shadow-2xl border border-red-100 dark:border-red-500/20 max-w-full h-auto grayscale-[0.2] group-hover:grayscale-0 transition-all duration-300">
+                    </div>
+                </div>
+            </div>
+
+            <div class="h-[40vh] flex items-center justify-center panel-shift bg-slate-50 dark:bg-[#0A0A0F]">
+                <h2
+                    class="text-4xl md:text-6xl font-display font-bold text-slate-900 dark:text-white italic shift-text">
+                    কিন্তু মাইক্রোক্যাম্পাসে —
+                </h2>
+            </div>
+
+            <div
+                class="min-h-[50vh] flex flex-col md:flex-row items-center justify-between py-12 panel-microcampus px-6 md:px-20 gap-12 max-w-7xl mx-auto bg-white dark:bg-[#0A0A0F]">
+                <div class="w-full md:w-3/5">
+                    <div
+                        class="tag-microcampus inline-block text-[#16A34A] dark:text-[#4ADE80] border border-green-200 dark:border-[#4ADE80]/30 bg-green-50 dark:bg-[#4ADE80]/10 px-5 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-4">
+                        মাইক্রোক্যাম্পাস প্রযুক্তি
+                    </div>
+                    <div
+                        class="text-content text-slate-800 dark:text-white text-lg md:text-2xl leading-relaxed space-y-6 font-medium">
+                        <p class="anim-line">প্রত্যেক শিক্ষকের নিজস্ব অ্যাকাউন্ট থাকে, যার মাধ্যমে তারা যেকোনো জায়গা
+                            থেকে নিজ বিষয়ের নম্বর ইনপুট দিতে পারেন।</p>
+                        <p class="anim-line">শিক্ষকদের নম্বর ইনপুট দেওয়ার সাথে সাথেই সিস্টেম <span
+                                class="text-[#16A34A] dark:text-[#4ADE80]">স্বয়ংক্রিয়ভাবে</span> চূড়ান্ত ফলাফল ও মেধা
+                            তালিকা তৈরি করে ফেলে।</p>
+                        <p class="anim-line">কাগজ-কলমের হিসাব বা ম্যানুয়াল ডেটা এন্ট্রির কোনো প্রয়োজন নেই, পুরো
+                            প্রক্রিয়াটি এখন মাত্র কয়েক সেকেন্ডের ব্যাপার।</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/5 flex justify-center mockup-ui">
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-1 bg-green-500/10 dark:bg-[#4ADE80]/20 blur-xl rounded-2xl group-hover:bg-green-500/20 dark:group-hover:bg-[#4ADE80]/30 transition-all duration-300">
+                        </div>
+                        <img src="assets/modern_results.png" alt="মাইক্রোক্যাম্পাস রেজাল্ট অটোমেশন"
+                            class="relative rounded-2xl shadow-2xl border border-green-100 dark:border-[#4ADE80]/20 max-w-full h-auto group-hover:scale-[1.02] transition-all duration-300">
+                    </div>
+                </div>
+            </div>
+            <div class="w-full h-[1px] bg-slate-800/50 divider-line"></div>
+        </section>
+
+        <!-- SCENE 3: Fee Collection -->
+        <section class="scene-container" data-scene="দৃশ্য ৩: বেতন ও হিসাব">
+            <div class="h-[60vh] flex items-center justify-center panel-problem bg-white dark:bg-[#0A0A0F]">
+                <h2
+                    class="text-3xl md:text-5xl font-display font-medium text-slate-900 dark:text-white text-center max-w-4xl leading-tight px-6 problem-text">
+                    "৪৮০টি ইনভয়েস। কাজ মাত্র একটি ক্লিকের।"
+                </h2>
+            </div>
+
+            <div
+                class="min-h-[50vh] flex flex-col md:flex-row items-center py-12 panel-traditional px-6 md:px-20 gap-16 max-w-7xl mx-auto bg-white dark:bg-[#0A0A0F]">
+                <div class="w-full md:w-3/5">
+                    <div
+                        class="tag-traditional inline-block text-red-600 dark:text-red-500 border border-red-200 dark:border-red-500/30 bg-red-50 dark:bg-red-500/10 px-5 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-4">
+                        সনাতন পদ্ধতি
+                    </div>
+                    <div
+                        class="text-content text-slate-600 dark:text-[#FFFFFF] text-lg md:text-2xl leading-relaxed space-y-6 font-medium">
+                        <p class="anim-line">অ্যাকাউন্ট্যান্ট তার মোটা রেজিস্টার খাতা বা একটি জটিল এক্সেল শিট নিয়ে বসেন।
+                            ৪৮০ জন শিক্ষার্থীর বিশাল তালিকায় খুঁজে বের করতে হয় কে টাকা দিয়েছে আর কার বাকি।</p>
+                        <p class="anim-line">যারা টাকা দেয়নি তাদের একে একে ফোন করতে হয়। এক্সেলে ম্যানুয়ালি ডেটা এন্ট্রি
+                            দেওয়া আর হিসেব মেলানো যেন এক শেষ না হওয়া যুদ্ধ।</p>
+                        <p class="anim-line">প্রতিটি পেমেন্টের জন্য হাতে রসিদ কাটতে হয় এবং দিনশেষে সেই ক্যাশ আর এক্সেলের
+                            হিসেব মেলাতে গিয়েই অনেকটা সময় নষ্ট হয়।</p>
+                        <p class="anim-line"><span class="text-red-600 dark:text-red-400">মাসের শেষে যখন প্রিন্সিপাল
+                                রিপোর্ট চান, তখন সেই অগোছালো এক্সেল শিট বা খাতা থেকে রিপোর্ট তৈরি করতে গিয়ে হিমশিম খেতে
+                                হয়। ভুল হওয়ার ঝুঁকি থেকেই যায়।</span></p>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/5 flex justify-center mockup-ui">
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-1 bg-red-500/10 dark:bg-red-500/20 blur-xl rounded-2xl group-hover:bg-red-500/20 dark:group-hover:bg-red-500/30 transition-all duration-300">
+                        </div>
+                        <img src="assets/traditional_fees.png" alt="সনাতন ফি কালেকশন"
+                            class="relative rounded-2xl shadow-2xl border border-red-100 dark:border-red-500/20 max-w-full h-auto grayscale-[0.2] group-hover:grayscale-0 transition-all duration-300">
+                    </div>
+                </div>
+            </div>
+
+            <div class="h-[40vh] flex items-center justify-center panel-shift bg-slate-50 dark:bg-[#0A0A0F]">
+                <h2
+                    class="text-4xl md:text-6xl font-display font-bold text-slate-900 dark:text-white italic shift-text">
+                    কিন্তু মাইক্রোক্যাম্পাসে —
+                </h2>
+            </div>
+
+            <div
+                class="min-h-[50vh] flex flex-col md:flex-row items-center justify-between py-12 panel-microcampus px-6 md:px-20 gap-12 max-w-7xl mx-auto bg-white dark:bg-[#0A0A0F]">
+                <div class="w-full md:w-3/5">
+                    <div
+                        class="tag-microcampus inline-block text-[#16A34A] dark:text-[#4ADE80] border border-green-200 dark:border-[#4ADE80]/30 bg-green-50 dark:bg-[#4ADE80]/10 px-5 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-4">
+                        মাইক্রোক্যাম্পাস প্রযুক্তি
+                    </div>
+                    <div
+                        class="text-content text-slate-800 dark:text-white text-lg md:text-2xl leading-relaxed space-y-6 font-medium">
+                        <p class="anim-line">মাসের ১ তারিখে এডমিন মাত্র একটি ক্লিক করেন। <span
+                                class="text-[#16A34A] dark:text-[#4ADE80]">৪৮০টি ইনভয়েস সাথে সাথে তৈরি হয়ে যায়।</span>
+                        </p>
+                        <p class="anim-line">অভিভাবকরা এসএমএস পান: "সম্মানিত অভিভাবক, আপনার সন্তানের বেতন বাকি আছে।
+                            অনলাইনে পরিশোধ করুন।"</p>
+                        <p class="anim-line">একজন অভিভাবক ঘরে বসেই <span
+                                class="text-pink-600 dark:text-pink-500 font-bold">বিকাশ</span>
+                            দিয়ে মাত্র ৯০ সেকেন্ডে টাকা জমা দেন। সাথে সাথেই একটি ডিজিটাল রসিদ তৈরি হয়ে যায়।</p>
+                        <p class="anim-line">বকেয়া তালিকা রিয়েল-টাইমে আপডেট হয়। অ্যাকাউন্ট্যান্ট শুধু "রিমাইন্ডার পাঠান"
+                            বাটনে ক্লিক করেন — সব বাকি থাকা অভিভাবকদের কাছে একটি এসএমএস চলে যায়। <span
+                                class="text-[#16A34A] dark:text-[#4ADE80]">কাউকে একটি ফোনও করতে হয়নি।</span></p>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/5 flex justify-center mockup-ui">
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-1 bg-green-500/10 dark:bg-[#4ADE80]/20 blur-xl rounded-2xl group-hover:bg-green-500/20 dark:group-hover:bg-[#4ADE80]/30 transition-all duration-300">
+                        </div>
+                        <img src="assets/modern_fees.png" alt="মাইক্রোক্যাম্পাস ডিজিটাল পেমেন্ট"
+                            class="relative rounded-2xl shadow-2xl border border-green-100 dark:border-[#4ADE80]/20 max-w-full h-auto group-hover:scale-[1.02] transition-all duration-300">
+                    </div>
+                </div>
+            </div>
+            <div class="w-full h-[1px] bg-slate-200 dark:bg-slate-800/50 divider-line"></div>
+        </section>
+
+        <!-- SCENE 4: Parent Communication -->
+        <section class="scene-container" data-scene="দৃশ্য ৪: অভিভাবকের সাথে যোগাযোগ">
+            <div class="h-[60vh] flex items-center justify-center panel-problem bg-white dark:bg-[#0A0A0F]">
+                <h2
+                    class="text-3xl md:text-5xl font-display font-medium text-slate-900 dark:text-white text-center max-w-4xl leading-tight px-6 problem-text">
+                    "অভিভাবক জানতে পারলেন বিকাল ৫ টায়। অথচ স্কুল কর্তৃপক্ষ জানত সকাল ৯টাতেই।"
+                </h2>
+            </div>
+
+            <div
+                class="min-h-[50vh] flex flex-col md:flex-row items-center py-12 panel-traditional px-6 md:px-20 gap-16 max-w-7xl mx-auto bg-white dark:bg-[#0A0A0F]">
+                <div class="w-full md:w-3/5">
+                    <div
+                        class="tag-traditional inline-block text-red-600 dark:text-red-500 border border-red-200 dark:border-red-500/30 bg-red-50 dark:bg-red-500/10 px-5 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-4">
+                        সনাতন পদ্ধতি
+                    </div>
+                    <div
+                        class="text-content text-slate-600 dark:text-[#FFFFFF] text-lg md:text-2xl leading-relaxed space-y-6 font-medium">
+                        <p class="anim-line">প্রিন্সিপাল একটি নোটিশ লেখেন। সেটি ৪৮০ বার ফটোকপি করা হয়। প্রতিটি কপি একজন
+                            শিক্ষার্থীকে দেওয়া হয় বাড়িতে নিয়ে যাওয়ার জন্য।</p>
+                        <p class="anim-line">কিছু শিক্ষার্থী ভুলে যায়। কিছু নোটিশ ব্যাগ থেকে হারিয়ে যায়। অনেক অভিভাবক তা
+                            দেখারই সুযোগ পান না।</p>
+                        <p class="anim-line">জরুরি কোনো ঘোষণা — যেমন বন্যার কারণে স্কুল বন্ধ — এর জন্য দ্রুত কোনো মাধ্যম
+                            থাকে না।</p>
+                        <p class="anim-line"><span class="text-red-600 dark:text-red-400">প্রিন্সিপাল কয়েকজন অভিভাবককে
+                                ফোন করেন। তারা
+                                অন্যদের ফোন করেন। সকালের মধ্যে দেখা যায় অর্ধেক স্কুল ঠিকই হাজির হয়ে গেছে।</span></p>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/5 flex justify-center mockup-ui">
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-1 bg-red-500/10 dark:bg-red-500/20 blur-xl rounded-2xl group-hover:bg-red-500/20 dark:group-hover:bg-red-500/30 transition-all duration-300">
+                        </div>
+                        <img src="assets/traditional_communication.png" alt="সনাতন নোটিশ পদ্ধতি"
+                            class="relative rounded-2xl shadow-2xl border border-red-100 dark:border-red-500/20 max-w-full h-auto grayscale-[0.2] group-hover:grayscale-0 transition-all duration-300">
+                    </div>
+                </div>
+            </div>
+
+            <div class="h-[40vh] flex items-center justify-center panel-shift bg-slate-50 dark:bg-[#0A0A0F]">
+                <h2
+                    class="text-4xl md:text-6xl font-display font-bold text-slate-900 dark:text-white italic shift-text">
+                    কিন্তু মাইক্রোক্যাম্পাসে —
+                </h2>
+            </div>
+
+            <div
+                class="min-h-[50vh] flex flex-col md:flex-row items-center justify-between py-12 panel-microcampus px-6 md:px-20 gap-12 max-w-7xl mx-auto bg-white dark:bg-[#0A0A0F]">
+                <div class="w-full md:w-3/5">
+                    <div
+                        class="tag-microcampus inline-block text-[#16A34A] dark:text-[#4ADE80] border border-green-200 dark:border-[#4ADE80]/30 bg-green-50 dark:bg-[#4ADE80]/10 px-5 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-4">
+                        মাইক্রোক্যাম্পাস প্রযুক্তি
+                    </div>
+                    <div
+                        class="text-content text-slate-800 dark:text-white text-lg md:text-2xl leading-relaxed space-y-6 font-medium">
+                        <p class="anim-line">এডমিন মাত্র একটি মেসেজ লেখেন। সিলেক্ট করেন: <strong>সব অভিভাবক —
+                                SMS।</strong></p>
+                        <p class="anim-line">৬০ সেকেন্ডের মধ্যে সব অভিভাবকের ফোনে মেসেজ চলে যায়:</p>
+                        <p class="anim-line"><span
+                                class="text-slate-500 dark:text-slate-400 text-lg border-l-4 border-[#16A34A] dark:border-[#4ADE80] pl-6 py-2 block">"সম্মানিত
+                                অভিভাবক, বন্যার কারণে আগামীকাল বিদ্যালয় বন্ধ থাকবে। – সানরাইজ স্কুল"</span></p>
+                        <p class="anim-line">নির্দিষ্ট ক্লাসের জন্য আপডেট — যেমন শুধু নবম শ্রেণির অভিভাবকদের এসএমএস
+                            পাঠানো সম্ভব। এমনকি শুধু যারা ফেল করেছে তাদের অভিভাবকদেরও আলাদাভাবে জানানো যায়।</p>
+                        <p class="anim-line"><span class="text-[#16A34A] dark:text-[#4ADE80]">একটি মেসেজ। সঠিক মানুষ।
+                                মুহূর্তেই।</span></p>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/5 flex justify-center mockup-ui">
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-1 bg-green-500/10 dark:bg-[#4ADE80]/20 blur-xl rounded-2xl group-hover:bg-green-500/20 dark:group-hover:bg-[#4ADE80]/30 transition-all duration-300">
+                        </div>
+                        <img src="assets/modern_communication.png" alt="মাইক্রোক্যাম্পাস ডিজিটাল নোটিশ"
+                            class="relative rounded-2xl shadow-2xl border border-green-100 dark:border-[#4ADE80]/20 max-w-full h-auto group-hover:scale-[1.02] transition-all duration-300">
+                    </div>
+                </div>
+            </div>
+            <div class="w-full h-[1px] bg-slate-200 dark:bg-slate-800/50 divider-line"></div>
+        </section>
+
+        <!-- SCENE 5: Report Cards -->
+        <section class="scene-container" data-scene="দৃশ্য ৫: রেজাল্ট কার্ড">
+            <div class="h-[60vh] flex items-center justify-center panel-problem bg-white dark:bg-[#0A0A0F]">
+                <h2
+                    class="text-3xl md:text-5xl font-display font-medium text-slate-900 dark:text-white text-center max-w-4xl leading-tight px-6 problem-text">
+                    "তিনি পুরো শুক্রবার রাত রেজাল্ট কার্ড লিখে কাটালেন। আবার সেই একই কাজ।"
+                </h2>
+            </div>
+
+            <div
+                class="min-h-[50vh] flex flex-col md:flex-row items-center py-12 panel-traditional px-6 md:px-20 gap-16 max-w-7xl mx-auto bg-white dark:bg-[#0A0A0F]">
+                <div class="w-full md:w-3/5">
+                    <div
+                        class="tag-traditional inline-block text-red-600 dark:text-red-500 border border-red-200 dark:border-red-500/30 bg-red-50 dark:bg-red-500/10 px-5 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-4">
+                        সনাতন পদ্ধতি
+                    </div>
+                    <div
+                        class="text-content text-slate-600 dark:text-[#FFFFFF] text-lg md:text-2xl leading-relaxed space-y-6 font-medium">
+                        <p class="anim-line">ফলাফল তৈরি। এখন ৪০০ শিক্ষার্থীর জন্য আলাদা আলাদা রেজাল্ট কার্ড প্রস্তুত
+                            করতে হবে।</p>
+                        <p class="anim-line">শিক্ষক বা এডমিন এক্সেলে থাকা মার্কসগুলো নিয়ে একটি প্রিন্টেড টেমপ্লেটে হাতে
+                            লেখেন — একেক করে সবার জন্য।</p>
+                        <p class="anim-line">নাম, রোল, মার্কস, গ্রেড, মোট নম্বর, জিপিএ, মন্তব্য এবং মেধা স্থান। এরপর
+                            শ্রেণি শিক্ষকের স্বাক্ষর ও প্রিন্সিপালের সিল।</p>
+                        <p class="anim-line">পুরো টিমের কয়েক দিন লেগে যায় এই কাজে। ভুল হওয়া খুবই স্বাভাবিক।</p>
+                        <p class="anim-line"><span class="text-red-600 dark:text-red-400">ফলাফল প্রকাশের দিনে ছাত্ররা
+                                লাইন ধরে দাঁড়ায়। নাম
+                                ডাকা হয়। কেউ অনুপস্থিত থাকলে সে রেজাল্ট জানতে পারে না।</span></p>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/5 flex justify-center mockup-ui">
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-1 bg-red-500/10 dark:bg-red-500/20 blur-xl rounded-2xl group-hover:bg-red-500/20 dark:group-hover:bg-red-500/30 transition-all duration-300">
+                        </div>
+                        <img src="assets/traditional_report_card.png" alt="সনাতন রেজাল্ট কার্ড"
+                            class="relative rounded-2xl shadow-2xl border border-red-100 dark:border-red-500/20 max-w-full h-auto grayscale-[0.2] group-hover:grayscale-0 transition-all duration-300">
+                    </div>
+                </div>
+            </div>
+
+            <div class="h-[40vh] flex items-center justify-center panel-shift bg-slate-50 dark:bg-[#0A0A0F]">
+                <h2
+                    class="text-4xl md:text-6xl font-display font-bold text-slate-900 dark:text-white italic shift-text">
+                    কিন্তু মাইক্রোক্যাম্পাসে —
+                </h2>
+            </div>
+
+            <div
+                class="min-h-[50vh] flex flex-col md:flex-row items-center justify-between py-12 panel-microcampus px-6 md:px-20 gap-12 max-w-7xl mx-auto bg-white dark:bg-[#0A0A0F]">
+                <div class="w-full md:w-3/5">
+                    <div
+                        class="tag-microcampus inline-block text-[#16A34A] dark:text-[#4ADE80] border border-green-200 dark:border-[#4ADE80]/30 bg-green-50 dark:bg-[#4ADE80]/10 px-5 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-4">
+                        মাইক্রোক্যাম্পাস প্রযুক্তি
+                    </div>
+                    <div
+                        class="text-content text-slate-800 dark:text-white text-lg md:text-2xl leading-relaxed space-y-6 font-medium">
+                        <p class="anim-line">যখন এডমিন "ফলাফল প্রকাশ" বাটনে ক্লিক করেন:</p>
+                        <p class="anim-line">প্রত্যেক শিক্ষার্থীর রেজাল্ট কার্ড আগে থেকেই তৈরি থাকে — সুন্দর ফরম্যাটে,
+                            স্কুলের ব্র্যান্ডিং এবং সব বিষয়ের মার্কস, গ্রেড ও জিপিএ সহ।</p>
+                        <p class="anim-line">অভিভাগরা তাদের পোর্টাল থেকে PDF রেজাল্ট কার্ড ডাউনলোড করতে পারেন — যা
+                            প্রিন্ট করা বা অনলাইনে সংরক্ষণ করা যায় চিরস্থায়ীভাবে।</p>
+                        <p class="anim-line">যারা সেদিন স্কুলে নেই, তারা কিছুই মিস করে না। অন্য শহরে থাকা অভিভাবকরাও ঠিক
+                            একই সময়ে রেজাল্ট দেখতে পান।</p>
+                        <p class="anim-line"><span class="text-[#16A34A] dark:text-[#4ADE80]">রেজাল্ট ডে এখন আর ঝামেলার
+                                কোনো দিন নয়, বরং
+                                একটি ক্লিকের বিষয়।</span></p>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/5 flex justify-center mockup-ui">
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-1 bg-green-500/10 dark:bg-[#4ADE80]/20 blur-xl rounded-2xl group-hover:bg-green-500/20 dark:group-hover:bg-[#4ADE80]/30 transition-all duration-300">
+                        </div>
+                        <img src="assets/modern_report_card.png" alt="মাইক্রোক্যাম্পাস ডিজিটাল রেজাল্ট"
+                            class="relative rounded-2xl shadow-2xl border border-green-100 dark:border-[#4ADE80]/20 max-w-full h-auto group-hover:scale-[1.02] transition-all duration-300">
+                    </div>
+                </div>
+            </div>
+            <div class="w-full h-[1px] bg-slate-200 dark:bg-slate-800/50 divider-line"></div>
+        </section>
+
+        <!-- SCENE 6: Class Routine -->
+        <section class="scene-container" data-scene="দৃশ্য ৬: ক্লাস রুটিন">
+            <div class="h-[60vh] flex items-center justify-center panel-problem bg-white dark:bg-[#0A0A0F]">
+                <h2
+                    class="text-3xl md:text-5xl font-display font-medium text-slate-900 dark:text-white text-center max-w-4xl leading-tight px-6 problem-text">
+                    "কেমন হতো যদি স্কুল নিজেই নিজের সব কাজ সামলাতে পারত?"
+                </h2>
+            </div>
+
+            <div
+                class="min-h-[50vh] flex flex-col md:flex-row items-center py-12 panel-traditional px-6 md:px-20 gap-16 max-w-7xl mx-auto bg-white dark:bg-[#0A0A0F]">
+                <div class="w-full md:w-3/5">
+                    <div
+                        class="tag-traditional inline-block text-red-600 dark:text-red-500 border border-red-200 dark:border-red-500/30 bg-red-50 dark:bg-red-500/10 px-5 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-4">
+                        সনাতন পদ্ধতি
+                    </div>
+                    <div
+                        class="text-content text-slate-600 dark:text-[#FFFFFF] text-lg md:text-2xl leading-relaxed space-y-6 font-medium">
+                        <p class="anim-line">স্কুল রুটিন বানানো একটি বিশাল ধাঁধার মতো, যা শেষ করতে একাডেমিক
+                            কো-অর্ডিনেটরের পুরো সপ্তাহ কেটে যায়। ১২টি ক্লাস, প্রতিদিন ৮টি পিরিয়ড, সপ্তাহে ৬ দিন।</p>
+                        <p class="anim-line">এটি সাধারণ কাগজে বা সাধারণ একটি এক্সেল শিটে করা হয়।</p>
+                        <p class="anim-line">ভুল ধরা পড়ে অনেক পরে — মাঝেমধ্যে দেখা যায় একই সময়ে দুজন শিক্ষক একই ক্লাসে
+                            উপস্থিত হয়ে গেছেন।</p>
+                        <p class="anim-line"><span class="text-red-600 dark:text-red-400">যখন কোনো শিক্ষক পরিবর্তন করা
+                                হয়, তখন পুরো রুটিন
+                                আবার নতুন করে হাতে তৈরি করতে হয়।</span></p>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/5 flex justify-center mockup-ui">
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-1 bg-red-500/10 dark:bg-red-500/20 blur-xl rounded-2xl group-hover:bg-red-500/20 dark:group-hover:bg-red-500/30 transition-all duration-300">
+                        </div>
+                        <img src="assets/traditional_routine.png" alt="সনাতন রুটিন পদ্ধতি"
+                            class="relative rounded-2xl shadow-2xl border border-red-100 dark:border-red-500/20 max-w-full h-auto grayscale-[0.2] group-hover:grayscale-0 transition-all duration-300">
+                    </div>
+                </div>
+            </div>
+
+            <div class="h-[40vh] flex items-center justify-center panel-shift bg-slate-50 dark:bg-[#0A0A0F]">
+                <h2
+                    class="text-4xl md:text-6xl font-display font-bold text-slate-900 dark:text-white italic shift-text">
+                    কিন্তু মাইক্রোক্যাম্পাসে —
+                </h2>
+            </div>
+
+            <div
+                class="min-h-[50vh] flex flex-col md:flex-row items-center justify-between py-12 panel-microcampus px-6 md:px-20 gap-12 max-w-7xl mx-auto bg-white dark:bg-[#0A0A0F]">
+                <div class="w-full md:w-3/5">
+                    <div
+                        class="tag-microcampus inline-block text-[#16A34A] dark:text-[#4ADE80] border border-green-200 dark:border-[#4ADE80]/30 bg-green-50 dark:bg-[#4ADE80]/10 px-5 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-4">
+                        মাইক্রোক্যাম্পাস প্রযুক্তি
+                    </div>
+                    <div
+                        class="text-content text-slate-800 dark:text-white text-lg md:text-2xl leading-relaxed space-y-6 font-medium">
+                        <p class="anim-line">এডমিন শুধু শিক্ষকদের বিষয়গুলো অ্যাসাইন করেন, রুটিন বিল্ডার খোলেন এবং
+                            পিরিয়ডগুলো ড্র্যাগ অ্যান্ড ড্রপ করে সাজান।</p>
+                        <p class="anim-line">যদি এডমিন ভুল করে মিসেস সালমাকে একই সময়ে ৮ম এবং ৭ম শ্রেণিতে দিতে চান:</p>
+                        <p class="anim-line"><span
+                                class="text-amber-600 dark:text-amber-300 text-lg border-l-4 border-amber-500 pl-6 py-2 block">"সতর্কতা:
+                                মিসেস সালমা ইতিমধ্যেই ৭ম শ্রেণিতে দায়িত্বরত আছেন।"</span></p>
+                        <p class="anim-line">প্রত্যেক শিক্ষকের ব্যক্তিগত রুটিন অটোমেটিক তৈরি হয়ে যায়। যখন মিসেস সালমা
+                            লগইন করেন, তিনি তার পুরো সপ্তাহের রুটিন দেখতে পান।</p>
+                        <p class="anim-line"><span class="text-[#16A34A] dark:text-[#4ADE80]">কোনো ভুল নেই, ঝগড়া নেই।
+                                শিক্ষকরা জানেন তাদের
+                                কখন কোথায় থাকতে হবে।</span></p>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/5 flex justify-center mockup-ui">
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-1 bg-green-500/10 dark:bg-[#4ADE80]/20 blur-xl rounded-2xl group-hover:bg-green-500/20 dark:group-hover:bg-[#4ADE80]/30 transition-all duration-300">
+                        </div>
+                        <img src="assets/modern_routine.png" alt="মাইক্রোক্যাম্পাস ডিজিটাল রুটিন"
+                            class="relative rounded-2xl shadow-2xl border border-green-100 dark:border-[#4ADE80]/20 max-w-full h-auto group-hover:scale-[1.02] transition-all duration-300">
+                    </div>
+                </div>
+            </div>
+            <div class="w-full h-[1px] bg-slate-200 dark:bg-slate-800/50 divider-line"></div>
+        </section>
+
+        <!-- SCENE 7: HR, Leave & Payroll -->
+        <section class="scene-container" data-scene="দৃশ্য ৭: জনবল ও বেতন">
+            <div class="h-[60vh] flex items-center justify-center panel-problem bg-white dark:bg-[#0A0A0F]">
+                <h2
+                    class="text-3xl md:text-5xl font-display font-medium text-slate-900 dark:text-white text-center max-w-4xl leading-tight px-6 problem-text">
+                    "বেতনের হিসাব করতে যেখানে ২ দিন লাগত, এখন লাগবে মাত্র ২ মিনিট।"
+                </h2>
+            </div>
+
+            <div
+                class="min-h-[50vh] flex flex-col md:flex-row items-center py-12 panel-traditional px-6 md:px-20 gap-16 max-w-7xl mx-auto bg-white dark:bg-[#0A0A0F]">
+                <div class="w-full md:w-3/5">
+                    <div
+                        class="tag-traditional inline-block text-red-600 dark:text-red-500 border border-red-200 dark:border-red-500/30 bg-red-50 dark:bg-red-500/10 px-5 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-4">
+                        সনাতন পদ্ধতি
+                    </div>
+                    <div
+                        class="text-content text-slate-600 dark:text-[#FFFFFF] text-lg md:text-2xl leading-relaxed space-y-6 font-medium">
+                        <p class="anim-line">একজন শিক্ষক অসুস্থতাজনিত ছুটি চাইলেন। তিনি প্রিন্সিপালকে ফোন করলেন।
+                            প্রিন্সিপাল রাজী হলেন। কিন্তু এটি কি কোথাও রেকর্ড করা হলো?</p>
+                        <p class="anim-line">অ্যাকাউন্ট্যান্ট কি জানেন যে তার বেতন থেকে এটি কাটা হবে? বেশিরভাগ ক্ষেত্রে
+                            এটি সঠিকভাবে হয় না।</p>
+                        <p class="anim-line">মাসের শেষে অ্যাকাউন্ট্যান্ট হাজিরা খাতা নিয়ে বসেন, প্রতিটি স্টাফের
+                            অনুপস্থিতির দিন গুণেন, এরপর বেতন, ভাতা ও অন্যান্য কাটাকাটি হিসেব করেন।</p>
+                        <p class="anim-line"><span class="text-red-600 dark:text-red-400">প্রতি মাসে এক্সেলে শূন্য থেকে
+                                শুরু করতে হয়।
+                                স্টাফরা হিসেবে গরমিল নিয়ে অভিযোগ করেন। কোনো পেশাদার পে-স্লিপও দেওয়া হয় না।</span></p>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/5 flex justify-center mockup-ui">
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-1 bg-red-500/10 dark:bg-red-500/20 blur-xl rounded-2xl group-hover:bg-red-500/20 dark:group-hover:bg-red-500/30 transition-all duration-300">
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=800"
+                            alt="সনাতন বেতন পদ্ধতি"
+                            class="relative rounded-2xl shadow-2xl border border-red-100 dark:border-red-500/20 max-w-full h-auto grayscale-[0.2] group-hover:grayscale-0 transition-all duration-300">
+                    </div>
+                </div>
+            </div>
+
+            <div class="h-[40vh] flex items-center justify-center panel-shift bg-slate-50 dark:bg-[#0A0A0F]">
+                <h2
+                    class="text-4xl md:text-6xl font-display font-bold text-slate-900 dark:text-white italic shift-text">
+                    কিন্তু মাইক্রোক্যাম্পাসে —
+                </h2>
+            </div>
+
+            <div
+                class="min-h-[50vh] flex flex-col md:flex-row items-center justify-between py-12 panel-microcampus px-6 md:px-20 gap-12 max-w-7xl mx-auto bg-white dark:bg-[#0A0A0F]">
+                <div class="w-full md:w-3/5">
+                    <div
+                        class="tag-microcampus inline-block text-[#16A34A] dark:text-[#4ADE80] border border-green-200 dark:border-[#4ADE80]/30 bg-green-50 dark:bg-[#4ADE80]/10 px-5 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-4">
+                        মাইক্রোক্যাম্পাস প্রযুক্তি
+                    </div>
+                    <div
+                        class="text-content text-slate-800 dark:text-white text-lg md:text-2xl leading-relaxed space-y-6 font-medium">
+                        <p class="anim-line">শিক্ষক তার পোর্টাল থেকে ছুটির আবেদন করেন। এডমিন এক ক্লিকে তা অ্যাপ্রুভ
+                            করেন। ছুটি তার কোটা থেকে অটোমেটিক বিয়োগ হয়ে যায়।</p>
+                        <p class="anim-line">মাসের শেষে এডমিন শুধু <span
+                                class="text-[#16A34A] dark:text-[#4ADE80]">"স্যালারি জেনারেট
+                                করুন"</span> বাটনে ক্লিক করেন।</p>
+                        <p class="anim-line">সিস্টেম নিজে থেকেই মূল বেতন, ভাতা এবং অনুমোদনহীন অনুপস্থিতির জন্য বেতন
+                            কর্তন করে নেট স্যালারি তৈরি করে ফেলে।</p>
+                        <p class="anim-line">এটি অটোমেটিক সব স্টাফকে তাদের ইমেইলে PDF পে-স্লিপ পাঠিয়ে দেয়। সবকিছুই একদম
+                            পেশাদার।</p>
+                        <p class="anim-line"><span class="text-[#16A34A] dark:text-[#4ADE80]">সবকিছুই ডকুমেন্টেড থাকে
+                                বলে হিসেবে কোনো
+                                গরমিলের সুযোগ নেই।</span></p>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/5 flex justify-center mockup-ui">
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-1 bg-green-500/10 dark:bg-[#4ADE80]/20 blur-xl rounded-2xl group-hover:bg-green-500/20 dark:group-hover:bg-[#4ADE80]/30 transition-all duration-300">
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
+                            alt="মাইক্রোক্যাম্পাস ডিজিটাল বেতন"
+                            class="relative rounded-2xl shadow-2xl border border-green-100 dark:border-[#4ADE80]/20 max-w-full h-auto group-hover:scale-[1.02] transition-all duration-300">
+                    </div>
+                </div>
+            </div>
+            <div class="w-full h-[1px] bg-slate-200 dark:bg-slate-800/50 divider-line"></div>
+        </section>
+
+        <!-- FEATURES GRID SECTION -->
+        <section id="features-grid"
+            class="py-24 bg-white dark:bg-[#0A0A0F] border-t border-slate-100 dark:border-slate-800/30 transition-colors duration-300">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-5xl font-display font-bold text-slate-900 dark:text-white mb-4">এক নজরে
+                        আমাদের <span class="text-[#16A34A] dark:text-[#4ADE80]">ফিচারসমূহ</span></h2>
+                    <p class="text-slate-500 dark:text-slate-400 text-lg max-w-2xl mx-auto">একটি আধুনিক ও ডিজিটাল স্কুল
+                        পরিচালনার জন্য যা
+                        যা
+                        প্রয়োজন, তার সবকিছুই আছে আমাদের এই প্ল্যাটফর্মে।</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Cards with theme support -->
+                    <div
+                        class="p-8 bg-slate-50 dark:bg-[#12121A] border border-slate-200 dark:border-slate-800 rounded-3xl hover:border-[#16A34A] dark:hover:border-[#4ADE80]/30 transition-all group">
+                        <div
+                            class="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-600 dark:text-blue-400 mb-6 group-hover:scale-110 transition-transform">
+                            <i data-lucide="shield-check" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-slate-900 dark:text-white font-bold text-xl mb-3">কেন্দ্রীয় প্রশাসন</h3>
+                        <p class="text-slate-600 dark:text-slate-500 text-base leading-relaxed">একটি ড্যাশবোর্ড থেকেই
+                            পুরো স্কুল নিয়ন্ত্রণ
+                            করুন। আলাদা আলাদা ইউজার রোল এবং সেটিংস সেট করার সুবিধা।</p>
+                    </div>
+                    <!-- Repeat for others... I'll just update the first few and the rest in a similar pattern -->
+                    <div
+                        class="p-8 bg-slate-50 dark:bg-[#12121A] border border-slate-200 dark:border-slate-800 rounded-3xl hover:border-[#16A34A] dark:hover:border-[#4ADE80]/30 transition-all group">
+                        <div
+                            class="w-14 h-14 bg-emerald-500/10 rounded-2xl flex items-center justify-center text-emerald-600 dark:text-emerald-400 mb-6 group-hover:scale-110 transition-transform">
+                            <i data-lucide="book-open" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-slate-900 dark:text-white font-bold text-xl mb-3">একাডেমিক ম্যানেজমেন্ট</h3>
+                        <p class="text-slate-600 dark:text-slate-500 text-base leading-relaxed">শ্রেণি, বিষয়, ক্লাস
+                            রুটিন এবং একাডেমিক
+                            ক্যালেন্ডার সাজানোর সহজ উপায়।</p>
+                    </div>
+                    <!-- SIS -->
+                    <div
+                        class="p-8 bg-slate-50 dark:bg-[#12121A] border border-slate-200 dark:border-slate-800 rounded-3xl hover:border-[#16A34A] dark:hover:border-[#4ADE80]/30 transition-all group">
+                        <div
+                            class="w-14 h-14 bg-purple-500/10 rounded-2xl flex items-center justify-center text-purple-600 dark:text-purple-400 mb-6 group-hover:scale-110 transition-transform">
+                            <i data-lucide="users" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-slate-900 dark:text-white font-bold text-xl mb-3">শিক্ষার্থী তথ্য</h3>
+                        <p class="text-slate-600 dark:text-slate-500 text-base leading-relaxed">ভর্তি প্রক্রিয়া থেকে
+                            শুরু করে শিক্ষার্থীদের
+                            কমপ্লিট ডিজিটাল প্রোফাইল ম্যানেজমেন্ট।</p>
+                    </div>
+                    <!-- Attendance -->
+                    <div
+                        class="p-8 bg-slate-50 dark:bg-[#12121A] border border-slate-200 dark:border-slate-800 rounded-3xl hover:border-[#16A34A] dark:hover:border-[#4ADE80]/30 transition-all group">
+                        <div
+                            class="w-14 h-14 bg-red-500/10 rounded-2xl flex items-center justify-center text-red-600 dark:text-red-400 mb-6 group-hover:scale-110 transition-transform">
+                            <i data-lucide="fingerprint" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-slate-900 dark:text-white font-bold text-xl mb-3">স্মার্ট হাজিরা</h3>
+                        <p class="text-slate-600 dark:text-slate-500 text-base leading-relaxed">শিক্ষার্থী ও স্টাফদের
+                            দৈনিক হাজিরা এবং
+                            অনুপস্থিত থাকলে অভিভাবকদের অটোমেটিক এসএমএস।</p>
+                    </div>
+
+                    <!-- Finance -->
+                    <div
+                        class="p-8 bg-slate-50 dark:bg-[#12121A] border border-slate-200 dark:border-slate-800 rounded-3xl hover:border-[#16A34A] dark:hover:border-[#4ADE80]/30 transition-all group">
+                        <div
+                            class="w-14 h-14 bg-amber-500/10 rounded-2xl flex items-center justify-center text-amber-600 dark:text-amber-400 mb-6 group-hover:scale-110 transition-transform">
+                            <i data-lucide="banknote" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-slate-900 dark:text-white font-bold text-xl mb-3">বেতন ও হিসাব</h3>
+                        <p class="text-slate-600 dark:text-slate-500 text-base leading-relaxed">বিকাশ/নগদ এর মাধ্যমে
+                            অনলাইন পেমেন্ট, অটোমেটিক
+                            ইনভয়েস এবং খরচ ব্যবস্থাপনা।</p>
+                    </div>
+
+                    <!-- Exams -->
+                    <div
+                        class="p-8 bg-slate-50 dark:bg-[#12121A] border border-slate-200 dark:border-slate-800 rounded-3xl hover:border-[#16A34A] dark:hover:border-[#4ADE80]/30 transition-all group">
+                        <div
+                            class="w-14 h-14 bg-indigo-500/10 rounded-2xl flex items-center justify-center text-indigo-600 dark:text-indigo-400 mb-6 group-hover:scale-110 transition-transform">
+                            <i data-lucide="file-text" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-slate-900 dark:text-white font-bold text-xl mb-3">পরীক্ষা ও ফলাফল</h3>
+                        <p class="text-slate-600 dark:text-slate-500 text-base leading-relaxed">অটো-গ্রেডিং, ডিজিটাল
+                            মার্কশিট তৈরি এবং অনলাইনে
+                            দ্রুত ফলাফল প্রকাশ।</p>
+                    </div>
+
+                    <!-- HR -->
+                    <div
+                        class="p-8 bg-slate-50 dark:bg-[#12121A] border border-slate-200 dark:border-slate-800 rounded-3xl hover:border-[#16A34A] dark:hover:border-[#4ADE80]/30 transition-all group">
+                        <div
+                            class="w-14 h-14 bg-pink-500/10 rounded-2xl flex items-center justify-center text-pink-600 dark:text-pink-400 mb-6 group-hover:scale-110 transition-transform">
+                            <i data-lucide="wallet" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-slate-900 dark:text-white font-bold text-xl mb-3">জনবল ও বেতন</h3>
+                        <p class="text-slate-600 dark:text-slate-500 text-base leading-relaxed">স্টাফদের ছুটি এবং
+                            অটোমেটেড পে-স্লিপের মাধ্যমে
+                            নির্ভুল বেতন ব্যবস্থাপনা।</p>
+                    </div>
+
+                    <!-- Comm -->
+                    <div
+                        class="p-8 bg-slate-50 dark:bg-[#12121A] border border-slate-200 dark:border-slate-800 rounded-3xl hover:border-[#16A34A] dark:hover:border-[#4ADE80]/30 transition-all group">
+                        <div
+                            class="w-14 h-14 bg-orange-500/10 rounded-2xl flex items-center justify-center text-orange-600 dark:text-orange-400 mb-6 group-hover:scale-110 transition-transform">
+                            <i data-lucide="message-square" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-slate-900 dark:text-white font-bold text-xl mb-3">যোগাযোগ কেন্দ্র</h3>
+                        <p class="text-slate-600 dark:text-slate-500 text-base leading-relaxed">সবাইকে একসাথে এসএমএস
+                            পাঠানো, ডিজিটাল
+                            নোটিশবোর্ড এবং সার্কুলার।</p>
+                    </div>
+
+                    <!-- Library -->
+                    <div
+                        class="p-8 bg-slate-50 dark:bg-[#12121A] border border-slate-200 dark:border-slate-800 rounded-3xl hover:border-[#16A34A] dark:hover:border-[#4ADE80]/30 transition-all group">
+                        <div
+                            class="w-14 h-14 bg-cyan-500/10 rounded-2xl flex items-center justify-center text-cyan-600 dark:text-cyan-400 mb-6 group-hover:scale-110 transition-transform">
+                            <i data-lucide="library" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-slate-900 dark:text-white font-bold text-xl mb-3">ডিজিটাল লাইব্রেরি</h3>
+                        <p class="text-slate-600 dark:text-slate-500 text-base leading-relaxed">বইয়ের তালিকা রাখা,
+                            লেনদেন ট্র্যাক করা এবং লেট
+                            ফির হিসাব।</p>
+                    </div>
+
+                    <!-- Transport -->
+                    <div
+                        class="p-8 bg-slate-50 dark:bg-[#12121A] border border-slate-200 dark:border-slate-800 rounded-3xl hover:border-[#16A34A] dark:hover:border-[#4ADE80]/30 transition-all group">
+                        <div
+                            class="w-14 h-14 bg-yellow-500/10 rounded-2xl flex items-center justify-center text-yellow-600 dark:text-yellow-400 mb-6 group-hover:scale-110 transition-transform">
+                            <i data-lucide="bus" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-slate-900 dark:text-white font-bold text-xl mb-3">পরিবহন ব্যবস্থাপনা</h3>
+                        <p class="text-slate-600 dark:text-slate-500 text-base leading-relaxed">বাসের রুট প্ল্যানিং,
+                            গাড়ির তথ্য এবং ড্রাইভার
+                            ম্যানেজমেন্ট।</p>
+                    </div>
+
+                    <!-- Portal -->
+                    <div
+                        class="p-8 bg-slate-50 dark:bg-[#12121A] border border-slate-200 dark:border-slate-800 rounded-3xl hover:border-[#16A34A] dark:hover:border-[#4ADE80]/30 transition-all group">
+                        <div
+                            class="w-14 h-14 bg-teal-500/10 rounded-2xl flex items-center justify-center text-teal-600 dark:text-teal-400 mb-6 group-hover:scale-110 transition-transform">
+                            <i data-lucide="layout-dashboard" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-slate-900 dark:text-white font-bold text-xl mb-3">প্যারেন্ট পোর্টাল</h3>
+                        <p class="text-slate-600 dark:text-slate-500 text-base leading-relaxed">অভিভাবক ও শিক্ষার্থীদের
+                            জন্য আলাদা
+                            মোবাইল-ফ্রেন্ডলি ড্যাশবোর্ড।</p>
+                    </div>
+
+                    <!-- Analytics -->
+                    <div
+                        class="p-8 bg-slate-50 dark:bg-[#12121A] border border-slate-200 dark:border-slate-800 rounded-3xl hover:border-[#16A34A] dark:hover:border-[#4ADE80]/30 transition-all group">
+                        <div
+                            class="w-14 h-14 bg-rose-500/10 rounded-2xl flex items-center justify-center text-rose-600 dark:text-rose-400 mb-6 group-hover:scale-110 transition-transform">
+                            <i data-lucide="bar-chart-3" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-slate-900 dark:text-white font-bold text-xl mb-3">অ্যাডভান্সড অ্যানালিটিক্স</h3>
+                        <p class="text-slate-600 dark:text-slate-500 text-base leading-relaxed">স্কুলের উন্নতির জন্য
+                            সঠিক সিদ্ধান্ত নিতে
+                            তথ্য-নির্ভর রিপোর্ট।</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COST SECTION -->
+        <section id="cost-section"
+            class="py-24 bg-white dark:bg-[#0A0A0F] relative overflow-hidden scene-container transition-colors duration-300"
+            data-scene="খরচের বিশ্লেষণ">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h2
+                    class="text-3xl md:text-5xl font-display font-bold text-slate-900 dark:text-white mb-12 reveal leading-tight cost-title opacity-0">
+                    "এই সব কাজ হাতে-কলমে করতে<br>একটি স্কুলের প্রয়োজন হয়:"
+                </h2>
+
+                <div class="space-y-6 mb-12 text-left max-w-lg mx-auto">
+                    <div
+                        class="cost-card bg-slate-50 dark:bg-[#12121A] border border-slate-200 dark:border-slate-800 p-6 rounded-2xl flex justify-between items-center shadow-sm opacity-0 translate-y-10">
+                        <div class="flex items-center gap-4">
+                            <div class="text-slate-400"><i data-lucide="user" class="w-6 h-6"></i></div>
+                            <span class="text-xl font-medium text-slate-700 dark:text-slate-200">১ জন ডাটা এন্ট্রি
+                                অপারেটর</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span
+                                class="text-slate-500 dark:text-slate-400 font-display font-bold text-xl">৳১৫,০০০</span>
+                            <i data-lucide="x" class="w-5 h-5 text-red-500"></i>
+                        </div>
+                    </div>
+                    <div
+                        class="cost-card bg-slate-50 dark:bg-[#12121A] border border-slate-200 dark:border-slate-800 p-6 rounded-2xl flex justify-between items-center shadow-sm opacity-0 translate-y-10">
+                        <div class="flex items-center gap-4">
+                            <div class="text-slate-400"><i data-lucide="calculator" class="w-6 h-6"></i></div>
+                            <span class="text-xl font-medium text-slate-700 dark:text-slate-200">১ জন অফিস
+                                অ্যাকাউন্ট্যান্ট</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span
+                                class="text-slate-500 dark:text-slate-400 font-display font-bold text-xl">৳১৮,০০০</span>
+                            <i data-lucide="x" class="w-5 h-5 text-red-500"></i>
+                        </div>
+                    </div>
+                    <div
+                        class="cost-card bg-slate-50 dark:bg-[#12121A] border border-slate-200 dark:border-slate-800 p-6 rounded-2xl flex justify-between items-center shadow-sm opacity-0 translate-y-10">
+                        <div class="flex items-center gap-4">
+                            <div class="text-slate-400"><i data-lucide="message-square" class="w-6 h-6"></i></div>
+                            <span class="text-xl font-medium text-slate-700 dark:text-slate-200">১ জন কমিউনিকেশন
+                                কো-অর্ডিনেটর</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span
+                                class="text-slate-500 dark:text-slate-400 font-display font-bold text-xl">৳১৪,০০০</span>
+                            <i data-lucide="x" class="w-5 h-5 text-red-500"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="max-w-lg mx-auto border-t border-slate-200 dark:border-slate-800 pt-8 opacity-0 cost-total">
+                    <div class="flex justify-between items-center px-4">
+                        <span class="text-slate-500 dark:text-slate-400 font-medium text-lg">অতিরিক্ত জনবল খরচ
+                            (মাসিক)</span>
                         <span
-                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
-                    </span>
-                    v2.0 is Live: Integrated Payment Gateway
+                            class="text-red-600 dark:text-red-400 font-display font-bold text-4xl counter-element">৳০</span>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-600 text-sm mt-4 px-4 text-left">+ কাজের ভুল। +
+                        দীর্ঘসূত্রিতা। + কাগুজে কাজ। +
+                        ফোনের খরচ।</p>
                 </div>
 
-                <h1 class="font-display text-6xl md:text-7xl lg:text-8xl font-bold text-slate-900 tracking-tight leading-[1.05] mb-8 animate-fade-in-up opacity-0"
-                    style="animation-delay: 0.2s;">
-                    The OS for <br />
-                    <span
-                        class="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 animate-gradient-x">
-                        Smart Schools
-                    </span>
-                </h1>
-
-                <p class="text-lg md:text-xl text-slate-600 max-w-xl mx-auto lg:mx-0 mb-10 animate-fade-in-up opacity-0 leading-relaxed"
-                    style="animation-delay: 0.3s;">
-                    Transform your institution with MicroCampus. Automate fees, attendance, results, and admissions in
-                    one beautiful cloud dashboard.
-                </p>
-
-                <div class="flex flex-col sm:flex-row items-center lg:justify-start justify-center gap-4 animate-fade-in-up opacity-0"
-                    style="animation-delay: 0.4s;">
-                    <a href="booking.html"
-                        class="w-full sm:w-auto px-8 py-4 bg-slate-900 text-white rounded-full font-bold hover:bg-sky-600 hover:scale-105 transition-all shadow-xl shadow-slate-900/20 ring-1 ring-slate-900/50 text-center">
-                        Start Free Trial
-                    </a>
-                    <button
-                        class="w-full sm:w-auto px-8 py-4 bg-white/80 backdrop-blur-sm text-slate-700 border border-slate-200 rounded-full font-bold hover:bg-white hover:border-sky-200 transition-all flex items-center justify-center gap-2 group shadow-sm">
-                        Watch Video <i data-lucide="play-circle"
-                            class="w-5 h-5 group-hover:text-sky-600 transition-colors"></i>
-                    </button>
+                <div class="h-[50vh] flex items-center justify-center cost-pause">
+                    <p class="text-4xl md:text-5xl font-display text-slate-400 dark:text-slate-700 italic opacity-0">
+                        অথবা...</p>
                 </div>
 
-                <div class="mt-12 flex items-center justify-center lg:justify-start gap-8 animate-fade-in-up opacity-0"
-                    style="animation-delay: 0.5s;">
-                    <div class="flex -space-x-4">
-                        <img src="https://i.pravatar.cc/100?img=1" alt="User"
-                            class="w-12 h-12 rounded-full border-[3px] border-white shadow-sm" />
-                        <img src="https://i.pravatar.cc/100?img=5" alt="User"
-                            class="w-12 h-12 rounded-full border-[3px] border-white shadow-sm" />
-                        <img src="https://i.pravatar.cc/100?img=8" alt="User"
-                            class="w-12 h-12 rounded-full border-[3px] border-white shadow-sm" />
-                        <div
-                            class="w-12 h-12 rounded-full border-[3px] border-white bg-slate-100 flex items-center justify-center text-xs font-bold text-slate-600 shadow-sm">
-                            +2k</div>
+                <div class="cost-final opacity-0 scale-95">
+                    <div class="inline-block relative">
+                        <div class="absolute -inset-4 bg-[#16A34A]/20 dark:bg-[#4ADE80]/20 blur-xl rounded-full"></div>
+                        <h3
+                            class="text-5xl md:text-7xl font-display font-bold text-slate-900 dark:text-white relative z-10 pulse-anim">
+                            ৳৫,০০০<span class="text-2xl text-slate-400 dark:text-slate-500 font-normal">/মাস</span>
+                        </h3>
                     </div>
-                    <div class="text-sm font-medium text-slate-500">
-                        Trusted by <span class="text-slate-900 font-bold">150+ Schools</span> <br> across Bangladesh
-                    </div>
-                </div>
-            </div>
-
-            <!-- Hero Visual / Mockup: Deconstructed Isometric Ecosystem -->
-            <div class="relative lg:h-[800px] flex items-center justify-center animate-fade-in-up opacity-0 perspective-[2500px]"
-                style="animation-delay: 0.4s;">
-
-                <!-- Center "Core" Dashboard (Tablet/Desktop View) -->
-                <div
-                    class="relative z-20 w-full max-w-[340px] md:max-w-none md:w-[600px] bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden transform md:rotate-x-12 md:rotate-y-[-10deg] md:rotate-z-2 transition-transform duration-1000 ease-out">
-                    <!-- Fake Browser Header -->
-                    <div class="bg-slate-50 border-b border-slate-100 px-4 py-3 flex gap-2">
-                        <div class="w-3 h-3 rounded-full bg-red-400"></div>
-                        <div class="w-3 h-3 rounded-full bg-amber-400"></div>
-                        <div class="w-3 h-3 rounded-full bg-green-400"></div>
-                        <div
-                            class="ml-4 bg-white rounded-md px-3 py-1 text-[10px] text-slate-400 font-mono w-full max-w-[200px]">
-                            microcampus.bd/admin</div>
-                    </div>
-                    <!-- Dashboard Body -->
-                    <div class="p-6 grid grid-cols-12 gap-6 bg-slate-50/50 h-[400px]">
-                        <!-- Sidebar -->
-                        <div class="col-span-2 space-y-4">
-                            <div class="h-10 w-10 bg-indigo-600 rounded-xl mb-8"></div>
-                            <div class="h-2 w-12 bg-slate-200 rounded-full"></div>
-                            <div class="h-2 w-16 bg-slate-200 rounded-full"></div>
-                            <div class="h-2 w-10 bg-slate-200 rounded-full"></div>
-                            <div class="h-2 w-14 bg-slate-200 rounded-full"></div>
-                        </div>
-                        <!-- Main Area -->
-                        <div class="col-span-10 space-y-4">
-                            <div class="flex justify-between">
-                                <div class="h-8 w-32 bg-slate-200 rounded-lg"></div>
-                                <div class="h-8 w-8 bg-slate-200 rounded-full"></div>
-                            </div>
-                            <!-- Charts Row -->
-                            <div class="grid grid-cols-3 gap-4">
-                                <div class="bg-white p-4 rounded-xl shadow-sm h-32 hidden md:block">
-                                    <div class="h-2 w-12 bg-slate-100 rounded-full mb-2"></div>
-                                    <div class="h-6 w-20 bg-slate-800 rounded-md mb-4"></div>
-                                    <div class="h-12 w-full bg-sky-50 rounded-lg border-b-2 border-sky-400"></div>
-                                </div>
-                                <div class="bg-white p-4 rounded-xl shadow-sm h-32 col-span-3 md:col-span-1">
-                                    <div class="h-2 w-12 bg-slate-100 rounded-full mb-2"></div>
-                                    <div class="h-6 w-20 bg-slate-800 rounded-md mb-4"></div>
-                                    <div class="flex items-end gap-1 h-12">
-                                        <div class="w-1/4 h-[40%] bg-indigo-200 rounded-t"></div>
-                                        <div class="w-1/4 h-[70%] bg-indigo-400 rounded-t"></div>
-                                        <div class="w-1/4 h-[50%] bg-indigo-300 rounded-t"></div>
-                                        <div class="w-1/4 h-[90%] bg-indigo-600 rounded-t"></div>
-                                    </div>
-                                </div>
-                                <div
-                                    class="bg-white p-4 rounded-xl shadow-sm h-32 bg-gradient-to-br from-slate-900 to-slate-800 border-none hidden md:block">
-                                    <!-- Dark Card -->
-                                    <div class="h-2 w-12 bg-slate-600 rounded-full mb-2"></div>
-                                    <div
-                                        class="h-8 w-8 bg-green-500 rounded-full flex items-center justify-center text-white mt-4">
-                                        <i data-lucide="check" class="w-4 h-4"></i></div>
-                                </div>
-                            </div>
-                            <!-- Table Row -->
-                            <div class="bg-white rounded-xl shadow-sm p-4 h-full">
-                                <div class="space-y-3">
-                                    <div class="flex gap-4">
-                                        <div class="h-8 w-8 rounded-full bg-slate-100"></div>
-                                        <div class="flex-1 h-8 bg-slate-50 rounded-lg"></div>
-                                    </div>
-                                    <div class="flex gap-4">
-                                        <div class="h-8 w-8 rounded-full bg-slate-100"></div>
-                                        <div class="flex-1 h-8 bg-slate-50 rounded-lg"></div>
-                                    </div>
-                                    <div class="flex gap-4">
-                                        <div class="h-8 w-8 rounded-full bg-slate-100"></div>
-                                        <div class="flex-1 h-8 bg-slate-50 rounded-lg"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Floating Mobile App (Left Front) -->
-                <div
-                    class="hidden lg:block absolute -left-12 bottom-20 z-30 w-[220px] bg-slate-900 rounded-[2rem] border-4 border-slate-800 shadow-2xl p-2 transform rotate-y-12 animate-float-slow">
-                    <div class="bg-slate-900 h-full w-full rounded-2xl overflow-hidden relative">
-                        <!-- Notch -->
-                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-5 bg-slate-800 rounded-b-xl z-20">
-                        </div>
-                        <!-- App Content -->
-                        <div class="pt-8 px-4 pb-4">
-                            <div class="flex justify-between items-center text-white mb-6">
-                                <i data-lucide="menu" class="w-5 h-5"></i>
-                                <div class="w-8 h-8 bg-sky-500 rounded-full border-2 border-slate-700"></div>
-                            </div>
-                            <div class="text-white text-2xl font-bold mb-1">Hello,</div>
-                            <div class="text-slate-400 text-sm mb-6">Rayaan (Class 8)</div>
-
-                            <div class="bg-slate-800/50 p-3 rounded-xl mb-3 border border-slate-700">
-                                <div class="text-xs text-slate-400 uppercase">Next Class</div>
-                                <div class="text-sky-400 font-bold">Mathematics</div>
-                                <div class="text-xs text-slate-500">10:00 AM • Room 302</div>
-                            </div>
-
-                            <div class="grid grid-cols-2 gap-2">
-                                <div
-                                    class="bg-indigo-600 p-3 rounded-xl flex flex-col items-center justify-center text-white gap-1">
-                                    <i data-lucide="book-open" class="w-5 h-5"></i>
-                                    <span class="text-[10px]">Homework</span>
-                                </div>
-                                <div
-                                    class="bg-slate-800 p-3 rounded-xl flex flex-col items-center justify-center text-slate-300 gap-1 border border-slate-700">
-                                    <i data-lucide="calendar" class="w-5 h-5"></i>
-                                    <span class="text-[10px]">Routine</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Floating Payment Receipt (Right Front) -->
-                <div
-                    class="hidden lg:block absolute -right-8 top-32 z-30 w-64 bg-white/95 backdrop-blur-md p-5 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-white/40 transform rotate-6 animate-float-rev">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div
-                            class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600">
-                            <i data-lucide="check-circle-2" class="w-6 h-6"></i>
-                        </div>
-                        <div>
-                            <div class="text-xs font-bold text-slate-400 uppercase">Payment Success</div>
-                            <div class="text-slate-900 font-bold">bKash Transaction</div>
-                        </div>
-                    </div>
-                    <div class="space-y-2 border-t border-dashed border-slate-200 pt-3">
-                        <div class="flex justify-between text-sm">
-                            <span class="text-slate-500">Amount</span>
-                            <span class="font-bold text-slate-900">৳ 2,500</span>
-                        </div>
-                        <div class="flex justify-between text-sm">
-                            <span class="text-slate-500">Student</span>
-                            <span class="font-bold text-slate-900">Rihan (ID: 402)</span>
-                        </div>
-                        <div class="flex justify-between text-sm">
-                            <span class="text-slate-500">Month</span>
-                            <span class="font-bold text-slate-900">January 2026</span>
-                        </div>
-                    </div>
-                    <div
-                        class="mt-4 w-full bg-slate-50 text-slate-400 text-xs py-2 rounded text-center border border-slate-100 font-mono">
-                        TRX: 8X922MNL21
-                    </div>
-                </div>
-
-                <!-- Decorative 3D Elements -->
-                <div
-                    class="absolute top-[10%] left-[10%] w-16 h-16 bg-gradient-to-br from-sky-400 to-indigo-500 rounded-2xl rotate-12 blur-sm opacity-60 animate-pulse-slow">
-                </div>
-                <div
-                    class="absolute bottom-[10%] right-[20%] w-24 h-24 bg-gradient-to-br from-fuchsia-400 to-rose-500 rounded-full blur-2xl opacity-40 animate-pulse-slow delay-700">
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-
-
-    <!-- Bento Grid Features (Highlights) -->
-    <section id="features" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
-                <h2 class="font-display text-4xl font-bold text-slate-900 mb-4">Core Capabilities</h2>
-                <p class="text-slate-500 text-lg">Experience the power of a fully connected educational ecosystem.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 grid-rows-3 gap-6 h-auto md:h-[800px]">
-
-                <!-- Main Feature: Academic -->
-                <div
-                    class="md:col-span-2 md:row-span-2 bento-card bg-slate-50 rounded-3xl p-8 border border-slate-100 relative overflow-hidden group">
-                    <div
-                        class="absolute top-0 right-0 w-64 h-64 bg-sky-100 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-sky-200 transition-colors">
-                    </div>
-                    <div class="relative z-10">
-                        <div
-                            class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm mb-6 text-sky-600">
-                            <i data-lucide="graduation-cap" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Academic Excellence</h3>
-                        <p class="text-slate-500 mb-6 max-w-md">Comprehensive management of classes, sections, subjects,
-                            and automated routine generation. Keep your academic calendar on track.</p>
-                        <div class="bg-white rounded-xl p-4 shadow-sm border border-slate-100 max-w-sm">
-                            <div class="flex justify-between text-sm mb-2">
-                                <span class="font-bold">Term 1 Results</span>
-                                <span class="text-green-500 font-bold">+12% vs Last Year</span>
-                            </div>
-                            <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                                <div class="bg-sky-500 h-full w-[75%]"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Feature: Finance -->
-                <div
-                    class="md:col-span-1 md:row-span-1 bento-card bg-slate-900 rounded-3xl p-8 border border-slate-800 text-white relative overflow-hidden group">
-                    <div class="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-900"></div>
-                    <div class="relative z-10">
-                        <div class="flex justify-between items-start mb-4">
-                            <div
-                                class="w-10 h-10 bg-slate-800 rounded-xl flex items-center justify-center text-sky-400">
-                                <i data-lucide="credit-card"></i>
-                            </div>
-                            <span class="text-xs font-bold bg-sky-500 text-white px-2 py-1 rounded">HOT</span>
-                        </div>
-                        <h3 class="text-xl font-bold mb-1">Smart Finance</h3>
-                        <p class="text-slate-400 text-sm">Automated invoicing & bKash Integration.</p>
-                    </div>
-                </div>
-
-                <!-- Feature: HR -->
-                <div
-                    class="md:col-span-1 md:row-span-1 bento-card bg-white rounded-3xl p-8 border border-slate-100 shadow-sm group">
-                    <div
-                        class="w-10 h-10 bg-purple-50 rounded-xl flex items-center justify-center text-purple-600 mb-4">
-                        <i data-lucide="users"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-1">HR & Payroll</h3>
-                    <p class="text-slate-500 text-sm">Track staff attendance and generate salary slips instantly.</p>
-                </div>
-
-                <!-- Feature: Communication (Wide) -->
-                <div
-                    class="md:col-span-2 md:row-span-1 bento-card bg-gradient-to-r from-sky-500 to-blue-600 rounded-3xl p-8 text-white relative overflow-hidden flex items-center justify-between">
-                    <div class="relative z-10">
-                        <h3 class="text-2xl font-bold mb-2">Parent Communication</h3>
-                        <p class="text-sky-100 max-w-md">Instant SMS alerts for attendance and results. Keep parents in
-                            the loop effortlessly.</p>
-                    </div>
-                    <div
-                        class="hidden md:block relative z-10 bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20">
-                        <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 rounded-full bg-green-400 flex items-center justify-center"><i
-                                    data-lucide="check" class="w-4 h-4 text-white"></i></div>
-                            <div class="text-xs">
-                                <div class="font-bold">SMS Delivered</div>
-                                <div class="text-sky-100">To 1,240 Parents</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Feature: Mobile -->
-                <div
-                    class="md:col-span-1 md:row-span-1 bento-card bg-slate-50 rounded-3xl p-8 border border-slate-100 group">
-                    <div
-                        class="w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center text-orange-600 mb-4">
-                        <i data-lucide="smartphone"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-1">Mobile App</h3>
-                    <p class="text-slate-500 text-sm">Apps for Teachers, Parents, and Students included.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- NEW SECTION: All Modules Grid -->
-    <section id="modules" class="py-24 bg-white border-t border-slate-100">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
-                <span class="text-sky-600 font-bold tracking-wider text-sm uppercase">Comprehensive Solution</span>
-                <h2 class="font-display text-4xl font-bold text-slate-900 mt-2 mb-4">15+ Powerful Modules</h2>
-                <p class="text-slate-500 text-lg">No more disconnected spreadsheets. Every tool you need is built right
-                    in.</p>
-            </div>
-
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Module 1 -->
-                <div
-                    class="module-card bg-white p-6 rounded-2xl border border-slate-100 flex flex-col items-start gap-4 cursor-pointer">
-                    <div
-                        class="module-icon w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center transition-all duration-300">
-                        <i data-lucide="layout-dashboard" class="w-6 h-6"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-slate-900 text-lg">Admin Dashboard</h3>
-                        <p class="text-sm text-slate-500 mt-1">Unified view of attendance, finance, and academics.</p>
-                    </div>
-                </div>
-
-                <!-- Module 2 -->
-                <div
-                    class="module-card bg-white p-6 rounded-2xl border border-slate-100 flex flex-col items-start gap-4 cursor-pointer">
-                    <div
-                        class="module-icon w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center transition-all duration-300">
-                        <i data-lucide="users-2" class="w-6 h-6"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-slate-900 text-lg">Student Info System</h3>
-                        <p class="text-sm text-slate-500 mt-1">360° profile, admissions, TCs, and promotions.</p>
-                    </div>
-                </div>
-
-                <!-- Module 3 -->
-                <div
-                    class="module-card bg-white p-6 rounded-2xl border border-slate-100 flex flex-col items-start gap-4 cursor-pointer">
-                    <div
-                        class="module-icon w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center transition-all duration-300">
-                        <i data-lucide="calendar-check-2" class="w-6 h-6"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-slate-900 text-lg">Smart Attendance</h3>
-                        <p class="text-sm text-slate-500 mt-1">Biometric/RFID integration with auto-SMS alerts.</p>
-                    </div>
-                </div>
-
-                <!-- Module 4 -->
-                <div
-                    class="module-card bg-white p-6 rounded-2xl border border-slate-100 flex flex-col items-start gap-4 cursor-pointer">
-                    <div
-                        class="module-icon w-12 h-12 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center transition-all duration-300">
-                        <i data-lucide="coins" class="w-6 h-6"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-slate-900 text-lg">Fees & Accounts</h3>
-                        <p class="text-sm text-slate-500 mt-1">Online payment gateway, invoices & reports.</p>
-                    </div>
-                </div>
-
-                <!-- Module 5 -->
-                <div
-                    class="module-card bg-white p-6 rounded-2xl border border-slate-100 flex flex-col items-start gap-4 cursor-pointer">
-                    <div
-                        class="module-icon w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center transition-all duration-300">
-                        <i data-lucide="award" class="w-6 h-6"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-slate-900 text-lg">Exam Management</h3>
-                        <p class="text-sm text-slate-500 mt-1">Auto-GPA calculation and result publishing.</p>
-                    </div>
-                </div>
-
-                <!-- Module 6 -->
-                <div
-                    class="module-card bg-white p-6 rounded-2xl border border-slate-100 flex flex-col items-start gap-4 cursor-pointer">
-                    <div
-                        class="module-icon w-12 h-12 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center transition-all duration-300">
-                        <i data-lucide="briefcase" class="w-6 h-6"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-slate-900 text-lg">HR & Payroll</h3>
-                        <p class="text-sm text-slate-500 mt-1">Staff management, leave tracking & salaries.</p>
-                    </div>
-                </div>
-
-                <!-- Module 7 -->
-                <div
-                    class="module-card bg-white p-6 rounded-2xl border border-slate-100 flex flex-col items-start gap-4 cursor-pointer">
-                    <div
-                        class="module-icon w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center transition-all duration-300">
-                        <i data-lucide="book-marked" class="w-6 h-6"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-slate-900 text-lg">Library</h3>
-                        <p class="text-sm text-slate-500 mt-1">Book cataloging, issue/return tracking & fines.</p>
-                    </div>
-                </div>
-
-                <!-- Module 8 -->
-                <div
-                    class="module-card bg-white p-6 rounded-2xl border border-slate-100 flex flex-col items-start gap-4 cursor-pointer">
-                    <div
-                        class="module-icon w-12 h-12 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center transition-all duration-300">
-                        <i data-lucide="bus" class="w-6 h-6"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-slate-900 text-lg">Transport</h3>
-                        <p class="text-sm text-slate-500 mt-1">Route management and transport fee collection.</p>
-                    </div>
-                </div>
-
-                <!-- Module 9 -->
-                <div
-                    class="module-card bg-white p-6 rounded-2xl border border-slate-100 flex flex-col items-start gap-4 cursor-pointer">
-                    <div
-                        class="module-icon w-12 h-12 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center transition-all duration-300">
-                        <i data-lucide="package" class="w-6 h-6"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-slate-900 text-lg">Inventory</h3>
-                        <p class="text-sm text-slate-500 mt-1">Manage school store, stock, and supplier items.</p>
-                    </div>
-                </div>
-
-                <!-- Module 10 -->
-                <div
-                    class="module-card bg-white p-6 rounded-2xl border border-slate-100 flex flex-col items-start gap-4 cursor-pointer">
-                    <div
-                        class="module-icon w-12 h-12 rounded-xl bg-pink-50 text-pink-600 flex items-center justify-center transition-all duration-300">
-                        <i data-lucide="bell-ring" class="w-6 h-6"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-slate-900 text-lg">Communication</h3>
-                        <p class="text-sm text-slate-500 mt-1">SMS blasts, noticeboard, and push notifications.</p>
-                    </div>
-                </div>
-
-                <!-- Module 11 -->
-                <div
-                    class="module-card bg-white p-6 rounded-2xl border border-slate-100 flex flex-col items-start gap-4 cursor-pointer">
-                    <div
-                        class="module-icon w-12 h-12 rounded-xl bg-cyan-50 text-cyan-600 flex items-center justify-center transition-all duration-300">
-                        <i data-lucide="file-bar-chart" class="w-6 h-6"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-slate-900 text-lg">Reports & Analytics</h3>
-                        <p class="text-sm text-slate-500 mt-1">Exportable reports for every module.</p>
-                    </div>
-                </div>
-
-                <!-- Module 12 -->
-                <div
-                    class="module-card bg-white p-6 rounded-2xl border border-slate-100 flex flex-col items-start gap-4 cursor-pointer">
-                    <div
-                        class="module-icon w-12 h-12 rounded-xl bg-slate-100 text-slate-600 flex items-center justify-center transition-all duration-300">
-                        <i data-lucide="settings" class="w-6 h-6"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-slate-900 text-lg">System Settings</h3>
-                        <p class="text-sm text-slate-500 mt-1">Custom roles, permissions, and school branding.</p>
-                    </div>
-                </div>
-
-                <!-- Module 13 -->
-                <div
-                    class="module-card bg-white p-6 rounded-2xl border border-slate-100 flex flex-col items-start gap-4 cursor-pointer">
-                    <div
-                        class="module-icon w-12 h-12 rounded-xl bg-lime-50 text-lime-600 flex items-center justify-center transition-all duration-300">
-                        <i data-lucide="printer" class="w-6 h-6"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-slate-900 text-lg">Certificate Gen</h3>
-                        <p class="text-sm text-slate-500 mt-1">Auto-print TCs, Testimonials & Admit Cards.</p>
-                    </div>
-                </div>
-
-                <!-- Module 14 -->
-                <div
-                    class="module-card bg-white p-6 rounded-2xl border border-slate-100 flex flex-col items-start gap-4 cursor-pointer">
-                    <div
-                        class="module-icon w-12 h-12 rounded-xl bg-violet-50 text-violet-600 flex items-center justify-center transition-all duration-300">
-                        <i data-lucide="globe" class="w-6 h-6"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-slate-900 text-lg">Website Builder</h3>
-                        <p class="text-sm text-slate-500 mt-1">Dynamic frontend website for your institution.</p>
-                    </div>
-                </div>
-
-                <!-- Module 15 -->
-                <div
-                    class="module-card bg-white p-6 rounded-2xl border border-slate-100 flex flex-col items-start gap-4 cursor-pointer">
-                    <div
-                        class="module-icon w-12 h-12 rounded-xl bg-red-50 text-red-600 flex items-center justify-center transition-all duration-300">
-                        <i data-lucide="shield-alert" class="w-6 h-6"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-slate-900 text-lg">Audit Log</h3>
-                        <p class="text-sm text-slate-500 mt-1">Track every action taken within the system.</p>
-                    </div>
-                </div>
-
-                <!-- Module 16 -->
-                <div
-                    class="module-card bg-white p-6 rounded-2xl border border-slate-100 flex flex-col items-start gap-4 cursor-pointer">
-                    <div
-                        class="module-icon w-12 h-12 rounded-xl bg-fuchsia-50 text-fuchsia-600 flex items-center justify-center transition-all duration-300">
-                        <i data-lucide="home" class="w-6 h-6"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-slate-900 text-lg">Hostel (Upcoming)</h3>
-                        <p class="text-sm text-slate-500 mt-1">Manage dormitories, rooms, and allocations.</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-
-
-
-
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-300 py-20 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12">
-            <div class="col-span-1 md:col-span-2">
-                <div class="flex items-center gap-2 font-display font-bold text-2xl text-white mb-6">
-                    <div class="w-8 h-8 bg-sky-600 rounded-lg flex items-center justify-center text-white">
-                        <i data-lucide="cloud" class="w-5 h-5" fill="currentColor"></i>
-                    </div>
-                    MicroCampus
-                </div>
-                <p class="text-slate-400 max-w-sm leading-relaxed mb-6">
-                    Empowering Bangladeshi educational institutions with cutting-edge cloud technology. Secure,
-                    scalable, and simple.
-                </p>
-                <div class="mb-8 pt-6 border-t border-slate-800">
-                    <p class="text-sm text-slate-500 leading-relaxed">
-                        <span class="font-bold text-slate-300">MicroCampus BD</span> is a SaaS product of <a
-                            href="https://vivagodigital.com" target="_blank"
-                            class="text-sky-500 hover:text-sky-400 font-bold transition-colors">Vivago Digital</a>.
-                        <br>
-                        Marketing Partner: <a href="https://ideago.xyz" target="_blank"
-                            class="text-indigo-400 hover:text-indigo-300 font-bold transition-colors">IDEAGO ADVANCED
-                            TECHNOLOGIES</a>.
+                    <p class="text-xl text-slate-600 dark:text-slate-300 mt-8 max-w-2xl mx-auto leading-relaxed">
+                        যা উপরে উল্লিখিত তিনজনের কাজ একাই করতে পারে। দ্রুততর, নির্ভুলভাবে এবং সম্পূর্ণ ডিজিটালি।<br>
+                        কোনো বাড়তি কাগজ বা ফোনের ঝামেলা ছাড়াই।
                     </p>
-                </div>
-                <div class="flex gap-4">
-                    <a href="#"
-                        class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-sky-600 transition-colors"><i
-                            data-lucide="facebook" class="w-5 h-5"></i></a>
-                    <a href="#"
-                        class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-sky-600 transition-colors"><i
-                            data-lucide="linkedin" class="w-5 h-5"></i></a>
-                    <a href="#"
-                        class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-sky-600 transition-colors"><i
-                            data-lucide="twitter" class="w-5 h-5"></i></a>
+
+                    <div class="mt-12">
+                        <a href="booking.html"
+                            class="inline-flex items-center justify-center gap-3 px-10 py-5 bg-slate-900 dark:bg-[#4ADE80] text-white dark:text-black rounded-full font-bold text-xl hover:scale-105 transition-all shadow-xl">
+                            ফ্রি ডেমো বুক করুন <i data-lucide="arrow-right" class="w-6 h-6"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
+        </section>
 
+    </main>
+
+    <!-- FAQ SECTION for SEO/GEO -->
+    <section id="faq-section" class="py-24 bg-slate-50 dark:bg-[#0D0D14] transition-colors duration-300">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-display font-bold text-slate-900 dark:text-white mb-4">সাধারণ
+                    <span class="text-[#16A34A] dark:text-[#4ADE80]">জিজ্ঞাসা</span>
+                </h2>
+                <p class="text-slate-500 dark:text-slate-400 text-lg">আপনার মনে থাকা কিছু কমন প্রশ্নের উত্তর</p>
+            </div>
+
+            <div class="space-y-4">
+                <div class="bg-white dark:bg-[#12121A] border border-slate-200 dark:border-slate-800 rounded-2xl p-6">
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">মাইক্রোক্যাম্পাস কি ছোট স্কুলের
+                        জন্য উপযুক্ত?</h3>
+                    <p class="text-slate-600 dark:text-slate-400">হ্যাঁ, মাইক্রোক্যাম্পাস যেকোনো সাইজের স্কুলের জন্য
+                        উপযোগী। আমরা আপনার প্রয়োজন অনুযায়ী ফিচারগুলো কাস্টমাইজ করে দিই।</p>
+                </div>
+                <div class="bg-white dark:bg-[#12121A] border border-slate-200 dark:border-slate-800 rounded-2xl p-6">
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">আমাদের কি আলাদা কোনো হার্ডওয়্যার
+                        কিনতে হবে?</h3>
+                    <p class="text-slate-600 dark:text-slate-400">না, এটি একটি ক্লাউড-বেসড সফটওয়্যার। আপনার শুধু একটি
+                        স্মার্টফোন বা কম্পিউটার এবং ইন্টারনেট কানেকশন থাকলেই চলবে।</p>
+                </div>
+                <div class="bg-white dark:bg-[#12121A] border border-slate-200 dark:border-slate-800 rounded-2xl p-6">
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">শিক্ষকদের ট্রেনিং কি আপনারা দেবেন?
+                    </h3>
+                    <p class="text-slate-600 dark:text-slate-400">অবশ্যই। আমরা আপনাদের পুরো টিমের জন্য ফ্রি ট্রেনিং সেশন
+                        পরিচালনা করি এবং ২৪/৭ টেকনিক্যাল সাপোর্ট প্রদান করি।</p>
+                </div>
+                <div class="bg-white dark:bg-[#12121A] border border-slate-200 dark:border-slate-800 rounded-2xl p-6">
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">ডেটা কি নিরাপদ থাকবে?</h3>
+                    <p class="text-slate-600 dark:text-slate-400">আপনার স্কুলের সব ডেটা আমাদের হাইলি সিকিউরড এনক্রিপ্টেড
+                        সার্ভারে সংরক্ষিত থাকে। আপনার অনুমতি ছাড়া কেউ এই ডেটা এক্সেস করতে পারবে না।</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <footer
+        class="py-20 border-t border-slate-200 dark:border-slate-800/50 bg-white dark:bg-[#0A0A0F] transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 text-left">
+            <div class="col-span-1 md:col-span-2">
+                <div
+                    class="flex items-center gap-2 font-display font-bold text-2xl text-slate-900 dark:text-white mb-6">
+                    <img src="assets/logo.png" alt="MicroCampus Logo" class="w-10 h-10 object-contain">
+                    MicroCampus BD
+                </div>
+                <p class="text-slate-500 dark:text-slate-400 max-w-sm mb-8 leading-relaxed">
+                    বাংলাদেশের শিক্ষাপ্রতিষ্ঠানগুলোকে ডিজিটালাইজ করার মাধ্যমে শিক্ষার মান উন্নয়ন ও প্রশাসনিক কাজকে সহজ
+                    করাই আমাদের লক্ষ্য।
+                </p>
+            </div>
             <div>
-                <h4 class="font-bold text-white mb-6 text-lg">Platform</h4>
-                <ul class="space-y-3 text-sm">
-                    <li><a href="#" class="hover:text-sky-400 transition-colors">Academic Module</a></li>
-                    <li><a href="#" class="hover:text-sky-400 transition-colors">Finance & Fees</a></li>
-                    <li><a href="#" class="hover:text-sky-400 transition-colors">Student Portal</a></li>
-                    <li><a href="#" class="hover:text-sky-400 transition-colors">Teacher App</a></li>
-
+                <h4 class="font-bold text-slate-900 dark:text-white mb-6 uppercase tracking-wider text-sm">দ্রুত লিঙ্ক
+                </h4>
+                <ul class="space-y-4">
+                    <li><a href="#"
+                            class="text-slate-500 dark:text-slate-400 hover:text-[#16A34A] dark:hover:text-[#4ADE80] transition-colors">হোম</a>
+                    </li>
+                    <li><a href="#features-grid"
+                            class="text-slate-500 dark:text-slate-400 hover:text-[#16A34A] dark:hover:text-[#4ADE80] transition-colors">ফিচারসমূহ</a>
+                    </li>
+                    <li><a href="#cost-section"
+                            class="text-slate-500 dark:text-slate-400 hover:text-[#16A34A] dark:hover:text-[#4ADE80] transition-colors">খরচ
+                            ও সাশ্রয়</a></li>
+                    <li><a href="booking.html"
+                            class="text-slate-500 dark:text-slate-400 hover:text-[#16A34A] dark:hover:text-[#4ADE80] transition-colors">ফ্রি
+                            ডেমো</a></li>
                 </ul>
             </div>
-
             <div>
-                <h4 class="font-bold text-white mb-6 text-lg">Contact</h4>
-                <ul class="space-y-3 text-sm">
-                    <li class="flex items-start gap-3">
-                        <i data-lucide="map-pin" class="w-5 h-5 text-slate-500 mt-0.5"></i>
-                        <span>Mirpur 11, Dhaka (HQ) &<br>North Baharchara, Cox's Bazar</span>
+                <h4 class="font-bold text-slate-900 dark:text-white mb-6 uppercase tracking-wider text-sm">যোগাযোগ</h4>
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3 text-slate-500 dark:text-slate-400">
+                        <i data-lucide="map-pin" class="w-5 h-5 shrink-0 text-[#16A34A] dark:text-[#4ADE80]"></i>
+                        ঢাকা, বাংলাদেশ
                     </li>
-                    <li class="flex items-start gap-3">
-                        <i data-lucide="mail" class="w-5 h-5 text-slate-500 mt-0.5"></i>
-                        <div class="flex flex-col">
-                            <a href="mailto:hello@vivagodigital.com"
-                                class="hover:text-sky-400 transition-colors">hello@vivagodigital.com</a>
-                            <a href="mailto:info@ideago.xyz"
-                                class="hover:text-sky-400 transition-colors">info@ideago.xyz</a>
-                        </div>
+                    <li class="flex items-center gap-3 text-slate-500 dark:text-slate-400">
+                        <i data-lucide="mail" class="w-5 h-5 shrink-0 text-[#16A34A] dark:text-[#4ADE80]"></i>
+                        info@microcampusbd.com
                     </li>
-                    <li class="flex items-start gap-3">
-                        <i data-lucide="phone" class="w-5 h-5 text-slate-500 mt-0.5"></i>
-                        <div class="flex flex-col">
-                            <a href="tel:+8801618129800" class="hover:text-sky-400 transition-colors">01618129800</a>
-                            <a href="tel:+8801710834140" class="hover:text-sky-400 transition-colors">01710834140</a>
-                        </div>
+                    <li class="flex items-center gap-3 text-slate-500 dark:text-slate-400">
+                        <i data-lucide="phone" class="w-5 h-5 shrink-0 text-[#16A34A] dark:text-[#4ADE80]"></i>
+                        +৮৮০ ১৬১৮১২৯৮০০
                     </li>
                 </ul>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-slate-800 text-center text-sm text-slate-500">
-            &copy; <span id="year"></span> MicroCampus BD. All rights reserved.
+        <div
+            class="max-w-7xl mx-auto px-6 border-t border-slate-100 dark:border-slate-800/50 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
+            <p class="text-slate-500 dark:text-slate-400 font-medium">&copy; <span id="year"></span> <a
+                    href="https://vivagotechnologies.com" target="_blank"
+                    class="hover:text-[#16A34A] dark:hover:text-[#4ADE80] transition-colors">Vivago Technologies</a>.
+                MicroCampus is a SaaS product of Vivago Technologies. All Rights Reserved.</p>
+            <div class="flex items-center gap-6">
+                <a href="#" class="text-slate-400 hover:text-[#16A34A] dark:hover:text-[#4ADE80] transition-colors"><i
+                        data-lucide="facebook" class="w-5 h-5"></i></a>
+                <a href="#" class="text-slate-400 hover:text-[#16A34A] dark:hover:text-[#4ADE80] transition-colors"><i
+                        data-lucide="linkedin" class="w-5 h-5"></i></a>
+                <a href="#" class="text-slate-400 hover:text-[#16A34A] dark:hover:text-[#4ADE80] transition-colors"><i
+                        data-lucide="twitter" class="w-5 h-5"></i></a>
+            </div>
         </div>
     </footer>
 
-    <script src="script.js" defer></script>
+    <button id="skip-button"
+        class="fixed bottom-8 right-8 z-[999] bg-white dark:bg-[#1A1A24] border border-slate-200 dark:border-slate-700 hover:border-[#16A34A] dark:hover:border-[#4ADE80] text-slate-600 dark:text-slate-200 hover:text-[#16A34A] dark:hover:text-[#4ADE80] px-6 py-3 rounded-full flex items-center gap-3 transition-all duration-300 text-xs font-bold tracking-[0.1em] uppercase group shadow-lg">
+        <span>গল্পটি এড়িয়ে যান</span>
+        <i data-lucide="chevrons-down" class="w-4 h-4 group-hover:translate-y-1 transition-transform"></i>
+    </button>
+
+    <script src="script.js"></script>
 </body>
 
 </html>

@@ -1,99 +1,96 @@
- /* Modern Glassmorphism */
- .glass-panel {
-     background: rgba(255, 255, 255, 0.7);
-     backdrop-filter: blur(20px);
-     -webkit-backdrop-filter: blur(20px);
-     border: 1px solid rgba(255, 255, 255, 0.8);
-     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
- }
+/* Tailwind handles most of the styling, this is just for any custom utilities if needed. We don't need much anymore since animations are in JS. */
 
- .glass-dark {
-     background: rgba(15, 23, 42, 0.6);
-     backdrop-filter: blur(16px);
-     -webkit-backdrop-filter: blur(16px);
-     border: 1px solid rgba(255, 255, 255, 0.1);
- }
+body {
+    background-color: #0A0A0F;
+}
 
- /* Interactive Elements */
- .feature-card-active {
-     background: white;
-     border-color: #38bdf8;
-     /* sky-400 */
-     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-     transform: scale(1.02);
- }
+/* Hide scrollbar for cleaner cinematic look */
+::-webkit-scrollbar {
+    width: 8px;
+}
 
+::-webkit-scrollbar-track {
+    background: #0A0A0F;
+}
 
+::-webkit-scrollbar-thumb {
+    background: #1e293b;
+    border-radius: 4px;
+}
 
- /* Scroll Animations */
- .reveal {
-     opacity: 0;
-     transform: translateY(30px);
-     transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
- }
+::-webkit-scrollbar-thumb:hover {
+    background: #334155;
+}
 
- .reveal.active {
-     opacity: 1;
-     transform: translateY(0);
- }
+#features-grid .p-8 {
+    opacity: 1;
+}
 
- /* Bento Grid Specifics */
- .bento-card {
-     transition: transform 0.3s ease, box-shadow 0.3s ease;
- }
+/* Side Navigation Dots */
+.nav-dot {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid transparent;
+}
 
- .bento-card:hover {
-     transform: translateY(-5px);
-     box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.1);
- }
+.nav-dot:hover {
+    background-color: rgba(74, 222, 128, 0.5);
+    transform: scale(1.3);
+}
 
- /* Module Card Hover */
- .module-card {
-     transition: all 0.3s ease;
- }
+.nav-dot.active {
+    background-color: #4ADE80;
+    transform: scale(1.5);
+    box-shadow: 0 0 15px rgba(74, 222, 128, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
 
- .module-card:hover {
-     transform: translateY(-5px);
-     border-color: #7dd3fc;
-     /* sky-300 */
-     background: #f0f9ff;
-     /* sky-50 */
- }
+/* Tooltip for dots */
+.nav-dot::after {
+    content: attr(data-label);
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%) translateX(10px);
+    background-color: #12121A;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    letter-spacing: 0.05em;
+}
 
- .module-card:hover .module-icon {
-     background-color: #0284c7;
-     /* sky-600 */
-     color: white;
-     transform: scale(1.1);
- }
+.nav-dot:hover::after {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
 
- /* Checkmark Animation */
- .check-animate {
-     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-     transform: scale(1);
- }
+#navbar {
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
 
- tr:hover .check-animate {
-     transform: scale(1.4);
-     filter: drop-shadow(0 4px 6px rgba(34, 197, 94, 0.4));
- }
+#navbar > div {
+    transition: all 0.4s ease;
+}
 
- /* Infinite Scroll Animation */
- @keyframes scroll {
-     0% {
-         transform: translateX(0);
-     }
+#navbar:hover > div {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-color: rgba(0, 0, 0, 0.1);
+    transform: translateY(2px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
 
-     100% {
-         transform: translateX(-50%);
-     }
- }
-
- .animate-scroll {
-     animation: scroll 40s linear infinite;
-     width: max-content;
- }
-
- .animate-scroll:hover {
-     animation-play-state: paused;
- }
+.dark #navbar:hover > div {
+    background-color: rgba(18, 18, 26, 0.85);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}

@@ -27,8 +27,7 @@ $app_name = "MicroCampus BD";
 
 $admin_emails = [
     "knabirofficial@gmail.com",
-    "vivagodigital@gmail.com",
-    "duropoth@gmail.com"
+    "vivagodigital@gmail.com"
 ];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -96,19 +95,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         return $code == "250";
     }
 
-    $subject = "New $type Request: $institution";
+    $subject = "নতুন বুকিং রিকোয়েস্ট: $type - $institution";
     $body = "
         <div style='font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 12px; max-width: 600px; margin: auto;'>
-            <h2 style='color: #0284c7; margin-bottom: 20px;'>New Request Details</h2>
+            <h2 style='color: #0284c7; margin-bottom: 20px;'>নতুন রিকোয়েস্টের বিবরণ</h2>
             <table style='width: 100%; border-collapse: collapse;'>
-                <tr><td style='padding: 8px 0; color: #666;'>Institution:</td><td style='padding: 8px 0; font-weight: bold;'>$institution</td></tr>
-                <tr><td style='padding: 8px 0; color: #666;'>Request Type:</td><td style='padding: 8px 0; font-weight: bold;'>$type</td></tr>
-                <tr><td style='padding: 8px 0; color: #666;'>Contact Name:</td><td style='padding: 8px 0; font-weight: bold;'>$name</td></tr>
-                <tr><td style='padding: 8px 0; color: #666;'>Email:</td><td style='padding: 8px 0; font-weight: bold;'><a href='mailto:$sender_email'>$sender_email</a></td></tr>
-                <tr><td style='padding: 8px 0; color: #666;'>Phone:</td><td style='padding: 8px 0; font-weight: bold;'>$phone</td></tr>
+                <tr><td style='padding: 8px 0; color: #666;'>প্রতিষ্ঠানের নাম:</td><td style='padding: 8px 0; font-weight: bold;'>$institution</td></tr>
+                <tr><td style='padding: 8px 0; color: #666;'>রিকোয়েস্টের ধরন:</td><td style='padding: 8px 0; font-weight: bold;'>$type</td></tr>
+                <tr><td style='padding: 8px 0; color: #666;'>যোগাযোগকারী:</td><td style='padding: 8px 0; font-weight: bold;'>$name</td></tr>
+                <tr><td style='padding: 8px 0; color: #666;'>ইমেইল:</td><td style='padding: 8px 0; font-weight: bold;'><a href='mailto:$sender_email'>$sender_email</a></td></tr>
+                <tr><td style='padding: 8px 0; color: #666;'>ফোন নম্বর:</td><td style='padding: 8px 0; font-weight: bold;'>$phone</td></tr>
             </table>
             <hr style='border: 0; border-top: 1px solid #eee; margin: 25px 0;'>
-            <p style='color: #999; font-size: 11px; text-align: center;'>This is an automated notification from the MicroCampus BD Platform.</p>
+            <p style='color: #999; font-size: 11px; text-align: center;'>এটি মাইক্রোক্যাম্পাস বিডি প্ল্যাটফর্ম থেকে একটি অটোমেটেড নোটিফিকেশন।</p>
         </div>
     ";
 
@@ -124,8 +123,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Success | MicroCampus BD</title>
+        <title>সফল হয়েছে | মাইক্রোক্যাম্পাস বিডি</title>
         <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@400;700&family=Hind+Siliguri:wght@400;700&display=swap" rel="stylesheet">
+        <style>body { font-family: 'Hind Siliguri', 'Inter', sans-serif; } h1 { font-family: 'Anek Bangla', sans-serif; }</style>
         <script src="https://unpkg.com/lucide@0.407.0/dist/umd/lucide.min.js" defer></script>
     </head>
     <body class="bg-slate-50 flex items-center justify-center min-h-screen p-6">
@@ -133,17 +134,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="w-16 h-16 <?php echo $email_sent ? 'bg-green-100 text-green-600' : 'bg-amber-100 text-amber-600'; ?> rounded-full flex items-center justify-center mx-auto mb-6">
                 <i data-lucide="<?php echo $email_sent ? 'check' : 'alert-triangle'; ?>" class="w-8 h-8"></i>
             </div>
-            <h1 class="text-2xl font-bold text-slate-900 mb-2"><?php echo $email_sent ? 'Request Sent!' : 'Processing...'; ?></h1>
+            <h1 class="text-2xl font-bold text-slate-900 mb-2"><?php echo $email_sent ? 'সফলভাবে পাঠানো হয়েছে!' : 'প্রসেস করা হচ্ছে...'; ?></h1>
             <p class="text-slate-500 mb-8 text-sm leading-relaxed">
-                Thank you, <strong><?php echo $name; ?></strong>. We've received your request for <strong><?php echo $institution; ?></strong>.<br><br>
+                ধন্যবাদ, <strong><?php echo $name; ?></strong>। আমরা আপনার রিকোয়েস্টটি (<strong><?php echo $institution; ?></strong>) সফলভাবে পেয়েছি।<br><br>
                 <?php if ($email_sent): ?>
-                    Confirmation emails have been sent to you and our support team.
+                    একটি কনফার্মেশন ইমেইল আপনার ঠিকানায় এবং আমাদের সাপোর্ট টিমের কাছে পাঠানো হয়েছে।
                 <?php else: ?>
-                    <span class="text-amber-600">Note: We've saved your request. Our team will contact you shortly.</span>
+                    <span class="text-amber-600">দ্রষ্টব্য: আপনার তথ্য আমাদের কাছে জমা আছে। আমাদের টিম খুব শীঘ্রই আপনার সাথে যোগাযোগ করবে।</span>
                 <?php endif; ?>
             </p>
             <a href="index.html" class="inline-block w-full py-3.5 bg-slate-900 text-white rounded-xl font-bold hover:bg-sky-600 transition-all">
-                Return Home
+                হোম পেজে ফিরে যান
             </a>
         </div>
         <script>window.onload = () => { lucide.createIcons(); }</script>
