@@ -30,11 +30,15 @@
         }
     </script>
     <script>
-        // Check for saved theme (Default to Light Mode)
-        if (localStorage.theme === 'dark') {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
+        // Check for saved theme (Default to Light Mode) safely
+        try {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        } catch (e) {
+            console.warn("Theme storage access denied.");
         }
     </script>
 </head>

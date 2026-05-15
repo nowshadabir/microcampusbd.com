@@ -7,20 +7,28 @@ const navbar = document.getElementById('navbar');
 const themeToggle = document.getElementById('theme-toggle');
 const htmlElement = document.documentElement;
 
-// Check for saved theme (Default to Light Mode)
-if (localStorage.theme === 'dark') {
-    htmlElement.classList.add('dark');
-} else {
-    htmlElement.classList.remove('dark');
+// Check for saved theme (Default to Light Mode) safely
+try {
+    if (localStorage.getItem('theme') === 'dark') {
+        htmlElement.classList.add('dark');
+    } else {
+        htmlElement.classList.remove('dark');
+    }
+} catch (e) {
+    console.warn("Theme storage access denied.");
 }
 
 if (themeToggle) {
     themeToggle.addEventListener('click', () => {
         htmlElement.classList.toggle('dark');
-        if (htmlElement.classList.contains('dark')) {
-            localStorage.theme = 'dark';
-        } else {
-            localStorage.theme = 'light';
+        try {
+            if (htmlElement.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        } catch (e) {
+            console.warn("Could not save theme preference.");
         }
         lucide.createIcons(); // Refresh icons
     });
@@ -255,9 +263,9 @@ if (costSection) {
     const finalSection = costSection.querySelector('.cost-final');
 
     // Title
-    gsap.to(title, {
-        opacity: 1,
-        y: 0,
+    gsap.from(title, {
+        opacity: 0,
+        y: 20,
         duration: 0.6,
         scrollTrigger: {
             trigger: costSection,
@@ -273,15 +281,15 @@ if (costSection) {
         }
     });
 
-    tlCost.to(cards, {
-        opacity: 1,
-        y: 0,
+    tlCost.from(cards, {
+        opacity: 0,
+        y: 30,
         duration: 0.4,
         stagger: 0.1,
         ease: "back.out(1.4)"
     })
-    .to(totalPanel, {
-        opacity: 1,
+    .from(totalPanel, {
+        opacity: 0,
         duration: 0.3
     })
     .to(counter, {
@@ -295,8 +303,8 @@ if (costSection) {
     });
 
     // Pause "Or..."
-    gsap.to(pause, {
-        opacity: 1,
+    gsap.from(pause, {
+        opacity: 0,
         duration: 0.8,
         scrollTrigger: {
             trigger: ".cost-pause",
@@ -307,9 +315,9 @@ if (costSection) {
     });
 
     // Final Slam
-    gsap.to(finalSection, {
-        opacity: 1,
-        scale: 1,
+    gsap.from(finalSection, {
+        opacity: 0,
+        scale: 0.95,
         duration: 0.7,
         ease: "back.out(1.7)",
         scrollTrigger: {
