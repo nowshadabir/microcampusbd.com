@@ -97,7 +97,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: booking.html?status=spam");
         exit;
     }
-}
 
     /**
      * Sends a single email to multiple recipients in one SMTP transaction.
