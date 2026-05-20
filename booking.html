@@ -63,7 +63,24 @@
                 <p class="text-slate-500 dark:text-slate-400">নিচের তথ্যগুলো পূরণ করুন, আমাদের প্রতিনিধি আপনার সাথে দ্রুত যোগাযোগ করবেন।</p>
             </div>
 
-            <div class="bg-white dark:bg-[#12121A] rounded-3xl p-8 md:p-10 shadow-xl shadow-slate-200/50 dark:shadow-none border border-slate-100 dark:border-slate-800">
+            <div class="relative bg-white dark:bg-[#12121A] rounded-3xl p-8 md:p-10 shadow-xl shadow-slate-200/50 dark:shadow-none border border-slate-100 dark:border-slate-800">
+                <!-- Loading State Overlay -->
+                <div id="loading-overlay" class="hidden absolute inset-0 bg-white/95 dark:bg-[#12121A]/95 rounded-3xl flex-col items-center justify-center p-8 text-center transition-all duration-300 z-50">
+                    <!-- Premium Spinner Animation -->
+                    <div class="relative w-20 h-20 mb-6">
+                        <!-- Outer Ring -->
+                        <div class="absolute inset-0 rounded-full border-4 border-slate-100 dark:border-slate-800"></div>
+                        <!-- Spinning Ring -->
+                        <div class="absolute inset-0 rounded-full border-4 border-transparent border-t-sky-500 dark:border-t-[#4ADE80] animate-spin"></div>
+                        <!-- Inner Glow/Icon -->
+                        <div class="absolute inset-4 rounded-full bg-slate-50 dark:bg-[#0A0A0F] flex items-center justify-center">
+                            <i data-lucide="send" class="w-6 h-6 text-sky-500 dark:text-[#4ADE80] animate-pulse"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-slate-900 dark:text-white mb-2">অনুরোধ পাঠানো হচ্ছে...</h3>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 max-w-xs">আমরা আপনার তথ্যটি নিরাপদে গ্রহণ করছি। অনুগ্রহ করে কিছু মুহূর্ত অপেক্ষা করুন।</p>
+                </div>
+
                 <!-- Status Alert Container -->
                 <div id="status-alert" class="hidden mb-6 p-4 rounded-xl flex items-start gap-3 border text-sm transition-all duration-300">
                     <div class="w-5 h-5 mt-0.5 flex-shrink-0 flex items-center justify-center">
@@ -159,8 +176,8 @@
                     } else if (status === 'spam') {
                         alertEl.classList.add('bg-red-50', 'border-red-200', 'text-red-800', 'dark:bg-red-950/20', 'dark:border-red-900/30', 'dark:text-red-400');
                         iconEl.setAttribute('data-lucide', 'shield-alert');
-                        titleEl.innerText = "অনুরোধটি বাতিল করা হয়েছে";
-                        descEl.innerText = "আমাদের নিরাপত্তা ব্যবস্থা আপনার অনুরোধে ক্ষতিকর বা স্প্যাম উপাদান শনাক্ত করেছে।";
+                        titleEl.innerText = "স্প্যাম শনাক্তকরণ সতর্কতা";
+                        descEl.innerText = "এটি স্প্যাম বলে মনে হচ্ছে, তাই আপনার অনুরোধটি প্রত্যাখ্যান করা হয়েছে। জরুরি প্রয়োজনে অনুগ্রহ করে ০১৬১৮১২৯৮০০ নম্বরে যোগাযোগ করুন।";
                     } else if (status === 'error') {
                         alertEl.classList.add('bg-red-50', 'border-red-200', 'text-red-800', 'dark:bg-red-950/20', 'dark:border-red-900/30', 'dark:text-red-400');
                         iconEl.setAttribute('data-lucide', 'alert-circle');
@@ -170,6 +187,18 @@
                     
                     lucide.createIcons();
                 }
+            }
+
+            // Show animation overlay on form submit
+            const form = document.querySelector('form');
+            if (form) {
+                form.addEventListener('submit', () => {
+                    const overlay = document.getElementById('loading-overlay');
+                    if (overlay) {
+                        overlay.classList.remove('hidden');
+                        overlay.classList.add('flex');
+                    }
+                });
             }
         }
     </script>

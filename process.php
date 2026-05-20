@@ -20,7 +20,6 @@ function loadEnv($path) {
     }
 }
 loadEnv(__DIR__ . '/.env');
-require_once __DIR__ . '/groq_helper.php';
 
 // --- CONFIGURATION ---
 $gmail_user = ($_ENV['GMAIL_USER'] ?? $_SERVER['GMAIL_USER'] ?? getenv('GMAIL_USER')) ?: "knabirofficial@gmail.com";
@@ -85,16 +84,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $rateData[$ip][] = $now;
     file_put_contents($rateFile, json_encode($rateData));
 
-    // ---- Spam Detection via Groq ----
-    $payload = [
-        "name" => $name,
-        "email" => $sender_email,
-        "institution" => $institution,
-        "phone" => $phone,
-        "type" => $type,
-        "message" => $message,
-    ];
-    if (check_spam_groq($payload, "llama3-8b-8192", 0.5)) {
+    // ---- Spam Detection: Link Prevention ----
+    // Do not allow links (e.g. http://, https://, www., [url]) in name, institution/school, or message
+    $linkPattern = '/https?:\/\/|www\.|\[url\]|\b[a-z0-9-]+\.(com|net|org|xyz|info|co|io|bd|edu|click|top|club|online|site)\b/i';
+    if (preg_match($linkPattern, $name) || preg_match($linkPattern, $institution) || preg_match($linkPattern, $message)) {
         header("Location: booking.html?status=spam");
         exit;
     }
