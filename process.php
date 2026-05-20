@@ -19,6 +19,7 @@ function loadEnv($path) {
     }
 }
 loadEnv(__DIR__ . '/.env');
+require_once __DIR__ . '/groq_helper.php';
 
 // --- CONFIGURATION ---
 $gmail_user = getenv('GMAIL_USER') ?: "knabirofficial@gmail.com";
@@ -31,16 +32,72 @@ $admin_emails = [
 ];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // ---- Honeypot Check ----
+    $honeypot = isset($_POST["website_verification"]) ? $_POST["website_verification"] : "";
+    if (!empty($honeypot)) {
+        // Silently reject or redirect spam bots
+        header("Location: booking.html?status=spam");
+        exit;
+    }
+
     $name = strip_tags(trim($_POST["name"]));
     $sender_email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
     $institution = strip_tags(trim($_POST["institution"]));
     $phone = strip_tags(trim($_POST["phone"]));
     $type = strip_tags(trim($_POST["type"]));
+    $message = isset($_POST["message"]) ? strip_tags(trim($_POST["message"])) : "";
 
+    // Required fields check
     if (empty($name) || empty($sender_email) || empty($institution)) {
         header("Location: booking.html?status=error");
         exit;
     }
+
+    // ---- Rate Limiting (max 3 submissions per hour per IP) ----
+    $rateFile = __DIR__ . '/rate_limit.json';
+    $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
+    $now = time();
+    $limit = 3; // submissions per hour
+    $window = 3600; // 1 hour in seconds
+
+    // Load existing rate‑limit data
+    $rateData = [];
+    if (file_exists($rateFile)) {
+        $json = @file_get_contents($rateFile);
+        $rateData = json_decode($json, true) ?? [];
+    }
+
+    // Remove timestamps older than 1 hour
+    if (isset($rateData[$ip])) {
+        $rateData[$ip] = array_filter($rateData[$ip], function($ts) use ($now, $window) {
+            return ($now - $ts) < $window;
+        });
+    }
+
+    // Enforce limit
+    if (isset($rateData[$ip]) && count($rateData[$ip]) >= $limit) {
+        header("Location: booking.html?status=rate_limit");
+        exit;
+    }
+
+    // Record this submission timestamp
+    $rateData[$ip][] = $now;
+    file_put_contents($rateFile, json_encode($rateData));
+
+    // ---- Spam Detection via Groq ----
+    $payload = [
+        "name" => $name,
+        "email" => $sender_email,
+        "institution" => $institution,
+        "phone" => $phone,
+        "type" => $type,
+        "message" => $message,
+    ];
+    if (check_spam_groq($payload, "openai/gpt-oss-120b", 0.5)) {
+        header("Location: booking.html?status=spam");
+        exit;
+    }
+}
 
     /**
      * Sends a single email to multiple recipients in one SMTP transaction.
@@ -96,6 +153,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $subject = "নতুন বুকিং রিকোয়েস্ট: $type - $institution";
+    $message_row = "";
+    if (!empty($message)) {
+        $message_row = "<tr><td style='padding: 8px 0; color: #666; vertical-align: top;'>বার্তা:</td><td style='padding: 8px 0; font-weight: bold; white-space: pre-wrap;'>" . nl2br(htmlspecialchars($message)) . "</td></tr>";
+    }
+
     $body = "
         <div style='font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 12px; max-width: 600px; margin: auto;'>
             <h2 style='color: #0284c7; margin-bottom: 20px;'>নতুন রিকোয়েস্টের বিবরণ</h2>
@@ -105,6 +167,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <tr><td style='padding: 8px 0; color: #666;'>যোগাযোগকারী:</td><td style='padding: 8px 0; font-weight: bold;'>$name</td></tr>
                 <tr><td style='padding: 8px 0; color: #666;'>ইমেইল:</td><td style='padding: 8px 0; font-weight: bold;'><a href='mailto:$sender_email'>$sender_email</a></td></tr>
                 <tr><td style='padding: 8px 0; color: #666;'>ফোন নম্বর:</td><td style='padding: 8px 0; font-weight: bold;'>$phone</td></tr>
+                $message_row
             </table>
             <hr style='border: 0; border-top: 1px solid #eee; margin: 25px 0;'>
             <p style='color: #999; font-size: 11px; text-align: center;'>এটি মাইক্রোক্যাম্পাস বিডি প্ল্যাটফর্ম থেকে একটি অটোমেটেড নোটিফিকেশন।</p>

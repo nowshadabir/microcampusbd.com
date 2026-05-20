@@ -64,6 +64,17 @@
             </div>
 
             <div class="bg-white dark:bg-[#12121A] rounded-3xl p-8 md:p-10 shadow-xl shadow-slate-200/50 dark:shadow-none border border-slate-100 dark:border-slate-800">
+                <!-- Status Alert Container -->
+                <div id="status-alert" class="hidden mb-6 p-4 rounded-xl flex items-start gap-3 border text-sm transition-all duration-300">
+                    <div class="w-5 h-5 mt-0.5 flex-shrink-0 flex items-center justify-center">
+                        <i id="status-icon" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h4 id="status-title" class="font-bold"></h4>
+                        <p id="status-desc" class="mt-0.5 text-xs opacity-90"></p>
+                    </div>
+                </div>
+
                 <form action="process.php" method="POST" class="space-y-5">
                     <div class="space-y-1.5">
                         <label class="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">আপনার পূর্ণ নাম</label>
@@ -98,6 +109,19 @@
                         </div>
                     </div>
 
+                    <!-- Message Field (Optional) -->
+                    <div class="space-y-1.5">
+                        <label class="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">বার্তা (ঐচ্ছিক)</label>
+                        <textarea name="message" placeholder="আপনার কোনো মন্তব্য বা বার্তা থাকলে লিখুন" rows="3"
+                            class="w-full px-4 py-3 bg-slate-50 dark:bg-[#0A0A0F] border border-slate-200 dark:border-slate-800 rounded-xl text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-sky-500/20 dark:focus:ring-[#4ADE80]/20 focus:border-sky-500 dark:focus:border-[#4ADE80] transition-all"></textarea>
+                    </div>
+
+                    <!-- Honeypot Field (Spam prevention) -->
+                    <div style="display:none !important;" aria-hidden="true">
+                        <label>Do not fill this field</label>
+                        <input type="text" name="website_verification" tabindex="-1" autocomplete="off">
+                    </div>
+
                     <button type="submit"
                         class="w-full py-4 bg-slate-900 dark:bg-[#4ADE80] text-white dark:text-black rounded-xl font-bold hover:bg-sky-600 dark:hover:bg-[#4ADE80]/80 transition-all mt-4 shadow-lg shadow-sky-100 dark:shadow-none">
                         রিকোয়েস্ট জমা দিন
@@ -112,7 +136,42 @@
     </main>
 
     <script>
-        window.onload = () => { lucide.createIcons(); }
+        window.onload = () => {
+            lucide.createIcons();
+
+            // Handle query status alerts
+            const urlParams = new URLSearchParams(window.location.search);
+            const status = urlParams.get('status');
+            if (status) {
+                const alertEl = document.getElementById('status-alert');
+                const iconEl = document.getElementById('status-icon');
+                const titleEl = document.getElementById('status-title');
+                const descEl = document.getElementById('status-desc');
+
+                if (alertEl && iconEl && titleEl && descEl) {
+                    alertEl.classList.remove('hidden');
+                    
+                    if (status === 'rate_limit') {
+                        alertEl.classList.add('bg-amber-50', 'border-amber-200', 'text-amber-800', 'dark:bg-amber-950/20', 'dark:border-amber-900/30', 'dark:text-amber-400');
+                        iconEl.setAttribute('data-lucide', 'clock');
+                        titleEl.innerText = "অনুরোধের সীমা অতিক্রম করেছে";
+                        descEl.innerText = "আপনি প্রতি ঘণ্টায় সর্বোচ্চ ৩ বার অনুরোধ পাঠাতে পারবেন। অনুগ্রহ করে কিছু সময় পর আবার চেষ্টা করুন।";
+                    } else if (status === 'spam') {
+                        alertEl.classList.add('bg-red-50', 'border-red-200', 'text-red-800', 'dark:bg-red-950/20', 'dark:border-red-900/30', 'dark:text-red-400');
+                        iconEl.setAttribute('data-lucide', 'shield-alert');
+                        titleEl.innerText = "অনুরোধটি বাতিল করা হয়েছে";
+                        descEl.innerText = "আমাদের নিরাপত্তা ব্যবস্থা আপনার অনুরোধে ক্ষতিকর বা স্প্যাম উপাদান শনাক্ত করেছে।";
+                    } else if (status === 'error') {
+                        alertEl.classList.add('bg-red-50', 'border-red-200', 'text-red-800', 'dark:bg-red-950/20', 'dark:border-red-900/30', 'dark:text-red-400');
+                        iconEl.setAttribute('data-lucide', 'alert-circle');
+                        titleEl.innerText = "ত্রুটি দেখা দিয়েছে";
+                        descEl.innerText = "অনুগ্রহ করে সব প্রয়োজনীয় তথ্য সঠিকভাবে পূরণ করুন।";
+                    }
+                    
+                    lucide.createIcons();
+                }
+            }
+        }
     </script>
 </body>
 
