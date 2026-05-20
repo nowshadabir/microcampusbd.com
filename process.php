@@ -14,16 +14,17 @@ function loadEnv($path) {
         list($name, $value) = explode('=', $line, 2);
         $name = trim($name);
         $value = trim($value, " \t\n\r\0\x0B\"'");
-        putenv(sprintf('%s=%s', $name, $value));
+        @putenv(sprintf('%s=%s', $name, $value));
         $_ENV[$name] = $value;
+        $_SERVER[$name] = $value;
     }
 }
 loadEnv(__DIR__ . '/.env');
 require_once __DIR__ . '/groq_helper.php';
 
 // --- CONFIGURATION ---
-$gmail_user = getenv('GMAIL_USER') ?: "knabirofficial@gmail.com";
-$app_password = getenv('GMAIL_APP_PASS');
+$gmail_user = ($_ENV['GMAIL_USER'] ?? $_SERVER['GMAIL_USER'] ?? getenv('GMAIL_USER')) ?: "knabirofficial@gmail.com";
+$app_password = $_ENV['GMAIL_APP_PASS'] ?? $_SERVER['GMAIL_APP_PASS'] ?? getenv('GMAIL_APP_PASS');
 $app_name = "MicroCampus BD";
 
 $admin_emails = [

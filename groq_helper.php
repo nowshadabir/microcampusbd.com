@@ -3,9 +3,9 @@
 // Optimized Helper functions to interact with Groq API for spam detection.
 
 function check_spam_groq(array $payload, string $model = 'llama3-8b-8192', float $threshold = 0.5): bool {
-    $apiKey = getenv('GROQ_API_KEY');
+    $apiKey = $_ENV['GROQ_API_KEY'] ?? $_SERVER['GROQ_API_KEY'] ?? getenv('GROQ_API_KEY');
     if (!$apiKey) {
-        error_log('GROQ_API_KEY not set in environment.');
+        error_log('GROQ_API_KEY not found in $_ENV, $_SERVER, or getenv.');
         return false; // Fail open - do not block users if API key is missing.
     }
 
