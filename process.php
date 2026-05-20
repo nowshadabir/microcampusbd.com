@@ -100,33 +100,62 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $smtp_host = "ssl://smtp.gmail.com";
         $smtp_port = 465;
 
-        $fp = fsockopen($smtp_host, $smtp_port, $errno, $errstr, $timeout);
-        if (!$fp) return false;
-
-        function get_resp($fp) {
-            $resp = "";
-            while ($str = fgets($fp, 512)) {
-                $resp .= $str;
-                if (substr($str, 3, 1) == " ") break;
-            }
-            return $resp;
+        $fp = @fsockopen($smtp_host, $smtp_port, $errno, $errstr, $timeout);
+        if (!$fp) {
+            error_log("SMTP Connection Failed: $errstr ($errno)");
+            return false;
         }
 
-        get_resp($fp); 
-        fwrite($fp, "EHLO localhost\r\n"); get_resp($fp);
-        fwrite($fp, "AUTH LOGIN\r\n"); get_resp($fp);
-        fwrite($fp, base64_encode($from_user) . "\r\n"); get_resp($fp);
-        fwrite($fp, base64_encode($pass) . "\r\n"); get_resp($fp);
+        // Use a unique name for helper function to prevent redeclaration errors
+        if (!function_exists('get_smtp_response')) {
+            function get_smtp_response($fp) {
+                $resp = "";
+                while ($str = fgets($fp, 512)) {
+                    $resp .= $str;
+                    if (substr($str, 3, 1) == " ") break;
+                }
+                return $resp;
+            }
+        }
+
+        $r = get_smtp_response($fp);
+        if (substr($r, 0, 3) !== "220") { error_log("SMTP Greeting Failed: " . $r); fclose($fp); return false; }
+
+        fwrite($fp, "EHLO localhost\r\n"); 
+        $r = get_smtp_response($fp);
+        if (substr($r, 0, 3) !== "250") { error_log("SMTP EHLO Failed: " . $r); fclose($fp); return false; }
+
+        fwrite($fp, "AUTH LOGIN\r\n"); 
+        $r = get_smtp_response($fp);
+        if (substr($r, 0, 3) !== "334") { error_log("SMTP AUTH LOGIN init Failed: " . $r); fclose($fp); return false; }
+
+        fwrite($fp, base64_encode($from_user) . "\r\n"); 
+        $r = get_smtp_response($fp);
+        if (substr($r, 0, 3) !== "334") { error_log("SMTP AUTH USER Failed: " . $r); fclose($fp); return false; }
+
+        fwrite($fp, base64_encode($pass) . "\r\n"); 
+        $r = get_smtp_response($fp);
+        if (substr($r, 0, 3) !== "235") { error_log("SMTP AUTH PASS Failed: " . $r); fclose($fp); return false; }
         
         // Envelope From
-        fwrite($fp, "MAIL FROM: <$from_user>\r\n"); get_resp($fp);
+        fwrite($fp, "MAIL FROM: <$from_user>\r\n"); 
+        $r = get_smtp_response($fp);
+        if (substr($r, 0, 3) !== "250") { error_log("SMTP MAIL FROM Failed: " . $r); fclose($fp); return false; }
         
         // Envelope To (Multiple)
         foreach ($recipients as $to) {
-            fwrite($fp, "RCPT TO: <$to>\r\n"); get_resp($fp);
+            fwrite($fp, "RCPT TO: <$to>\r\n"); 
+            $r = get_smtp_response($fp);
+            if (substr($r, 0, 3) !== "250" && substr($r, 0, 3) !== "251") { 
+                error_log("SMTP RCPT TO <$to> Failed: " . $r); 
+                fclose($fp); 
+                return false; 
+            }
         }
 
-        fwrite($fp, "DATA\r\n"); get_resp($fp);
+        fwrite($fp, "DATA\r\n"); 
+        $r = get_smtp_response($fp);
+        if (substr($r, 0, 3) !== "354") { error_log("SMTP DATA init Failed: " . $r); fclose($fp); return false; }
 
         $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
@@ -137,7 +166,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
 
         fwrite($fp, $headers . "\r\n" . $body . "\r\n.\r\n");
-        $code = substr(get_resp($fp), 0, 3);
+        $r = get_smtp_response($fp);
+        $code = substr($r, 0, 3);
+        if ($code !== "250") {
+            error_log("SMTP Send Failed: " . $r);
+        }
         
         fwrite($fp, "QUIT\r\n");
         fclose($fp);
