@@ -93,7 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         "type" => $type,
         "message" => $message,
     ];
-    if (check_spam_groq($payload, "openai/gpt-oss-120b", 0.5)) {
+    if (check_spam_groq($payload, "llama3-8b-8192", 0.5)) {
         header("Location: booking.html?status=spam");
         exit;
     }

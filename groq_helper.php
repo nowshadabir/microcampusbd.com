@@ -2,7 +2,7 @@
 // groq_helper.php
 // Optimized Helper functions to interact with Groq API for spam detection.
 
-function check_spam_groq(array $payload, string $model = 'openai/gpt-oss-120b', float $threshold = 0.5): bool {
+function check_spam_groq(array $payload, string $model = 'llama3-8b-8192', float $threshold = 0.5): bool {
     $apiKey = getenv('GROQ_API_KEY');
     if (!$apiKey) {
         error_log('GROQ_API_KEY not set in environment.');
